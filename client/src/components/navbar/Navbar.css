@@ -1,0 +1,102 @@
+.header nav {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    justify-content: space-between;
+    background-color: #f2f2f2;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    color: #0D0D0D;
+    padding: 1em 3em;
+    z-index: 9999;
+}
+
+.header .navbar .logo {
+    font-size: 2.2em;
+    font-weight: 600;
+    color: #0D0D0D;
+}
+
+.navbar ul {
+    display: flex;
+    gap: 1.3em;
+    padding-bottom: 0;
+    font-size: 1.2em;
+}
+
+.navbar .user {
+    display: none;
+}
+
+a {
+  text-decoration: none;
+  position: relative;
+}
+
+a::before,
+a::after {
+  content: "";
+  position: absolute;
+  background-color: #A6A6A6;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  transition: width 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+a::before {
+  left: 0;
+}
+
+a::after {
+  right: 0;
+}
+
+a:hover::before,
+a:hover::after {
+  width: 100%;
+}
+
+/* Burger menu icon styles */
+.burger {
+    display: none; 
+    font-size: 1.8em;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Responsive styles for mobile */
+@media (max-width: 768px) {
+    .header .navbar .logo {
+        font-size: 2em;
+        font-weight: 600;
+        color: #0D0D0D;
+}
+    .burger {
+        display: block;
+    }
+
+    .navbar .guest,
+    .navbar .user {
+        display: none;
+  }
+
+
+    .navbar {
+        flex-wrap: wrap;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        width: 100%;
+        background-color: #f2f2f2;
+        margin-top: 1em;
+    }
+
+    .navbar ul li {
+        padding: 0.5em 1em;
+        text-align: center;
+    }
+}
