@@ -1,0 +1,657 @@
+.main-content {
+  display: grid;
+  height: 100vh;
+  padding-left: 7em;
+  gap: 2em;
+  grid-template-columns: 1fr 2fr;
+  background-image: url("/images/blob-scene-haikei(6).svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.welcome-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.welcome-text h1 {
+  font-weight: 700;
+  font-size: 5em;
+}
+
+.welcome-text h2 {
+  font-size: 1.6em;
+}
+
+.welcome-text .action-buttons {
+  display: flex;
+  gap: 4em;
+}
+
+.action-buttons > a {
+  border: none;
+  background-color: #708d81;
+  color: white;
+  padding: 1em 2em;
+  border-radius: 2em;
+  font-size: 1.1em;
+  font-weight: 400;
+}
+/* -------------------------------------- */
+
+.book-stack-wrapper {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: auto;
+  grid-column: 2 / span 2;
+  padding: 2em 0;
+}
+
+.book-stack {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+}
+
+.book-stack > img {
+  position: absolute;
+  border-radius: 0.2em;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+.book-1 {
+  z-index: 4;
+  transform: translate(0px, 180px) scale(1);
+}
+
+.book-2 {
+  z-index: 3;
+  transform: translate(170px, 180px) scale(0.9);
+}
+
+.book-3 {
+  z-index: 3;
+  transform: translate(-150px, 180px) scale(0.9);
+}
+
+.book-4 {
+  z-index: 1;
+  transform: translate(-280px, 160px) scale(0.75);
+}
+
+.book-5 {
+  z-index: 2;
+  transform: translate(300px, 200px) scale(0.9);
+}
+
+/* ------------------------FEATURES------------------------------- */
+
+.features-grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-flow: row;
+  padding: 3em 12em;
+  gap: 5em;
+}
+
+.feature-item {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0.4em;
+  padding: 2em;
+  word-break: break-word;
+  background-color: white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.circle-border {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  aspect-ratio: 1 / 1;
+  background-color: #f2f2f2;
+  border-radius: 50%;
+}
+
+.feature-item > h3 {
+  font-weight: 500;
+  text-align: left;
+}
+
+.feature-item > p {
+  font-size: 1.1em;
+}
+
+.feature-item i {
+  color: #708d81;
+}
+
+/* --------------------WHY SHELFIE------------------------------- */
+
+.about-app-container {
+  display: grid;
+  grid-template-columns: 1.5fr 2fr;
+  margin-top: 2em;
+  padding: 3em 12em;
+  gap: 5em;
+  background-image: url("/images/blob-haikei(10).svg");
+  background-position:center;
+  background-size: cover;
+
+}
+
+.about-app-container .about-image img {
+  border-radius: 0.4em;
+}
+
+.about-app-container .about-description {
+  padding: 2em;
+}
+
+.about-app-container .about-description h1 {
+  font-weight: 500;
+  font-size: 3em;
+}
+.about-app-container .about-description p {
+  font-size: 1.2em;
+}
+
+.about-app-container .about-description {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-app-container .about-description .action-buttons {
+  margin-top: 1em;
+  font-size: 1.1em;
+}
+
+.about-app-container .about-description .action-buttons a {
+  background-color: #708d81;
+}
+
+/* --------------------TESTIMONIALS-------------------------------- */
+
+.testimonials .divider {
+  margin-top: 2em;
+  font-size: 2em;
+}
+.testimonials-grid-container {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr;
+  align-items: stretch;
+  padding: 3em 12em;
+  justify-items: center;
+  gap: 3em;
+  margin: 0 auto;
+}
+
+.testimonials-grid-container .testimonial-item {
+  display: flex;
+  background-color: white;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-style: italic;
+  padding: 2em;
+  width: 100%;
+  border-radius: 0.4em;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.testimonials-grid-container .testimonial-item .checked {
+  color: orange;
+}
+
+.testimonials-grid-container .testimonial-item .testimonial-author {
+  display: flex;
+  position: relative;
+  gap: 1em;
+  margin-top: 2em;
+}
+.testimonials-grid-container .testimonial-item .testimonial-author::after {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 700;
+  font-size: 4em;
+  content: "\f10e";
+  position: absolute;
+  color: grey;
+  bottom: 0.3em;
+  opacity: 0.2;
+  right: 0.2em;
+}
+
+.testimonials-grid-container .testimonial-item .testimonial-author h5 {
+  margin-top: 1em;
+}
+.testimonials-grid-container .testimonial-item .testimonial-author img {
+  aspect-ratio: 1 /1;
+  width: 100px;
+  border-radius: 50%;
+}
+
+/* --------------------RECOMENDED BOOKS-------------------------- */
+
+.popular-books {
+  margin-top: 4em;
+  background: linear-gradient(to right, #f9f9f9, #f0f0f0);
+  padding: 40px 20px;
+}
+
+.popular-books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  padding: 3em 12em;
+  margin-top: 3em;
+  justify-content: center;
+  gap: 4em;
+}
+
+.divider {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  color: #708d81;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.8em;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 2px solid #708d81;
+  margin: 0 1em;
+}
+
+.popular-books-grid .book {
+  background-color: white;
+  padding: 0.5em;
+  position: relative;
+  border-radius: 0.3em;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  transition: transform 0.2s ease;
+}
+
+.popular-books-grid .book:hover {
+  transform: translateY(-5px);
+}
+
+.popular-books-grid img {
+  border-radius: 0.4em;
+  border: 0.3em solid white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.popular-books-grid .book h5 {
+  font-weight: 600;
+  font-size: 1rem;
+  white-space: normal;
+  margin-top: 0.5em;
+  margin-bottom: 0;
+}
+.popular-books-grid .book .checked {
+  color: orange;
+}
+.popular-books-grid .book p {
+  font-size: 0.9em;
+  padding: 0;
+  color: #555;
+}
+
+/* ----------------------FOOTER------------------------ */
+.footer {
+  background-color: #45454516;
+  /* background-color: #45454516; */
+  color: black;
+  padding: 2.9em 1.5em 1.4em;
+  font-size: 1em;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 85em;
+  margin: auto;
+  gap: 1.4em;
+}
+
+.footer-brand h2 {
+  font-size: 1.7em;
+  color: black;
+  margin-bottom: 0.6em;
+}
+
+.footer-links ul,
+.footer-social .social-icons {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li,
+.footer-social a {
+  margin-bottom: 0.6em;
+}
+
+.footer-links a,
+.footer-social a {
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-links li > a {
+  color: black;
+}
+
+.footer-links a:hover,
+.footer-social a:hover {
+  color: rgba(0, 0, 0, 0.472);
+}
+
+.footer-social .social-icons a {
+  font-size: 1.4em;
+  margin-right: 0.7em;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2em;
+  font-size: 1em;
+  color: black;
+  padding-top: 1em;
+}
+
+/* ======= RESPONSIVE STYLES ======= */
+
+@media (max-width: 1250px) {
+  .book-1 {
+    z-index: 4;
+    transform: translate(0px, 380px) scale(1);
+  }
+
+  .book-2 {
+    z-index: 3;
+    transform: translate(100px, 380px) scale(0.9);
+  }
+
+  .book-3 {
+    z-index: 3;
+    transform: translate(-100px, 380px) scale(0.9);
+  }
+
+  .book-4 {
+    z-index: 1;
+    transform: translate(-180px, 360px) scale(0.75);
+  }
+
+  .book-5 {
+    z-index: 2;
+    transform: translate(200px, 400px) scale(0.9);
+  }
+}
+
+/* Tablets and below (<= 992px) */
+@media (max-width: 992px) {
+  .main-content {
+    grid-template-columns: 1fr 1fr;
+    padding: 3em;
+    gap: 3em;
+    height: auto;
+    text-align: left;
+  }
+
+  .welcome-text {
+    margin-top: 5em;
+    margin-left: 2em;
+  }
+
+  .welcome-text h1 {
+    font-size: 3em;
+  }
+
+  .welcome-text h2 {
+    font-size: 1.2em;
+  }
+
+  .welcome-text .action-buttons {
+    flex-direction: row;
+    gap: 1em;
+    align-items: center;
+  }
+
+  .book-stack-wrapper {
+    position: relative;
+    padding: 2em 0;
+  }
+
+  .book-stack > img {
+    position: absolute;
+    border-radius: 0.2em;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+      rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  }
+  .book-1 {
+    z-index: 4;
+    transform: translate(0px, -25px) scale(0.55);
+  }
+
+  .book-2 {
+    z-index: 3;
+    transform: translate(45px, -20px) scale(0.5);
+  }
+
+  .book-3 {
+    z-index: 3;
+    transform: translate(-45px, -20px) scale(0.5);
+  }
+
+  .book-4 {
+    z-index: 1;
+    transform: translate(-100px, -40px) scale(0.4);
+  }
+
+  .book-5 {
+    z-index: 2;
+    transform: translate(115px, 0px) scale(0.5);
+  }
+
+  .features-grid-container {
+    grid-template-columns: 1fr;
+    padding: 2em;
+    gap: 3em;
+  }
+
+  .about-app-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 2em;
+  }
+
+  .about-app-container .about-description {
+    padding: 1em 0;
+  }
+
+  .testimonials-grid-container {
+    grid-template-columns: 1fr;
+    gap: 2em;
+    padding: 2em;
+  }
+
+  .popular-books-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    padding: 2em;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 2em;
+    padding: 2em 1em;
+  }
+}
+
+/* Phones (<= 576px) */
+@media (max-width: 576px) {
+  .main-content {
+    position: relative;
+    /* grid-template-columns: 1fr; */
+    /* grid-column: 1 / 4; */
+    display: block;
+    padding: 7em 3em;
+    gap: 3em;
+    height: 50vh;
+    text-align: left;
+    background-image: url("/images/mobile-background.webp");
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+  }
+  .main-content::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(112, 141, 129, 0.8); 
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .welcome-text {
+    position: relative;
+    z-index: 2;
+    margin-top: 2em;
+    margin-left: 0.8em;
+  }
+
+  .welcome-text h1 {
+    font-size: 2.6em;
+    margin-bottom: 0;
+    color: #f2f2f2;
+  }
+
+  .welcome-text h2 {
+    font-size: 1.3em;
+    color: #f2f2f2;
+  }
+
+  .action-buttons > a {
+    font-size: 1em;
+    padding: 0.8em 1.5em;
+    background-color: rgb(37, 37, 37);
+    border-radius: 0.5em;
+  }
+
+  .book-stack {
+    display: none;
+  }
+
+  .feature-item {
+    height: min-content;
+  }
+  .feature-item h3 {
+    font-size: 1.2em;
+  }
+
+  .feature-item p {
+    font-size: 0.8em;
+  }
+
+  .feature-item i {
+    font-size: 2em;
+  }
+
+  .about-text-wrapper {
+    text-align: left;
+  }
+
+  .about-description .action-buttons a {
+    font-size: 1em;
+    padding: 1.2em 2em;
+  }
+
+  .divider {
+    font-size: 1.2em;
+    width: 90%;
+  }
+
+  .about-app-container .about-text-wrapper h1 {
+    font-size: 1.9em;
+  }
+
+  .about-app-container .about-text-wrapper p {
+    font-size: 1.1em;
+  }
+
+  .star-wrapper{
+    margin-bottom: 0.5em;
+  }
+
+  .popular-books-grid {
+    grid-template-columns: repeat(2, 1fr); /* Two columns on mobile */
+    gap: 2em;
+    padding: 2em 1em;
+  }
+
+  .popular-books-grid .book {
+    width: 100%;
+    max-width: 140px;
+    margin: 0 auto;
+    padding: 0.5em;
+  }
+
+  .popular-books-grid .book h5 {
+    font-size: 0.8em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+  }
+
+  .popular-books-grid .book p {
+    font-size: 0.7em;
+  }
+
+  .popular-books-grid img {
+    max-width: 120px;
+    height: auto;
+    border: 0.2em solid white;
+  }
+
+  .testimonials-grid-container .testimonial-item {
+    padding: 1em;
+  }
+
+  .testimonials-grid-container .testimonial-item .testimonial-author img {
+    width: 60px;
+  }
+
+  .testimonials-grid-container .testimonial-item .testimonial-author::after {
+    font-size: 2.5em;
+  }
+
+  .testimonial-quote {
+    font-size: 0.8em;
+  }
+
+  .footer-brand h2 {
+    font-size: 1.6em;
+  }
+
+  .footer-links h4,
+  .footer-social h4 {
+    font-size: 1.1em;
+  }
+}

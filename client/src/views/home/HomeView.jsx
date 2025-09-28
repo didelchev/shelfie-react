@@ -1,0 +1,148 @@
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { 
+  faSearch, 
+  faWandMagicSparkles, 
+  faBookOpenReader, 
+  faStar 
+} from "@fortawesome/free-solid-svg-icons";
+import "./HomeView.css"
+
+
+const HomePage = () => {
+  return (
+    <>
+      <section className="main-content" data-aos="fade-right">
+        <div className="welcome-text">
+          <h1>Welcome to Shelfie</h1>
+          <h2>
+            Dive into a world of books. Organize your collection and find new reads.
+          </h2>
+          <div className="action-buttons">
+            <a className="link" href="/login">Login</a>
+            <a className="link" href="/register">Register</a>
+          </div>
+        </div>
+        <div className="book-stack-wrapper">
+          <div className="book-stack">
+            <img src="/images/book1.webp" className="book book-1" alt="Book 1" />
+            <img src="/images/book2.webp" className="book book-2" alt="Book 2" />
+            <img src="/images/book3.webp" className="book book-3" alt="Book 3" />
+            <img src="/images/book4.webp" className="book book-4" alt="Book 4" />
+            <img src="/images/book5.webp" className="book book-5" alt="Book 5" />
+          </div>
+        </div>
+      </section>
+
+      <div
+        className="features-grid-container"
+        data-aos="fade"
+        data-aos-delay="100"
+        data-aos-duration="1000"
+      >
+        <div className="feature-item">
+          <div className="circle-border">
+            <FontAwesomeIcon icon={faSearch} size="3x" />
+          </div>
+          <h3>Search & Filter</h3>
+          <p>
+            Quickly find the books you’re looking for with powerful search and filter tools.
+            Browse your personal shelves by title, author, or genre, and sort results to match
+            your reading mood. Whether your library is small or growing fast, finding the right
+            book is always just a few clicks away.
+          </p>
+        </div>
+
+        <div className="feature-item">
+          <div className="circle-border">
+            <FontAwesomeIcon icon={faWandMagicSparkles} size="3x" />
+          </div>
+          <h3>Personalized Book Recommendations</h3>
+          <p>
+            Discover your next great read with recommendations tailored to your taste. Based on
+            the books you've rated and added to your shelves, Shelfie suggests titles you’re
+            likely to enjoy. The more you interact with books, the smarter your recommendations
+            get—helping you explore new stories that match your interests.
+          </p>
+        </div>
+
+        <div className="feature-item">
+          <div className="circle-border">
+            <FontAwesomeIcon icon={faBookOpenReader} size="3x" />
+          </div>
+          <h3>Reading Progress Tracker</h3>
+          <p>
+            Track your personal reading journey by adding books to your custom shelves. Organize
+            your collection the way you like—whether it's “Want to Read,” “Currently Reading,”
+            or “Finished.” Rate and comment on books to share your thoughts and keep a record of
+            what you’ve read. Simple and personal, it’s your bookshelf, your way.
+          </p>
+        </div>
+      </div>
+
+      <section className="about-app-container" data-aos="fade-left" data-aos-delay="200">
+        <div className="about-image">
+          <img src="/images/example5.webp" alt="Organized books with Shelfie" />
+        </div>
+        <div className="about-description">
+          <div className="about-text-wrapper">
+            <h1>More Than a Bookshelf</h1>
+            <p>
+              Shelfie isn’t just a tracker—it’s a celebration of your reading journey. Imagine a space
+              where every book you’ve loved, every story that changed you, and every future adventure
+              you’re dreaming of lives together in perfect harmony.
+              <br />
+              <br />
+              Whether you're a casual reader or a lifelong book lover, Shelfie gives you the tools
+              to stay organized, inspired, and connected to your reading life. Add books to
+              personalized shelves, leave your thoughts with ratings and comments, and receive
+              recommendations that truly reflect your unique tastes. It’s more than just keeping
+              track—it’s about building a digital home for the stories that shape you.
+            </p>
+          </div>
+          <div className="action-buttons">
+            <a className="link" href="/catalog">Start Exploring</a>
+          </div>
+        </div>
+      </section>
+
+      <section className="testimonials" data-aos="fade" data-aos-duration="500">
+        <div className="divider">
+          <span>What Our Users Says</span>
+        </div>
+        <div className="testimonials-grid-container">
+          <div className="testimonial-item">
+            <div className="star-wrapper">
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+            </div>
+            <blockquote className="testimonial-quote">
+              "I’ve bounced between spreadsheets, notes apps, and other reading trackers, but nothing
+              felt right until I found Shelfie..."
+            </blockquote>
+            <div className="testimonial-author">
+              <img src="/images/profile-picture.webp" alt="Profile Picture" />
+              <h5>John Doe</h5>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="popular-books" data-aos="fade-down">
+        <div className="divider">
+          <span>Recently Added Books</span>
+        </div>
+        <div className="popular-books-grid">
+          {/* {books.map((book) => bookTemplate(book))} */}
+        </div>
+      </section>
+
+
+    </>
+  );
+};
+
+export default HomePage;
