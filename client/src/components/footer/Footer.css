@@ -1,0 +1,13 @@
+footer {
+    color: black;
+    padding: 1em;
+    text-align: center;
+    background-color: #E7E6E1;
+
+  }
+  
+  .footer-links a {
+    color: black;
+    margin: 0 0.6em;
+    font-size: 1.1em;
+  }

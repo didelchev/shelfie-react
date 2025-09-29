@@ -1,0 +1,24 @@
+ .book {
+    width: 100%;
+    max-width: 140px;
+    margin: 0 auto;
+    padding: 0.5em;
+  }
+
+   .book h5 {
+    font-size: 0.8em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+  }
+
+   .book p {
+    font-size: 0.7em;
+  }
+
+  .book img {
+    max-width: 120px;
+    height: auto;
+    border: 0.2em solid white;
+  }

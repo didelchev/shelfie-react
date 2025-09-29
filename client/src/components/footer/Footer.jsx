@@ -4,6 +4,7 @@ import {
   faGithub, 
   faDiscord 
 } from "@fortawesome/free-brands-svg-icons";
+import "./Footer.css"
 
 const Footer = () => {
   return (
@@ -28,12 +29,12 @@ const Footer = () => {
             <h4>Connect</h4>
             <div className="social-icons">
               <a href="https://www.linkedin.com/in/daniel-delchev-7b547a279/" target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={faLinkedin} />
+                {/* <FontAwesomeIcon icon={faLinkedin} /> */}
               </a>
               <a href="https://github.com/didelchev" target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={faGithub} />
+                {/* <FontAwesomeIcon icon={faGithub} /> */}
               </a>
-              <a href="#"><FontAwesomeIcon icon={faDiscord} /></a>
+              {/* <a href="#"><FontAwesomeIcon icon={faDiscord} /></a> */}
             </div>
           </div>
         </div>
