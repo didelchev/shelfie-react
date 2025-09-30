@@ -8,7 +8,7 @@ const RootLayout = () => {
   return (
    <>
     <Navbar />
-    <Outlet />
+      <Outlet />
     <Footer />
    </>
   )
