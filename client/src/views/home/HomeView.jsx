@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { 
-  faSearch, 
-  faWandMagicSparkles, 
-  faBookOpenReader, 
-  faStar 
-} from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faWandMagicSparkles, faBookOpenReader, faStar } from "@fortawesome/free-solid-svg-icons";
 import "./HomeView.css"
-
+import { getAllBooks } from "../../api/books-api";
+import BookTemplate from '../../components/book/BookTemplate'
 
 const HomePage = () => {
+
+  const [latestBooks, setLatestBooks ] = useState([])
+
+  useEffect(() => {
+    getAllBooks()
+      .then(books => {
+        setLatestBooks(books.slice(-6))
+
+      })
+      .catch(err => console.log(err))
+  },[])
+
+
   return (
     <>
       <section className="main-content" data-aos="fade-right">
@@ -136,7 +145,9 @@ const HomePage = () => {
           <span>Recently Added Books</span>
         </div>
         <div className="popular-books-grid">
-          {/* {books.map((book) => bookTemplate(book))} */}
+          {latestBooks.map((book, index) => (
+            <BookTemplate key={index} book={book}/>
+          ))}
         </div>
       </section>
 
