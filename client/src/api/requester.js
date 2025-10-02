@@ -38,13 +38,13 @@ export const api = {
     get(url){
         return requester(url, createOptions('GET'))
     },
-    post(url){
+    post(url, data){
         return requester(url, createOptions('POST', data))
     },
-    put(url){
+    put(url, data){
         return requester(url, createOptions('PUT', data))
     },
-    patch(url){
+    patch(url, data){
         return requester(url, createOptions('PATCH', data))
     },
     del(url){
