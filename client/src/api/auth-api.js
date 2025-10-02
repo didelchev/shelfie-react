@@ -10,5 +10,7 @@ export const login = (email, password) => {
 
 
 export const register = (email, username, password ) => {
+    const authData = api.post(`${API_URL}/register`, { email, username, password})
 
+    return authData
 }
