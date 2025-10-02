@@ -10,12 +10,17 @@ const HomePage = () => {
   const [latestBooks, setLatestBooks ] = useState([])
 
   useEffect(() => {
-    getAllBooks()
-      .then(books => {
-        setLatestBooks(books.slice(-6))
+    const getBooks = async () => {
+      try {
+        const books = await getAllBooks();
 
-      })
-      .catch(err => console.log(err))
+        setLatestBooks(books.slice(-6))
+        
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getBooks();
   },[])
 
 
