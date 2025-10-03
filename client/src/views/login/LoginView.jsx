@@ -11,6 +11,8 @@ const [authData, setAuthData] = useState({
   password: ""
 })
 
+const [error, setError] = useState(null)
+
 const changeHandler = (e) => {
   setAuthData({...authData, [e.target.name] : e.target.value})
 }
@@ -21,14 +23,18 @@ e.preventDefault()
   const { email, password} = authData;
 
 try {
-  const user = await login(email, password)
 
+  const user = await login(email, password)
 
   console.log('Login successfull')
   
 } catch (error) {
-  console.log(error)
+
+  const errorMessage = error.message || 'An unknown error occured during login attemp.'
+
+  setError(errorMessage)
 }
+
 }
 
 
@@ -54,6 +60,11 @@ try {
         <label htmlFor="password">Password</label>
         <input type="password" id="password" name="password" value={authData.password} onChange={e => { setAuthData({...authData, password: e.target.value})}} />
         <button type="submit" >Sign in</button>
+        {error && (
+      <div style={{ color: 'red', border: '1px solid red', padding: '10px', marginTop: '10px', textAlign: "center" }}>
+        Login Failed: {error}
+      </div>
+    )}
         <p className="not-registered">
           Don't have an account ? <a href="/register">Sign up for free</a>
         </p>
