@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./LoginView.css"
 import { login } from '../../api/auth-api'
+import { useAuth } from '../../contexts/AuthContext'
 
 
 
@@ -12,6 +13,12 @@ const [authData, setAuthData] = useState({
 })
 
 const [error, setError] = useState(null)
+
+
+
+const { setUserData  } = useAuth();
+
+
 
 const changeHandler = (e) => {
   setAuthData({...authData, [e.target.name] : e.target.value})
@@ -25,6 +32,10 @@ e.preventDefault()
 try {
 
   const user = await login(email, password)
+
+  localStorage.setItem('auth', JSON.stringify(user))
+
+  setUserData(user)
 
   console.log('Login successfull')
   
