@@ -4,6 +4,7 @@ const AuthContext = createContext({
     userId: null,
     email: null,
     username: null,
+    isAuthenticated: false,
     accessToken: null
 });
 
@@ -23,8 +24,8 @@ export const AuthContextProvider = ( { children }) => {
 
             return null
         }
+    
     })
-
 
 
     return (

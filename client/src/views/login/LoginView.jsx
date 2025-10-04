@@ -27,7 +27,7 @@ const changeHandler = (e) => {
 const loginHandler = async (e) => {
 
 e.preventDefault()
-  const { email, password} = authData;
+  const { email, password } = authData;
 
 try {
 
