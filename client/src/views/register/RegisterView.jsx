@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import "./RegisterView.css"
-import { api } from '../../api/requester'
-import { register } from '../../api/auth-api'
+import { login, register } from '../../api/auth-api'
+import { useAuth } from '../../contexts/AuthContext'
+import { useNavigate } from 'react-router-dom'
 
 const RegisterView = () => {
 
@@ -15,6 +16,10 @@ const RegisterView = () => {
 
   const [error, setError]  = useState(null);
 
+  const navigate = useNavigate()
+
+ const { setUserData  } = useAuth();
+
 
   const changeHandler = (e) => {
     setAuthData({...authData, [e.target.name]: e.target.value});
@@ -27,9 +32,15 @@ const RegisterView = () => {
     const { email, username, password, rePassword } = authData;
 
     try {
-      const user = await register(email, username, password, rePassword);
+      const newUser  = await register(email, username, password, rePassword)
 
-      console.log(user)
+      localStorage.setItem('auth', JSON.stringify(newUser))
+
+      setUserData(newUser)
+
+      navigate('/')
+  
+
 
     } catch (error) {
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "./LoginView.css"
 import { login } from '../../api/auth-api'
 import { useAuth } from '../../contexts/AuthContext'
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -14,7 +15,7 @@ const [authData, setAuthData] = useState({
 
 const [error, setError] = useState(null)
 
-
+const navigate = useNavigate();
 
 const { setUserData  } = useAuth();
 
@@ -39,7 +40,8 @@ try {
 
   setUserData(user)
 
-  console.log('Login successfull')
+  navigate('/')
+
   
 } catch (error) {
 
