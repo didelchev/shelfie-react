@@ -22,7 +22,9 @@ const { setUserData  } = useAuth();
 
 const changeHandler = (e) => {
   setAuthData({...authData, [e.target.name] : e.target.value})
+  
 }
+
 
 const loginHandler = async (e) => {
 

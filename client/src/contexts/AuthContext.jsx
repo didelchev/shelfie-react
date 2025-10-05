@@ -19,6 +19,7 @@ export const AuthContextProvider = ( { children }) => {
             }
 
             return JSON.parse(storedUser)
+            
         } catch (error) {
             console.log("Error reading 'auth' from localStorage:", error)
 

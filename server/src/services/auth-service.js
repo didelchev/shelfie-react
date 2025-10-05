@@ -15,7 +15,7 @@ export const register = async(email, username, password) => {
 };
 
 export const login = async (email, password) => {
-    const user = await User.findOne({email})
+    const user = await User.findOne({ email })
     const JWT_SECRET = process.env.JWT_SECRET
 
     //Check if user exists
@@ -40,7 +40,8 @@ export const login = async (email, password) => {
     return {
       _id: user.id,
       email: user.email,
-      accessToken: token
+      accessToken: token,
+      isAuthenticated: true;
     }     
 };
 
