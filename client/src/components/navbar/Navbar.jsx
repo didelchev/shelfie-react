@@ -8,7 +8,6 @@ const Navbar = () => {
 
   const { isAuthenticated } = useAuth();
 
-  console.log(isAuthenticated)
 
 
   return (

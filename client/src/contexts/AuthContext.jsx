@@ -6,19 +6,25 @@ const AuthContext = createContext({
     email: null,
     username: null,
     isAuthenticated: false,
-    accessToken: null
+    accessToken: null,
+    logout: () => null
 });
 
 
 export const AuthContextProvider = ( { children }) => {
     const [userData, setUserData] = usePersistedState('auth', {})
 
+    const logout = ( ) => {
+        setUserData(null)
+    }
+
     const contextData = {
             userId: userData?._id,
             email: userData?.email,
             accessToken: userData?.accessToken,
             isAuthenticated: !!userData?.isAuthenticated,
-            setUserData
+            setUserData,
+            logout
         }
     
 
