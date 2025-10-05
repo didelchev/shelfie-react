@@ -36,8 +36,6 @@ try {
 
   const user = await login(email, password)
 
-  localStorage.setItem('auth', JSON.stringify(user))
-
   setUserData(user)
 
   navigate('/')

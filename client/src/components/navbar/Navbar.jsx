@@ -22,7 +22,7 @@ const Navbar = () => {
             <ul className="user nav-links">
               <li><Link to="/catalog" className='link'>Browse</Link></li>
               <li><Link to="/profile" className='link'>My Profile</Link></li>
-              <li><Link to="javascript:void(0)" id='logout'>Logout</Link></li>
+              <li><Link to="/logout" id='logout'>Logout</Link></li>
             </ul>
           ) 
           :

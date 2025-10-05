@@ -1,4 +1,5 @@
 import { useState, createContext, useContext } from "react";
+import { usePersistedState } from "../hooks/usePersistedState";
 
 const AuthContext = createContext({
     userId: null,
@@ -10,22 +11,7 @@ const AuthContext = createContext({
 
 
 export const AuthContextProvider = ( { children }) => {
-    const [userData, setUserData ] = useState(() => {
-        try {
-            const storedUser = localStorage.getItem('auth');
-
-            if(!storedUser){
-                return null
-            }
-
-            return JSON.parse(storedUser)
-
-        } catch (error) {
-            console.log("Error reading 'auth' from localStorage:", error)
-
-            return null
-        }
-    })
+    const [userData, setUserData] = usePersistedState('auth', {})
 
     const contextData = {
             userId: userData?._id,
