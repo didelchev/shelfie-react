@@ -16,17 +16,23 @@ const requester = async (url, options) => {
 
 
 const createOptions = (method, data) => {
+
+    const accessToken = localStorage.getItem('auth')
+
     const options = {
         method,
         headers: {}
     }
 
-    // if (accessToken) {
-    //     options.headers['X-Authorization'] = accessToken;
-    // }
+    if (accessToken) {
+        options.headers['X-Authorization'] = accessToken;
+    }
 
     if(data){ 
-        options.headers["Content-Type"] = 'application/json'
+        options.headers = { 
+            ...options.headers,
+            'Content-Type': 'application/json'
+        }
         options.body = JSON.stringify(data)
     }
 
