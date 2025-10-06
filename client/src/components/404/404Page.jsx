@@ -33,8 +33,7 @@ function PageNotFound() {
     border: '1px solid #333',
     padding: '10px 20px',
     borderRadius: '5px',
-    transition: 'background-color 0.3s, color 0.3s',
-  };
+      };
 
   return (
     <div style={containerStyle}>
