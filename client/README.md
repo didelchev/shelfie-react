@@ -1,16 +1,54 @@
-# React + Vite
+graph TD
+    subgraph App Structure
+        A[App.js/index.js] --> B(AuthContextProvider)
+        B --> C{Application Routes/Router}
+    end
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+    subgraph Data & Persistence
+        D[localStorage (Key: 'auth')]
+    end
 
-Currently, two official plugins are available:
+    subgraph Context State Management
+        E[usePersistedState Hook]
+    end
+    
+    subgraph Consumer Components
+        F[Login/Register View]
+        G[Header/Profile View]
+    end
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+    style B fill:#e0f7fa,stroke:#00bcd4,stroke-width:2px
+    style E fill:#c8e6c9,stroke:#4caf50,stroke-width:2px
+    style G fill:#fffde7,stroke:#ffeb3b,stroke-width:2px
+    style F fill:#fffde7,stroke:#ffeb3b,stroke-width:2px
+    style D fill:#bbdefb,stroke:#2196f3,stroke-width:2px
+    
+    
+    direction LR
+    
+    %% INITIAL LOAD (Persistence)
+    A -- Initial Render --> E
+    E -- 1. Read 'auth' Key --> D
+    D -- Return Stored Data (or {}) --> E
+    E -- Initial State (authState) --> B
+    
+    %% DATA FLOW (Access)
+    B -- Broadcast {contextData} via value prop --> C
+    C --> F
+    C --> G
+    
+    F -- 2a. Use useAuth() to get changeAuthState --> B
+    G -- 2b. Use useAuth() to get isAuthenticated/logout --> B
+    
+    %% STATE UPDATE (Login/Logout)
+    F -- 3. Successful Login/Register --> H(Call changeAuthState(newUser))
+    H --> E
+    H --> B
+    
+    I(Logout Button Click) --> J(Call logout())
+    J --> E
+    J --> B
 
-## React Compiler
-
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+    E -- 4. Save New State --> D
+    
+    B -- 5. State Change Triggers Re-render --> C

@@ -4,6 +4,7 @@ import  HomeView from  '../views/home/HomeView.jsx'
 import LoginView from "../views/login/LoginView";
 import RegisterView from "../views/register/RegisterView";
 import Logout from "../components/logout/Logout.jsx";
+import PageNotFound from "../components/404Page.jsx";
 
 
 export const router = createBrowserRouter([
@@ -14,7 +15,8 @@ export const router = createBrowserRouter([
         { index: true, element: <HomeView /> },
         { path: "/login", element: <LoginView /> },
         { path: "/register", element: <RegisterView />},
-        { path: "/logout", element: <Logout />}
+        { path: "/logout", element: <Logout />},
+        { path: '*', element: <PageNotFound />}
     ]
 
 }
