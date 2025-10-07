@@ -3,7 +3,7 @@ import "./BookTemplate.css"
 import { Link } from 'react-router-dom'
 
 const BookTemplate = ({ book }) => {
-
+``
     const ratingValue = book.rating
 
   return (

@@ -1,7 +1,7 @@
-const getAccessToken = () => {
+export const getAccessToken = () => {
     const authJSON = localStorage.getItem('auth')
 
-    if(!auth){
+    if(!authJSON){
         return ''
     }
 

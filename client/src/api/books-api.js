@@ -1,12 +1,14 @@
 import { api } from "./requester.js"
 
 
-const API_URL = "https://shelfie-book-app.onrender.com/catalog"
+const API_URL = "https://shelfie-book-app.onrender.com"
 
-export const getAllBooks = () => api.get(API_URL)
+export const getAllBooks = () => api.get(`${API_URL}/catalog`)
 
-export const getOneBook = (bookId) => api.get(`${API_URL}/${bookId}`)
+export const getOneBook = (bookId) => api.get(`${API_URL}/catalog/${bookId}`)
 
-export const getLatestBooks = () => api.get(API_URL)
+export const getLatestBooks = () => api.get(`${API_URL}/catalog`)
 
-export const addBookReview = (bookId, review) => api.post(`${API_URL}/${bookId}`, review) 
+export const addBookReview = (bookId, review) => api.post(`${API_URL}/reviews/${bookId}`, review) 
+
+export const getBookReviews = (bookId) => api.get(`${API_URL}/reviews/${bookId}`)

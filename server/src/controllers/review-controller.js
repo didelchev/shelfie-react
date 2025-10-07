@@ -22,7 +22,7 @@ reviewController.post("/:bookId",  (req,res) => {
     
     addReview(bookId, userEmail , review)
         .then(() => res.json({message: 'Success'}))
-        .catch(err => res.json({message: err}))
+        .catch(err => res.json({message: err.message}))
 })
 
 
@@ -33,7 +33,7 @@ reviewController.get("/:bookId/ratings", (req, res) => {
 
     getRating(bookId, userId)
         .then(response => res.json({userRating: response.userRating, average: response.averageRating}))
-        .catch(err => res.json({ message: err}))
+        .catch(err => res.json({ message: err.message}))
 
 })
 
@@ -45,7 +45,7 @@ reviewController.post("/:bookId/ratings", (req, res) => {
 
     addRating(bookId, userId, rating)
         .then(res => res.json({message: 'Rating added'}))
-        .catch(err => res.json({message: err}))
+        .catch(err => res.json({message: err.message}))
 
 })
 

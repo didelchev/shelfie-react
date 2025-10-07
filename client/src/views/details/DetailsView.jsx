@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import './DetailsView.css'
-import { addBookReview } from "../../api/books-api";
+import { addBookReview, getBookReviews } from "../../api/books-api";
+import ReviewTemplate from "../../components/review/ReviewTemplate";
 
 const BookDetailsView = ( ) => {
 
@@ -13,18 +14,23 @@ const BookDetailsView = ( ) => {
 
   const [review, setReview] = useState('')
 
+  const [userReviews, setUserReviews] = useState([]);
+
   const addReviewHandler = async (e) => {
     e.preventDefault();
 
-    const reviewObject = { review : review}
+    const reviewObject = { review : review }
 
     try {
-      await addBookReview(bookId, reviewObject)
+      
+      const newReview = await addBookReview(bookId, reviewObject)
+
+      setUserReviews([...userReviews, newReview])
 
       setReview('')
       
     } catch (err) {
-        console.log('Error while trying to add a review' + err)
+        console.log(err.message)
     } 
 
   }
@@ -33,6 +39,21 @@ const BookDetailsView = ( ) => {
     setReview(e.target.value)
 
   }
+
+    useEffect(() => {
+      const getReviews = async () => {
+        try {
+          const reviews = await getBookReviews(bookId);
+
+          setUserReviews(reviews);
+
+        } catch (err) {
+
+          console.log(err);
+        }
+      };
+      getReviews();
+    },[bookId]);
 
 
 
@@ -100,7 +121,10 @@ const BookDetailsView = ( ) => {
                 <button className='review-btn' type="submit">Add Review</button>
             </form>
         </div>
-       
+    {userReviews.map((review, index) => {
+      console.log(review)
+      return <ReviewTemplate review={review} key={index}/>
+    })}      
     </div>
 </div>
 )};

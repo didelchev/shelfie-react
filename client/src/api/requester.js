@@ -1,3 +1,5 @@
+import { getAccessToken } from "../utils/getAccessToken"
+
 const requester = async (url, options) => {
     const response = await fetch(url, options)
 
@@ -17,7 +19,7 @@ const requester = async (url, options) => {
 
 const createOptions = (method, data) => {
 
-    const accessToken = localStorage.getItem('auth')
+    const accessToken = getAccessToken();
 
     const options = {
         method,
