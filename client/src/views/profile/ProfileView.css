@@ -1,0 +1,239 @@
+.profile-banner {
+    height: 300px;
+    /* background: linear-gradient(90deg, rgba(217, 208, 193, 1) 0%, rgba(231, 230, 225, 1) 100%); */
+    width: 80%;
+    margin: 0 auto;
+    background: url('/images/example3.jpg') bottom/cover no-repeat;
+    border-bottom-left-radius: 4em;
+    border-bottom-right-radius: 4em;
+}
+
+.profile-card {
+    background: white;
+    padding: 2em;
+    margin: -100px auto 1em;
+    width: 90%;
+    max-width: 900px;
+    border-radius: 1em;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    position: relative;
+}
+
+.profile-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.profile-details h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #2c3e50;
+}
+
+.profile-details .email {
+  color: #555;
+  font-size: 1em;
+  padding-left: 1.5em;
+  position: relative;
+}
+.profile-details .email::before{
+  font-family: "Font Awesome 6 Free";
+  font-weight: 700;
+  position: absolute;
+  top:-2px;
+  color: black;
+  left: 0;
+  content: "\f0e0";
+  font-size: 1.2em; 
+}
+
+.profile-details .bio {
+  margin-top: 0.5em;
+  color: #777;
+  font-style: italic;
+  font-size: 0.95em;
+}
+
+.edit-btn {
+  background-color: #708D81;
+  color: white;
+  border: none;
+  border-radius: 1em;
+  padding: 0.6em 1.2em;
+  font-weight: 500;
+  cursor: pointer;
+  margin-left: auto;
+  align-self: flex-start;
+  transition: background-color 0.3s;
+}
+
+.edit-btn:hover {
+  background-color: #5f7f73;
+}
+
+.edit-form {
+  margin: 2em auto;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.edit-form input {
+  padding: 0.8em;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.edit-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-actions button {
+  padding: 0.8em 1.2em;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.edit-actions button[type="submit"] {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.edit-actions button[type="button"] {
+  background-color: #ccc;
+  color: #333;
+}
+
+
+.profile-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3em;
+  margin-bottom: 2em;
+}
+
+.profile-stats div {
+  text-align: center;
+}
+
+.profile-stats strong {
+  font-size: 1.5rem;
+  color: #3B6064;
+}
+
+.profile-stats span {
+  display: block;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.book-shelf {
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.book-shelf h3 {
+  font-size: 1.4em;
+  color: #3B6064;
+  margin: 2em 0 0.5em;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5em;
+  padding-left: 0.5em;
+  position: relative;
+}
+
+.book-shelf h3::before{
+    content: "";
+    position: absolute;
+    height: 80%;
+    width: 6px;
+    background-color: #708D81;
+    left: 0;
+    border-radius: 4px;
+}
+
+.shelf-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5em;
+  margin-bottom: 2em;
+}
+
+.shelf-row .single-book {
+  flex: 1 1 120px;
+  max-width: 150px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.single-book:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+}
+
+.shelf-row .single-book img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 2/3; 
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.remove-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background-color: rgba(220, 0, 0, 0.85);
+  color: white;
+  border: none;
+  border-radius: 25%;
+  padding: 4px 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.remove-btn:hover {
+  background-color: rgba(180, 0, 0, 1);
+}
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+
+  .profile-banner{
+    width: 100%;
+  }
+
+  .profile-card {
+    flex-direction: column;
+    height: fit-content;
+    width: fit-content;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-stats {
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  .shelf-row {
+    justify-content: center;
+  }
+}
