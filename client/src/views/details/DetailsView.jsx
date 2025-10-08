@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import './DetailsView.css'
-import { addBookReview, getBookReviews } from "../../api/books-api";
+import { addBookReview, addBookToShelf, getBookReviews } from "../../api/books-api";
 import ReviewTemplate from "../../components/review/ReviewTemplate";
+import { useAuth } from "../../contexts/AuthContext";
 
 const BookDetailsView = ( ) => {
 
@@ -10,22 +11,27 @@ const BookDetailsView = ( ) => {
 
   const book = location.state.book
 
+  const { isAuthenticated } = useAuth();
+  
+
   const { bookId } = useParams();
 
   const [review, setReview] = useState('')
 
   const [userReviews, setUserReviews] = useState([]);
 
+
   const addReviewHandler = async (e) => {
     e.preventDefault();
 
-    const reviewObject = { review : review }
+    const reviewObject = { review }
 
     try {
       
       const newReview = await addBookReview(bookId, reviewObject)
 
-      setUserReviews([...userReviews, newReview])
+
+      setUserReviews([...userReviews, newReview.review])
 
       setReview('')
       
@@ -55,6 +61,21 @@ const BookDetailsView = ( ) => {
       getReviews();
     },[bookId]);
 
+    const selectShelfHandler = async ( e ) => {
+      e.preventDefault();
+      try {
+
+        const shelf = e.target.value
+
+        await addBookToShelf(bookId, { shelf })
+
+        
+      } catch (error) {
+        console.log(error)
+      }
+
+    }
+
 
 
 
@@ -66,9 +87,9 @@ const BookDetailsView = ( ) => {
         <div className='dropdown'>
             <button>Add to Library:</button>
             <div className='options'>
-                <button className='dropdown-options' defaultValue='read'>Read</button>
-                <button className='dropdown-options' defaultValue='currReading'>Currently Reading</button>
-                <button className='dropdown-options' defaultValue='toRead'>Want to Read</button>
+                <button className='dropdown-options' value='read' onClick={selectShelfHandler}>Read</button>
+                <button className='dropdown-options' value='currReading' onClick={selectShelfHandler}>Currently Reading</button>
+                <button className='dropdown-options' value='toRead' onClick={selectShelfHandler}>Want to Read</button>
             </div>
         </div>
 
@@ -115,14 +136,19 @@ const BookDetailsView = ( ) => {
     </div>
     <div className="book-reviews-bottom">
         <h3>Reviews</h3>
-        <div className='add-review'>
+
+        {isAuthenticated && (
+          <div className='add-review'>
             <form onSubmit={ addReviewHandler } >
                 <input className='review' type="text" name="text" placeholder="Leave a review..." onChange={changeHandler} value={review} />
                 <button className='review-btn' type="submit">Add Review</button>
             </form>
         </div>
+
+        )
+      }
+        
     {userReviews.map((review, index) => {
-      console.log(review)
       return <ReviewTemplate review={review} key={index}/>
     })}      
     </div>

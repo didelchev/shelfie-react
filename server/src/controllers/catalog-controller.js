@@ -46,9 +46,13 @@ catalogController.post("/:bookId", async (req, res) => {
 
 
 try {
+  
   await addToBookList(userId, bookId, requestList)
-  res.json({message: 'Book has been successfully added !'})
-} catch (error) {
+
+  
+  res.json({ message: 'Book has been successfully added !' })
+} 
+catch (error) {
   res.status(400).json({message: error.message})
 }
 
