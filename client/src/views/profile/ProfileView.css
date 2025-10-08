@@ -43,6 +43,7 @@
   padding-left: 1.5em;
   position: relative;
 }
+
 .profile-details .email::before{
   font-family: "Font Awesome 6 Free";
   font-weight: 700;
