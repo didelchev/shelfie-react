@@ -2,6 +2,15 @@ import React from 'react'
 import "./ProfileView.css"
 
 const ProfileView = () => {
+
+    //Functionalities: 
+    // 1) show user credentials
+    // 2) show user library
+    // 3) edit user info
+
+
+
+
   return (
     <section className="profile-page">
   <div className="profile-banner"></div>
