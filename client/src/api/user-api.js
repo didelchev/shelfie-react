@@ -9,4 +9,4 @@ export const getUserCredentials = () => api.get(`${API_URL}/profile`)
 
 
 
-export const editUserCredentials = (updatedUser ) => api.patch(`${API_URL}/profile`)
+export const editUserCredentials = ( updatedUser ) => api.patch(`${API_URL}/profile`, updatedUser)
