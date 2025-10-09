@@ -14,3 +14,14 @@ export const addBookReview = (bookId, review) => api.post(`${API_URL}/reviews/${
 export const addBookToShelf = (bookId, shelf) => api.post(`${API_URL}/catalog/${bookId}`, shelf)
 
 export const getBookReviews = (bookId) => api.get(`${API_URL}/reviews/${bookId}`)
+
+export const fetchBooksForShelf = async (bookShelf) => {
+    
+    const stringIds = bookShelf.map(item => item);
+    
+    const bookPromise = stringIds.map(id => getOneBook(id));
+    
+    const books = await Promise.all(bookPromise);
+
+    return books
+}

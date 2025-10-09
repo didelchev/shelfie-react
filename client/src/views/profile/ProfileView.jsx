@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react'
 import "./ProfileView.css"
 import { getUserCredentials } from '../../api/user-api';
 import ProfileBookTemplate from '../../components/profile-book/ProfileBookTemplate';
-import { getOneBook } from '../../api/books-api';
+import { fetchBooksForShelf, getOneBook } from '../../api/books-api';
 import BookTemplate from '../../components/book/BookTemplate';
 
 const ProfileView = () => {
 
     //Functionalities: 
     // 1) [x] show user credentials 
-    // 2) [] show user library
+    // 2) [x] show user library
     // 3) [] edit user info
 
     const [userCredentials, setUserCredentials] = useState({});
@@ -26,14 +26,11 @@ const ProfileView = () => {
 
             setUserCredentials(user)
 
-
               const [readBooks, currReadingBooks, toReadBooks] = await Promise.all([
                     fetchBooksForShelf(user.read),
                     fetchBooksForShelf(user.currReading),
                     fetchBooksForShelf(user.toRead),
                 ]);
-
-
 
             setUserShelves({
                 read: readBooks,
@@ -49,27 +46,7 @@ const ProfileView = () => {
        return  bookArray.map(book => <ProfileBookTemplate book = {book} key={book._id}/>)
         }
 
-    const fetchBooksForShelf = async (bookShelf) => {
-
-        const stringIds = bookShelf.map(item => item);
-
-        const bookPromise = stringIds.map(id => getOneBook(id));
-
-        const books = await Promise.all(bookPromise);
-
-        return books
-
-    }
     
-
-
-
-
-
-
-
-
-
   return (
 <section className="profile-page">
   <div className="profile-banner"></div>
@@ -94,30 +71,22 @@ const ProfileView = () => {
 ` : null} */}
 
   <div className="profile-stats">
-    {/* <div><strong>${books.filter(b => b.status === 'read').length}</strong><span>Read</span></div> */}
-    {/* <div><strong>${books.filter(b => b.status === 'currReading').length}</strong><span>Currently Reading</span></div> */}
-    {/* <div><strong>${books.filter(b => b.status === 'to-read').length}</strong><span>To-Read</span></div> */}
+    <div><strong>{userShelves.read.length}</strong><span>Read</span></div>
+    <div><strong>{userShelves.currReading.length}</strong><span>Currently Reading</span></div>
+    <div><strong>{userShelves.toRead.length}</strong><span>To-Read</span></div>
   </div>
-
   <div className="book-shelf">
     <h3>Read</h3>
     <div className="shelf-row">
-      {/* ${books.filter(b => b.status === 'read').map(b => profileBooksTemplate(b,removeHandler))} */}
-      {/* {userCredentials.read.map(book => <ProfileBookTemplate book={book}/>)} */}
       {renderBook(userShelves.read)}
-      
     </div>
-
     <h3>Currently Reading</h3>
-    <div className="shel
-    
-    f-row">
-      {/* ${books.filter(b => b.status === 'currReading').map(b => profileBooksTemplate(b,removeHandler))} */}
+    <div className="shelf-row">
+      {renderBook(userShelves.currReading)}
     </div>
-
     <h3>To-Read</h3>
     <div className="shelf-row">
-      {/* ${books.filter(b => b.status === 'to-read').map(b => profileBooksTemplate(b,removeHandler))} */}
+      {renderBook(userShelves.toRead)}
     </div>
   </div>
 </section>
