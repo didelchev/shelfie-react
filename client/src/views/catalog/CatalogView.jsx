@@ -4,7 +4,7 @@ import { faSearch, faStar } from "@fortawesome/free-solid-svg-icons";
 import "./CatalogView.css"
 import { getAllBooks } from "../../api/books-api";
 import BookTemplate from "../../components/book/BookTemplate";
-import CategoryFilter from "../../components/categories-filter/CategoryFilter";
+import { filters } from "../../utils/bookFilters";
 
 const CatalogView = () => {
   const [books, setBooks ] = useState([]);
@@ -38,6 +38,7 @@ const CatalogView = () => {
   
 
   const displayBooks = useMemo(() => {
+    
     const filteredBooks = books.filter((book) => {
        return (
         book.title.toLowerCase().includes(query) ||
@@ -45,8 +46,6 @@ const CatalogView = () => {
       );
     })
 
-
-    //TO DO: finish cateogry filter
     const genreInputs = categoryCriteria.map((genre) => {
       return genre.value.charAt(0).toUpperCase() + genre.value.slice(1).toLowerCase();
     })
@@ -54,7 +53,6 @@ const CatalogView = () => {
     let categorizedBooks = filteredBooks.filter((book ) => {
       return book.genre.some(g => genreInputs.includes(g))
     })
-
 
 
     let sortedBooks = [...filteredBooks];
@@ -78,6 +76,8 @@ const CatalogView = () => {
 
   },[books, query, sortCriteria, categoryCriteria])
 
+
+  
   
 
   return (
