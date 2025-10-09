@@ -4,6 +4,7 @@ import { faSearch, faStar } from "@fortawesome/free-solid-svg-icons";
 import "./CatalogView.css"
 import { getAllBooks } from "../../api/books-api";
 import BookTemplate from "../../components/book/BookTemplate";
+import CategoryFilter from "../../components/categories-filter/CategoryFilter";
 
 const CatalogView = () => {
   const [books, setBooks ] = useState([]);
@@ -11,6 +12,8 @@ const CatalogView = () => {
   const [query, setQuery] = useState("");
 
   const [sortCriteria, setSortCriteria] = useState('none')
+
+  const [categoryCriteria, setCategoryCriteria ] = useState([])
 
   useEffect(() => {
     const getBooks = async () => {
@@ -28,6 +31,12 @@ const CatalogView = () => {
     setSortCriteria(e.target.value)
   }
 
+  const categoryHandler = (e) => {
+    setCategoryCriteria([...categoryCriteria, e.target.value])
+  }
+
+  
+
   const displayBooks = useMemo(() => {
     const filteredBooks = books.filter((book) => {
        return (
@@ -35,6 +44,18 @@ const CatalogView = () => {
         book.author.toLowerCase().includes(query)
       );
     })
+
+
+    //TO DO: finish cateogry filter
+    const genreInputs = categoryCriteria.map((genre) => {
+      return genre.value.charAt(0).toUpperCase() + genre.value.slice(1).toLowerCase();
+    })
+
+    let categorizedBooks = filteredBooks.filter((book ) => {
+      return book.genre.some(g => genreInputs.includes(g))
+    })
+
+
 
     let sortedBooks = [...filteredBooks];
 
@@ -53,7 +74,9 @@ const CatalogView = () => {
 
     return sortedBooks
 
-  },[books, query, sortCriteria])
+
+
+  },[books, query, sortCriteria, categoryCriteria])
 
   
 
@@ -90,6 +113,18 @@ const CatalogView = () => {
               <option value="rating">Rating</option>
             </select>
           </div>
+            {/* Category Filter */}
+          <div className="category-filter">
+            <h2 className="category-title">Categories</h2>
+            <form  className="category-filter-menu">
+              {["fiction","fantasy","biography","science fiction","business","classics","psychology","mystery","nonfiction","romance"].map((genre) => (
+                <label key={genre}>
+                  <input type="checkbox" className="genre" value={genre} onClick={categoryHandler} /> {genre.charAt(0).toUpperCase() + genre.slice(1)}
+                </label>
+              ))}
+            </form>
+          </div>
+
         </div>
 
         <div className="book-catalog-grid">
