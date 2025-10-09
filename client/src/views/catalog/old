@@ -24,41 +24,52 @@
             </select>
           </div>
 
-          {/* Category Filter */}
-          <div className="category-filter">
-            <h2 className="category-title">Categories</h2>
-            <form onChange={filterHandler} className="category-filter-menu">
-              {["fiction","fantasy","biography","science fiction","business","classics","psychology","mystery","nonfiction","romance"].map((genre) => (
-                <label key={genre}>
-                  <input type="checkbox" className="genre" value={genre} /> {genre.charAt(0).toUpperCase() + genre.slice(1)}
-                </label>
-              ))}
-            </form>
-          </div>
+
+ </div>
+
+
+
+
+
+
+// {/* Category Filter */}
+//           <div className="category-filter">
+//             <h2 className="category-title">Categories</h2>
+//             <form onChange={filterHandler} className="category-filter-menu">
+//               {["fiction","fantasy","biography","science fiction","business","classics","psychology","mystery","nonfiction","romance"].map((genre) => (
+//                 <label key={genre}>
+//                   <input type="checkbox" className="genre" value={genre} /> {genre.charAt(0).toUpperCase() + genre.slice(1)}
+//                 </label>
+//               ))}
+//             </form>
+//           </div>
+
+
+
 
           {/* Rating Filter */}
-          <div className="rating-filter">
-            <h2 className="rating-title">Filter by Rating</h2>
-            <form className="rating-list">
-              {[5, 4, 3, 2, 1].map((stars) => (
-                <label className="rating-row" key={stars}>
-                  <input
-                    type="radio"
-                    name="rating"
-                    value={stars}
-                    onChange={() => filterByRating(stars)}
-                  />
-                  <span className="stars">
-                    {Array.from({ length: stars }).map((_, i) => (
-                      <FontAwesomeIcon icon={faStar} key={`filled-${i}`} className="checked" />
-                    ))}
-                    {Array.from({ length: 5 - stars }).map((_, i) => (
-                      <FontAwesomeIcon icon={faStar} key={`empty-${i}`} />
-                    ))}
-                  </span>
-                  <span className="rating-label"></span>
-                </label>
-              ))}
-            </form>
-          </div>
-        </div>
+
+// <div className="rating-filter">
+//             <h2 className="rating-title">Filter by Rating</h2>
+//             <form className="rating-list">
+//               {[5, 4, 3, 2, 1].map((stars) => (
+//                 <label className="rating-row" key={stars}>
+//                   <input
+//                     type="radio"
+//                     name="rating"
+//                     value={stars}
+//                     onChange={() => filterByRating(stars)}
+//                   />
+//                   <span className="stars">
+//                     {Array.from({ length: stars }).map((_, i) => (
+//                       <FontAwesomeIcon icon={faStar} key={`filled-${i}`} className="checked" />
+//                     ))}
+//                     {Array.from({ length: 5 - stars }).map((_, i) => (
+//                       <FontAwesomeIcon icon={faStar} key={`empty-${i}`} />
+//                     ))}
+//                   </span>
+//                   <span className="rating-label"></span>
+//                 </label>
+//               ))}
+//             </form>
+//           </div>
