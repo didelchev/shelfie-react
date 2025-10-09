@@ -1,24 +1,28 @@
 import React, { useEffect, useState } from 'react'
-import "./ProfileView.css"
-import { getUserCredentials } from '../../api/user-api';
-import ProfileBookTemplate from '../../components/profile-book/ProfileBookTemplate';
 import { fetchBooksForShelf, getOneBook } from '../../api/books-api';
-import BookTemplate from '../../components/book/BookTemplate';
+import { editUserCredentials, getUserCredentials } from '../../api/user-api';
+
+import ProfileBookTemplate from '../../components/profile-book/ProfileBookTemplate';
+
+import "./ProfileView.css"
 
 const ProfileView = () => {
 
-    //Functionalities: 
-    // 1) [x] show user credentials 
-    // 2) [x] show user library
-    // 3) [] edit user info
-
     const [userCredentials, setUserCredentials] = useState({});
+
+    const [editUser, setEditUser ] = useState({
+      username: "",
+      profileImageUrl: ""
+
+    });
 
     const [userShelves, setUserShelves ] = useState({
         read: [],
         currReading: [],
         toRead: [],
     })
+
+    const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -46,6 +50,36 @@ const ProfileView = () => {
        return  bookArray.map(book => <ProfileBookTemplate book = {book} key={book._id}/>)
         }
 
+    const showEditFormHandler = () => {
+      setIsEditing(prevState => !prevState)
+    }
+
+    const editHandler = ( e ) => {
+      setEditUser({...editUser, [e.target.name] : e.target.value})
+      
+    }
+
+    const submitHandler = async (e) => {
+      e.preventDefault();
+      
+      try {
+        const { username, profileImageUrl } = editUser;
+
+        const newUserData = await editUserCredentials({ username, profileImageUrl})
+
+        setUserCredentials(newUserData.user)
+
+
+
+      } catch (error) {
+          console.log(error)
+      }
+    }
+
+
+
+    
+
     
   return (
 <section className="profile-page">
@@ -57,18 +91,19 @@ const ProfileView = () => {
       <p className="email">{userCredentials.email}</p>
       <p className="bio"></p>
     </div>
-    <button className="edit-btn">Edit Profile</button>
+    <button className="edit-btn" onClick={showEditFormHandler}>Edit Profile</button>
   </div>
-  {/* ${editing ? html`
-  <form className="edit-form" @submit=${onSaveEdit}>
-    <input name="username" type="text" value="${user.username}" />
-    <input name="profileImage" type="text" value="${user.profileImageUrl || ''}" placeholder="Image URL (optional)" />
+
+  {isEditing ? (
+  <form className="edit-form" onSubmit={submitHandler}>
+    <input name="username" type="text" value={editUser.username} placeholder="Enter new username" onChange={editHandler}/>
+    <input name="profileImageUrl" type="text" value={editUser.profileImageUrl} placeholder="Image URL (optional)" onChange={editHandler} />
     <div className="edit-actions">
       <button type="submit">Save</button>
-      <button type="button" @click=${onCancelEdit}>Cancel</button>
+      <button type="button" onClick={showEditFormHandler}>Cancel</button>
     </div>
   </form>
-` : null} */}
+  ): null}
 
   <div className="profile-stats">
     <div><strong>{userShelves.read.length}</strong><span>Read</span></div>
