@@ -38,39 +38,43 @@ const CatalogView = () => {
   
 
   const displayBooks = useMemo(() => {
+
+    const filteredBooks = filters.search(books, query)
+
     
-    const filteredBooks = books.filter((book) => {
-       return (
-        book.title.toLowerCase().includes(query) ||
-        book.author.toLowerCase().includes(query)
-      );
-    })
+    return filteredBooks
+    // const filteredBooks = books.filter((book) => {
+    //    return (
+    //     book.title.toLowerCase().includes(query) ||
+    //     book.author.toLowerCase().includes(query)
+    //   );
+    // })
 
-    const genreInputs = categoryCriteria.map((genre) => {
-      return genre.value.charAt(0).toUpperCase() + genre.value.slice(1).toLowerCase();
-    })
+    // const genreInputs = categoryCriteria.map((genre) => {
+    //   return genre.value.charAt(0).toUpperCase() + genre.value.slice(1).toLowerCase();
+    // })
 
-    let categorizedBooks = filteredBooks.filter((book ) => {
-      return book.genre.some(g => genreInputs.includes(g))
-    })
+    // let categorizedBooks = filteredBooks.filter((book ) => {
+    //   return book.genre.some(g => genreInputs.includes(g))
+    // })
 
 
-    let sortedBooks = [...filteredBooks];
+    // let sortedBooks = [...filteredBooks];
 
-    switch (sortCriteria) {
-      case "title":
-        sortedBooks.sort((a, b) => a.title.localeCompare(b.title));
-        break;
-      case "author":
-        sortedBooks.sort((a, b) => a.author.localeCompare(b.author));
-        break;
-      case "rating":
-         sortedBooks.sort((a, b) => Number(b.ratings?.average || 0) - Number(a.ratings?.average || 0)); 
-         break;
-      default:
-    }
+    // switch (sortCriteria) {
+    //   case "title":
+    //     sortedBooks.sort((a, b) => a.title.localeCompare(b.title));
+    //     break;
+    //   case "author":
+    //     sortedBooks.sort((a, b) => a.author.localeCompare(b.author));
+    //     break;
+    //   case "rating":
+    //      sortedBooks.sort((a, b) => Number(b.ratings?.average || 0) - Number(a.ratings?.average || 0)); 
+    //      break;
+    //   default:
+    // }
 
-    return sortedBooks
+    // return sortedBooks
 
 
 

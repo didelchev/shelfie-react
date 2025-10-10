@@ -1,6 +1,11 @@
 export const filters = {
-    search(){
-
+    search(booksArray, query){
+        return booksArray.filter(book => {
+            return (
+                book.title.toLowerCase().includes(query) ||
+                book.author.toLowerCase().includes(query)
+            )
+        })
     },
     categorize(){
 
