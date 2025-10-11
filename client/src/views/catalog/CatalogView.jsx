@@ -15,6 +15,8 @@ const CatalogView = () => {
 
   const [categoryCriteria, setCategoryCriteria ] = useState([])
 
+  const [ratings, setRatings] = useState(0)
+
   useEffect(() => {
     const getBooks = async () => {
       const allBooks = await getAllBooks();
@@ -32,53 +34,48 @@ const CatalogView = () => {
   }
 
   const categoryHandler = (e) => {
-    setCategoryCriteria([...categoryCriteria, e.target.value])
+    const toggledCategory = e.target.value;
+
+    if(e.target.checked && !categoryCriteria.includes(toggledCategory)){
+
+      setCategoryCriteria([...categoryCriteria, toggledCategory])
+
+    }else if(!e.target.checked && categoryCriteria.includes(toggledCategory)){
+      
+      let updatedCategories = categoryCriteria.filter(category => category !== toggledCategory)
+
+      setCategoryCriteria(updatedCategories)
+    }
   }
 
-  
+  const sortByRatingHandler = (e) => {
+    setRatings(Number(e.target.value))
+  }
 
+  const resetHandler = () => {
+    setQuery('');
+    setSortCriteria('none')
+    setCategoryCriteria([])
+    setRatings(0);
+  }
+  
   const displayBooks = useMemo(() => {
 
-    const filteredBooks = filters.search(books, query)
+    let currentBooks = books
 
+    currentBooks = filters.search(currentBooks, query)
+
+    currentBooks = filters.categorize( currentBooks, categoryCriteria)
+
+    currentBooks = filters.sortByRating(currentBooks, ratings)
+
+    const finalSortedBooks = filters.sort(currentBooks, sortCriteria)
     
-    return filteredBooks
-    // const filteredBooks = books.filter((book) => {
-    //    return (
-    //     book.title.toLowerCase().includes(query) ||
-    //     book.author.toLowerCase().includes(query)
-    //   );
-    // })
-
-    // const genreInputs = categoryCriteria.map((genre) => {
-    //   return genre.value.charAt(0).toUpperCase() + genre.value.slice(1).toLowerCase();
-    // })
-
-    // let categorizedBooks = filteredBooks.filter((book ) => {
-    //   return book.genre.some(g => genreInputs.includes(g))
-    // })
-
-
-    // let sortedBooks = [...filteredBooks];
-
-    // switch (sortCriteria) {
-    //   case "title":
-    //     sortedBooks.sort((a, b) => a.title.localeCompare(b.title));
-    //     break;
-    //   case "author":
-    //     sortedBooks.sort((a, b) => a.author.localeCompare(b.author));
-    //     break;
-    //   case "rating":
-    //      sortedBooks.sort((a, b) => Number(b.ratings?.average || 0) - Number(a.ratings?.average || 0)); 
-    //      break;
-    //   default:
-    // }
-
-    // return sortedBooks
+    return finalSortedBooks
 
 
 
-  },[books, query, sortCriteria, categoryCriteria])
+  },[books, query, sortCriteria, categoryCriteria, ratings])
 
 
   
@@ -121,13 +118,38 @@ const CatalogView = () => {
           <div className="category-filter">
             <h2 className="category-title">Categories</h2>
             <form  className="category-filter-menu">
-              {["fiction","fantasy","biography","science fiction","business","classics","psychology","mystery","nonfiction","romance"].map((genre) => (
+              {["Fiction","Fantasy","Biography","Science fiction","Business","Classics","Psychology","Mystery","Nonfiction","Romance"].map((genre) => (
                 <label key={genre}>
-                  <input type="checkbox" className="genre" value={genre} onClick={categoryHandler} /> {genre.charAt(0).toUpperCase() + genre.slice(1)}
+                  <input type="checkbox" className="genre" value={genre} onClick={categoryHandler} /> { genre }
                 </label>
               ))}
             </form>
           </div>
+          <div className="rating-filter">
+            <h2 className="rating-title">Filter by Rating</h2>
+            <form className="rating-list">
+              {[5, 4, 3, 2, 1].map((stars) => (
+                <label className="rating-row" key={stars}>
+                  <input
+                    type="radio"
+                    name="rating"
+                    value={stars}
+                    onChange={sortByRatingHandler}
+                  />
+                  <span className="stars">
+                    {Array.from({ length: stars }).map((_, i) => (
+                      <FontAwesomeIcon icon={faStar} key={`filled-${i}`} className="checked" />
+                    ))}
+                    {Array.from({ length: 5 - stars }).map((_, i) => (
+                      <FontAwesomeIcon icon={faStar} key={`empty-${i}`} />
+                    ))}
+                  </span>
+                  <span className="rating-label"></span>
+                </label>
+              ))}
+            </form>
+          </div>
+          <button className="reset-filters" onClick={resetHandler}>Reset Filters</button>
 
         </div>
 

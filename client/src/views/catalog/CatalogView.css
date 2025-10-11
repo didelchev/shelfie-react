@@ -183,6 +183,19 @@
   color: #666;
 }
 
+.reset-filters{
+  display: block;
+  width: 60%;
+  background-color: #708D81;
+  color: white;
+  padding: 0.7em 1em;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.5em;
+  /* padding: 1.2em; */
+  cursor: pointer;
+}
+
 
 
 /* BOOK GRID */
