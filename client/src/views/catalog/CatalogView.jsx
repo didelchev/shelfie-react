@@ -29,9 +29,7 @@ const {
 
   return (
     <>
-      <main className="book-catalog" data-aos="fade-down">
-        
-        {/* 1. RENDER THE SIDEBAR FIRST (It should NOT be in the grid) */}
+      <main className="book-catalog" data-aos="fade-down">   
         <BookFilterSidebar 
             query={query}
             sortCriteria={sortCriteria}
@@ -43,8 +41,6 @@ const {
             onRatingChange={sortByRatingHandler}
             onReset={resetHandler}
         />
-
-        {/* 2. RENDER THE BOOK GRID SECOND */}
         <div className="book-catalog-grid">
           {displayBooks.map((book) => {
             return <BookTemplate book={book} key={book._id} />;

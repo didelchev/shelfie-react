@@ -44,7 +44,7 @@ const BookFilterSidebar = ({
                 className="reset-filters" 
                 onClick={onReset}
             >
-                Reset Filters
+                Clear Filters
             </button>
 
         </div>

@@ -4,6 +4,7 @@ import './DetailsView.css'
 import { addBookReview, addBookToShelf, getBookReviews } from "../../api/books-api";
 import ReviewTemplate from "../../components/review/ReviewTemplate";
 import { useAuth } from "../../contexts/AuthContext";
+import ModalComponent from "../../components/modal/ModalComponent";
 
 const BookDetailsView = ( ) => {
 
@@ -92,6 +93,8 @@ const BookDetailsView = ( ) => {
                 <button className='dropdown-options' value='toRead' onClick={selectShelfHandler}>Want to Read</button>
             </div>
         </div>
+            <ModalComponent />
+
 
     </div>
     <div className="book-details-right">
