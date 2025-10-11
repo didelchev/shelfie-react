@@ -1,17 +1,25 @@
-import React from 'react'
+import React from 'react';
 
-const CategoryFilter = () => {
-    const categories = ["fiction","fantasy","biography","science fiction","business","classics","psychology","mystery","nonfiction","romance"]
+const CategoryFilter = ({ categoryCriteria, onCategoryChange, availableGenres }) => {
+    return (
+        <div className="category-filter">
+            <h2 className="category-title">Categories</h2>
+            <form className="category-filter-menu">
+                {availableGenres.map((genre) => (
+                    <label key={genre}>
+                        <input 
+                            type="checkbox" 
+                            className="genre" 
+                            value={genre} 
+                            onChange={onCategoryChange} 
+                            checked={categoryCriteria.includes(genre)} 
+                        /> 
+                        {genre}
+                    </label>
+                ))}
+            </form>
+        </div>
+    );
+};
 
-  return (
-    <>
-        {categories.map(genre => (
-             <label key={genre}>
-                  <input type="checkbox" className="genre" value={genre} /> {genre.charAt(0).toUpperCase() + genre.slice(1)}
-            </label>
-        ))}
-    </>
-  )
-}
-
-export default CategoryFilter
+export default CategoryFilter;
