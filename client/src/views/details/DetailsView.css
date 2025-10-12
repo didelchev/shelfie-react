@@ -144,22 +144,6 @@
   background-color: rgba(15, 1, 1, 0.363);
 }
 
-/* RATINGS */
-.stars {
-  display: flex;
-  justify-content: flex-start;
-  gap: 8px;
-  cursor: pointer;
-}
-
-.star {
-  font-size: 5em;
-  transition: color 0.2s;
-}
-
-.star.filled {
-  color: rgb(202, 109, 27);
-}
 
 /* -------------------AVERAGE---------------------- */
 .book-average-ratings h2{

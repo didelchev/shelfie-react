@@ -1,10 +1,12 @@
 import React from 'react'
-import "./BookTemplate.css"
 import { Link } from 'react-router-dom'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 const BookTemplate = ({ book }) => {
 ``
-    const ratingValue = book.rating
+  const ratingValue = book.ratings.average
 
   return (
     <div className='book'>
@@ -13,7 +15,10 @@ const BookTemplate = ({ book }) => {
             <h5>{book.title}</h5>
             <p>{book.author}</p>
             <span className="fa fa-star checked"></span>
-            <span>{ratingValue}</span>
+            <span>
+              <FontAwesomeIcon icon={faStar} color='#e48b3dff'/> 
+              {ratingValue.toFixed(2)}
+            </span>
     </Link>
      </div>
    
