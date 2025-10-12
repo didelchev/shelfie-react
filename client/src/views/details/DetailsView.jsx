@@ -6,6 +6,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import SelectShelfComponent from "../../components/shelf/SelectShelfComponent";
 import StarsRating from "../../components/stars-rating/StarsRating";
 import "./DetailsView.css";
+import { getUserBookRating } from "../../api/user-api";
 
 const BookDetailsView = () => {
   const location = useLocation();
@@ -19,6 +20,11 @@ const BookDetailsView = () => {
   const [review, setReview] = useState("");
 
   const [userReviews, setUserReviews] = useState([]);
+
+  const [bookRatings, setBookRatings] = useState({
+    userRating: "",
+    average: ""
+  })
 
   const addReviewHandler = async (e) => {
     e.preventDefault();
@@ -53,9 +59,23 @@ const BookDetailsView = () => {
     getReviews();
   }, [bookId]);
 
-  const glowOnHover = () => {
-    console.log("Hovered !");
-  };
+
+  useEffect(() => {
+    (async () => {
+
+      try {
+
+        const userBookRating =  await getUserBookRating(bookId)
+        
+        setBookRatings(userBookRating)
+
+      } catch (error) {
+          console.log('Error while fetching book ratings' + error)
+        }
+    })()
+  },[bookId])
+
+
 
   return (
     <div className="book-details-grid-container">
@@ -67,7 +87,7 @@ const BookDetailsView = () => {
         <div className="book-description">
           <h1>{book.title}</h1>
           <h3>{book.author}</h3>
-          <StarsRating />
+          <StarsRating bookRatings={bookRatings} canRate={false}/>
           <p>{book.description}</p>
         </div>
         <div></div>

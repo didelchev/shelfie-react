@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import './StarsRating.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons'; 
@@ -8,17 +8,20 @@ import { toast } from "react-toastify";
 
 
 
-const StarsRating = () => {
+const StarsRating = ({ bookRatings, canRate }) => {
     const [rating, setRating] = useState(null);
 
     const [hover, setHover] = useState(null);
 
     const { bookId } = useParams();
 
-    const getUserRating = useMemo(() => {
 
-    },[rating])
-
+  useEffect(() => {
+  if (bookRatings && bookRatings.userRating) {
+    setRating(bookRatings.userRating);
+  }
+}, [bookId, bookRatings]);
+  
 
     const rateBookHandler = async ( e ) => {
 
@@ -36,8 +39,6 @@ const StarsRating = () => {
         toast.error('Failed to rate book !')
 
       }
-
-
 
     } 
 
