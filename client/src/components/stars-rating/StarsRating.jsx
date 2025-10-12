@@ -1,28 +1,40 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import './StarsRating.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// Import the star icon from the solid set
 import { faStar } from '@fortawesome/free-solid-svg-icons'; 
 import { addBookRating } from '../../api/books-api';
 import { useParams } from 'react-router-dom';
+import { toast } from "react-toastify";
+
 
 
 const StarsRating = () => {
     const [rating, setRating] = useState(null);
+
     const [hover, setHover] = useState(null);
 
     const { bookId } = useParams();
 
+    const getUserRating = useMemo(() => {
+
+    },[rating])
+
 
     const rateBookHandler = async ( e ) => {
+
       const bookRating = e.target.value; 
+
       try {
 
         await addBookRating(bookId, { rating: bookRating })
-        
+
+        toast.success('Book has been sucessfully rated !')
+
         setRating(bookRating)
       } catch (error) {
-        console.log(error)
+
+        toast.error('Failed to rate book !')
+
       }
 
 
