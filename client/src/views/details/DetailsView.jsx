@@ -5,6 +5,7 @@ import { addBookReview, addBookToShelf, getBookReviews } from "../../api/books-a
 import ReviewTemplate from "../../components/review/ReviewTemplate";
 import { useAuth } from "../../contexts/AuthContext";
 import SelectShelfComponent from "../../components/shelf/SelectShelfComponent";
+import StarsRating from "../../components/stars-rating/StarsRating";
 
 const BookDetailsView = ( ) => {
 
@@ -63,6 +64,9 @@ const BookDetailsView = ( ) => {
     },[bookId]);
 
 
+    const glowOnHover = () => {
+      console.log('Hovered !')
+    }
 
 
 
@@ -76,13 +80,7 @@ const BookDetailsView = ( ) => {
         <div className="book-description">
             <h1>{book.title}</h1>
             <h3>{book.author}</h3>
-            <div className="stars" id="star-container">
-                <span className="star" data-value="1">&#9733;</span>
-                <span className="star" data-value="2">&#9733;</span>
-                <span className="star" data-value="3">&#9733;</span>
-                <span className="star" data-value="4">&#9733;</span>
-                <span className="star" data-value="5">&#9733;</span>
-            </div>
+            <StarsRating />
             <p>{book.description}</p>
         </div>
     </div>

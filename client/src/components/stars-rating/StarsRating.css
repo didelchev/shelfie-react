@@ -1,0 +1,19 @@
+input[type = 'radio']{
+    display: none;
+}
+.stars {
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.star {
+  cursor: pointer;
+  font-size: 2em;
+  transition: color 0.2s;
+}
+
+.star.filled {
+  color: rgb(202, 109, 27);
+}
