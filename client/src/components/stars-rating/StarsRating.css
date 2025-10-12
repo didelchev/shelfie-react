@@ -12,6 +12,7 @@ input[type = 'radio']{
   cursor: pointer;
   font-size: 2em;
   transition: color 0.2s;
+  color: rgb(168, 168, 168);
 }
 
 .star.filled {
