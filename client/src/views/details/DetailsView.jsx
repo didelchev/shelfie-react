@@ -4,7 +4,7 @@ import './DetailsView.css'
 import { addBookReview, addBookToShelf, getBookReviews } from "../../api/books-api";
 import ReviewTemplate from "../../components/review/ReviewTemplate";
 import { useAuth } from "../../contexts/AuthContext";
-import ModalComponent from "../../components/modal/ModalComponent";
+import SelectShelfComponent from "../../components/shelf/SelectShelfComponent";
 
 const BookDetailsView = ( ) => {
 
@@ -62,20 +62,6 @@ const BookDetailsView = ( ) => {
       getReviews();
     },[bookId]);
 
-    const selectShelfHandler = async ( e ) => {
-      e.preventDefault();
-      try {
-
-        const shelf = e.target.value
-
-        await addBookToShelf(bookId, { shelf })
-
-        
-      } catch (error) {
-        console.log(error)
-      }
-
-    }
 
 
 
@@ -83,19 +69,8 @@ const BookDetailsView = ( ) => {
   return (
    <div className="book-details-grid-container">
     <div className="book-details-left">
-              <img src={book.image} alt="book" />
-      
-        <div className='dropdown'>
-            <button>Add to Library:</button>
-            <div className='options'>
-                <button className='dropdown-options' value='read' onClick={selectShelfHandler}>Read</button>
-                <button className='dropdown-options' value='currReading' onClick={selectShelfHandler}>Currently Reading</button>
-                <button className='dropdown-options' value='toRead' onClick={selectShelfHandler}>Want to Read</button>
-            </div>
-        </div>
-            <ModalComponent />
-
-
+        <img src={book.image} alt="book" />
+        <SelectShelfComponent bookId={bookId}/>
     </div>
     <div className="book-details-right">
         <div className="book-description">
