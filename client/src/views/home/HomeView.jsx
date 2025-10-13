@@ -4,6 +4,7 @@ import { faSearch, faWandMagicSparkles, faBookOpenReader, faStar } from "@fortaw
 import "./HomeView.css"
 import { getAllBooks } from "../../api/books-api";
 import BookTemplate from '../../components/book/BookTemplate'
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
 
@@ -33,8 +34,8 @@ const HomePage = () => {
             Dive into a world of books. Organize your collection and find new reads.
           </h2>
           <div className="action-buttons">
-            <a className="link" href="/login">Login</a>
-            <a className="link" href="/register">Register</a>
+            <Link to={"/login"}>Login</Link>
+            <Link to={"/register"}>Register</Link>
           </div>
         </div>
         <div className="book-stack-wrapper">
@@ -115,7 +116,7 @@ const HomePage = () => {
             </p>
           </div>
           <div className="action-buttons">
-            <a className="link" href="/catalog">Start Exploring</a>
+            <Link to={"/catalog"}>Start Exploring</Link>
           </div>
         </div>
       </section>
