@@ -21,6 +21,7 @@ const StarsRating = ({ bookRatings, canRate }) => {
     setRating(bookRatings.userRating);
   }
 }, [bookId, bookRatings]);
+
   
 
     const rateBookHandler = async ( e ) => {
@@ -42,6 +43,8 @@ const StarsRating = ({ bookRatings, canRate }) => {
 
     } 
 
+
+
   return (
     <div className="stars" id="star-container">
        {[...Array(5)].map((star, index) => {
@@ -53,14 +56,14 @@ const StarsRating = ({ bookRatings, canRate }) => {
                 type="radio" 
                 name="rating"  
                 value={ratingValue} 
-                onClick={rateBookHandler}
+                onClick= {canRate ? () => onClick(rateBookHandler) : undefined}                
                 
                 />
                 <FontAwesomeIcon 
                 icon={faStar}  
                 className={ratingValue <= (hover || rating) ? 'star filled' : 'star'}
-                onMouseEnter={() => setHover(ratingValue) }
-                onMouseLeave={() => setHover(null) }
+                onMouseEnter={canRate ?  () => setHover(ratingValue) : undefined }
+                onMouseLeave={canRate ? () => setHover(null) : undefined }
                  />      
             </label>
         )

@@ -7,6 +7,7 @@ import SelectShelfComponent from "../../components/shelf/SelectShelfComponent";
 import StarsRating from "../../components/stars-rating/StarsRating";
 import "./DetailsView.css";
 import { getUserBookRating } from "../../api/user-api";
+import CommunityStarsRating from "../../components/stars-rating/CommunityStarsRating";
 
 const BookDetailsView = () => {
   const location = useLocation();
@@ -87,7 +88,7 @@ const BookDetailsView = () => {
         <div className="book-description">
           <h1>{book.title}</h1>
           <h3>{book.author}</h3>
-          <StarsRating bookRatings={bookRatings} canRate={false}/>
+          <StarsRating bookRatings={bookRatings} canRate={true}/>
           <p>{book.description}</p>
         </div>
         <div></div>
@@ -123,7 +124,7 @@ const BookDetailsView = () => {
         <div className="average-stars-container">
           <h1 className="average-header"></h1>
           <div className="star-wrapper">
-            <span className="average-stars" data-value="1">
+            {/* <span className="average-stars" data-value="1">
               &#9733;
             </span>
             <span className="average-stars" data-value="1">
@@ -137,8 +138,9 @@ const BookDetailsView = () => {
             </span>
             <span className="average-stars" data-value="1">
               &#9733;
-            </span>
-            <p className="reviews-count">Based on 23 reviews</p>
+            </span> */}
+            <CommunityStarsRating bookRatings={bookRatings.average} / >
+          <p className="reviews-count">{bookRatings.average}</p>
           </div>
         </div>
       </div>
