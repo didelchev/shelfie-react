@@ -82,13 +82,17 @@ const BookDetailsView = () => {
     <div className="book-details-grid-container">
       <div className="book-details-left">
         <img src={book.image} alt="book" />
+        {isAuthenticated ? (
         <SelectShelfComponent bookId={bookId} />
+        ): null}
       </div>
       <div className="book-details-right">
         <div className="book-description">
           <h1>{book.title}</h1>
           <h3>{book.author}</h3>
-          <StarsRating bookRatings={bookRatings} canRate={true}/>
+          { isAuthenticated ? (
+              <StarsRating bookRatings={bookRatings} canRate={true}/>
+          ) : null}
           <p>{book.description}</p>
         </div>
         <div></div>
@@ -124,22 +128,7 @@ const BookDetailsView = () => {
         <div className="average-stars-container">
           <h1 className="average-header"></h1>
           <div className="star-wrapper">
-            {/* <span className="average-stars" data-value="1">
-              &#9733;
-            </span>
-            <span className="average-stars" data-value="1">
-              &#9733;
-            </span>
-            <span className="average-stars" data-value="1">
-              &#9733;
-            </span>
-            <span className="average-stars" data-value="1">
-              &#9733;
-            </span>
-            <span className="average-stars" data-value="1">
-              &#9733;
-            </span> */}
-            <CommunityStarsRating bookRatings={bookRatings.average} / >
+            <CommunityStarsRating bookRatings={bookRatings.average} />
           <p className="reviews-count">{bookRatings.average}</p>
           </div>
         </div>
@@ -171,6 +160,6 @@ const BookDetailsView = () => {
       </div>
     </div>
   );
-};
+}
 
 export default BookDetailsView;
