@@ -5,10 +5,13 @@ import "./HomeView.css"
 import { getAllBooks } from "../../api/books-api";
 import BookTemplate from '../../components/book/BookTemplate'
 import { Link } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
 const HomePage = () => {
 
   const [latestBooks, setLatestBooks ] = useState([])
+
+  const { isAuthenticated } = useAuth;
 
   useEffect(() => {
     const getBooks = async () => {
@@ -33,10 +36,11 @@ const HomePage = () => {
           <h2>
             Dive into a world of books. Organize your collection and find new reads.
           </h2>
-          <div className="action-buttons">
+          { isAuthenticated ? (<div className="action-buttons">
             <Link to={"/login"}>Login</Link>
             <Link to={"/register"}>Register</Link>
-          </div>
+          </div>) : null}
+          
         </div>
         <div className="book-stack-wrapper">
           <div className="book-stack">
@@ -128,15 +132,94 @@ const HomePage = () => {
         <div className="testimonials-grid-container">
           <div className="testimonial-item">
             <div className="star-wrapper">
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} color="gold"/>
+              <FontAwesomeIcon icon={faStar} color="gold"/>
+              <FontAwesomeIcon icon={faStar} color="gold"/>
+              <FontAwesomeIcon icon={faStar} color="gold"/>
               <FontAwesomeIcon icon={faStar} />
             </div>
             <blockquote className="testimonial-quote">
-              "I’ve bounced between spreadsheets, notes apps, and other reading trackers, but nothing
-              felt right until I found Shelfie..."
+              "I’ve bounced between spreadsheets, notes apps, and other reading trackers, but nothing felt right until I found Shelfie. The design is calm and thoughtful, and for once, I’m not overwhelmed by features I don’t need. It gives me just enough flexibility to reflect my reading habits — organizing by mood, logging thoughts mid-book, and celebrating books I re-read without judgment. It’s intuitive, it’s comforting, and it makes me feel more connected to my books. I didn’t know I needed an app like this until I used it."
+            </blockquote>
+            <div className="testimonial-author">
+              <img src="/images/profile-picture2.webp" alt="Profile Picture" />
+              <h5>John Doe</h5>
+            </div>
+          </div>
+           <div className="testimonial-item">
+            <div className="star-wrapper">
+              <FontAwesomeIcon icon={faStar} color="gold"/>
+              <FontAwesomeIcon icon={faStar} color="gold"/>
+              <FontAwesomeIcon icon={faStar} color="gold"/>
+              <FontAwesomeIcon icon={faStar} color="gold"/>
+              <FontAwesomeIcon icon={faStar} />
+            </div>
+            <blockquote className="testimonial-quote">
+              "After a decade of using every book tracking app imaginable, I was about to give up hope of ever finding one that truly understood readers. Then I discovered Shelfie, and it was like finding a kindred spirit in app form. The attention to detail shows the developers genuinely care about books - from the way you can organize by mood and not just genre, to the thoughtful reading progress tracker that doesn't make you feel guilty for taking your time."
+            </blockquote>
+            <div className="testimonial-author">
+              <img src="/images/profile-picture3.webp" alt="Profile Picture" />
+              <h5>John Doe</h5>
+            </div>
+          </div>
+           <div className="testimonial-item">
+            <div className="star-wrapper">
+              <FontAwesomeIcon icon={faStar} color="gold"/>
+              <FontAwesomeIcon icon={faStar} color="gold"/>
+              <FontAwesomeIcon icon={faStar} color="gold"/>
+              <FontAwesomeIcon icon={faStar} color="gold"/>
+              <FontAwesomeIcon icon={faStar} />
+            </div>
+            <blockquote className="testimonial-quote">
+              "Shelfie has brought a quiet joy back into my reading life. I used to feel guilty about unread books or half-finished stories, but this app reframes the experience — making it okay to pause, revisit, or simply enjoy a book slowly. I love that I can sort books by how they made me feel, not just by genre or rating. It's not just practical; it's personal, and that’s why I recommend it to every reader I know."
+            </blockquote>
+            <div className="testimonial-author">
+              <img src="/images/profile-picture4.webp" alt="Profile Picture" />
+              <h5>John Doe</h5>
+            </div>
+          </div>
+           <div className="testimonial-item">
+            <div className="star-wrapper">
+              <FontAwesomeIcon icon={faStar} color="gold"/>
+              <FontAwesomeIcon icon={faStar} color="gold"/>
+              <FontAwesomeIcon icon={faStar} color="gold"/>
+              <FontAwesomeIcon icon={faStar} color="gold"/>
+              <FontAwesomeIcon icon={faStar} />
+            </div>
+            <blockquote className="testimonial-quote">
+              "Using Shelfie feels like having a librarian friend in your pocket. The attention to detail — from tracking my favorite quotes to gently reminding me where I left off — is subtle but powerful. I’ve rediscovered books I’d forgotten about and started keeping better notes on how each book made me feel. For the first time, my reading app feels like part of the experience, not just a place to log titles."
+            </blockquote>
+            <div className="testimonial-author">
+              <img src="/images/profile-picture5.webp" alt="Profile Picture" />
+              <h5>John Doe</h5>
+            </div>
+          </div>
+           <div className="testimonial-item">
+            <div className="star-wrapper">
+              <FontAwesomeIcon icon={faStar} color="gold"/>
+              <FontAwesomeIcon icon={faStar} color="gold"/>
+              <FontAwesomeIcon icon={faStar} color="gold"/>
+              <FontAwesomeIcon icon={faStar} color="gold"/>
+              <FontAwesomeIcon icon={faStar} />
+            </div>
+            <blockquote className="testimonial-quote">
+              "Shelfie quickly became more than just a book tracker — it became part of my reading ritual. I log my progress every night, add little reflections, and even browse past reads to find comfort in stories I’ve loved. It’s rare to find an app that feels human, but Shelfie genuinely does. It doesn't pressure me to read faster or compete with others. Instead, it helps me stay in love with reading, and that means everything.”"
+            </blockquote>
+            <div className="testimonial-author">
+              <img src="/images/profile-picture6.webp" alt="Profile Picture" />
+              <h5>John Doe</h5>
+            </div>
+          </div>
+           <div className="testimonial-item">
+            <div className="star-wrapper">
+              <FontAwesomeIcon icon={faStar} color="gold"/>
+              <FontAwesomeIcon icon={faStar} color="gold"/>
+              <FontAwesomeIcon icon={faStar} color="gold"/>
+              <FontAwesomeIcon icon={faStar} color="gold"/>
+              <FontAwesomeIcon icon={faStar} color="gold"/>
+            </div>
+            <blockquote className="testimonial-quote">
+              "What I love most about Shelfie is how it respects the way each person reads. Some days I fly through a book, others I pause for weeks — and this app doesn’t judge. It lets me organize my collection in a way that makes sense to me, whether that’s mood-based, seasonal, or something entirely personal. It feels like the developers truly understand that reading is an emotional experience, not just a checklist."
             </blockquote>
             <div className="testimonial-author">
               <img src="/images/profile-picture.webp" alt="Profile Picture" />
