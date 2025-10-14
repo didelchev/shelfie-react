@@ -1,12 +1,25 @@
-import React from 'react'
-import Navbar from "../components/navbar/Navbar"
-import Footer from "../components/footer/Footer"
-import { Outlet } from 'react-router-dom'
-import { ToastContainer, toast } from "react-toastify";
-
-
+import React, { useEffect } from 'react'; 
+import Navbar from "../components/navbar/Navbar";
+import Footer from "../components/footer/Footer";
+import { Outlet, useLocation } from 'react-router-dom'; 
+import { ToastContainer } from "react-toastify";
+import AOS from 'aos'; 
+import 'aos/dist/aos.css'; 
 
 const RootLayout = () => {
+  const location = useLocation(); 
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true, 
+    });
+  }, []); 
+
+  useEffect(() => {
+    AOS.refresh(); 
+  }, [location.pathname]); 
+
   return (
    <>
     <Navbar />
@@ -16,7 +29,7 @@ const RootLayout = () => {
         position="bottom-left"
         theme="dark" />
    </>
-  )
+  );
 }
 
-export default RootLayout
+export default RootLayout;
