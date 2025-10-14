@@ -5,14 +5,29 @@ import { getAllBooks } from "../../api/books-api";
 import BookTemplate from "../../components/book/BookTemplate";
 import { useBookCatalog } from "../../hooks/useBookCatalog";
 import BookFilterSidebar from "../../components/categories-filter/BookFilterSidebar";
+import SpinnerComponent from "../../components/spinner/SpinnerComponent";
 
 const CatalogView = () => {
   const [books, setBooks ] = useState([]);
 
+  const [isLoading, setIsLoading] = useState(false)
+
   useEffect(() => {
     const getBooks = async () => {
-      const allBooks = await getAllBooks();
-      setBooks(allBooks)
+      try {
+        setIsLoading(true);
+
+        const allBooks = await getAllBooks();
+
+        setBooks(allBooks)  
+
+        setIsLoading(false)
+
+      } catch (error) {
+        setIsLoading(false);
+        console.log(error)
+      }
+      
     }
     getBooks()
   },[])
@@ -29,24 +44,26 @@ const {
 
   return (
     <>
-      <main className="book-catalog" data-aos="fade-down">   
-        <BookFilterSidebar 
-            query={query}
-            sortCriteria={sortCriteria}
-            categoryCriteria={categoryCriteria}
-            ratings={ratings}
-            onSearchChange={searchHandler}
-            onSortChange={sortHandler}
-            onCategoryChange={categoryHandler}
-            onRatingChange={sortByRatingHandler}
-            onReset={resetHandler}
-        />
-        <div className="book-catalog-grid">
-          {displayBooks.map((book) => {
-            return <BookTemplate book={book} key={book._id} />;
-          })}
-        </div>
-      </main>
+          <main className="book-catalog" data-aos="fade-down">
+            <BookFilterSidebar
+              query={query}
+              sortCriteria={sortCriteria}
+              categoryCriteria={categoryCriteria}
+              ratings={ratings}
+              onSearchChange={searchHandler}
+              onSortChange={sortHandler}
+              onCategoryChange={categoryHandler}
+              onRatingChange={sortByRatingHandler}
+              onReset={resetHandler}
+            />
+            {isLoading ? <SpinnerComponent /> : (
+              <div className="book-catalog-grid">
+              {displayBooks.map((book) => {
+                return <BookTemplate book={book} key={book._id} />;
+              })}
+            </div>
+            )}
+          </main>
     </>
   );
 }

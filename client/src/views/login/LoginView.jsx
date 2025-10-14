@@ -3,6 +3,7 @@ import "./LoginView.css"
 import { login } from '../../api/auth-api'
 import { useAuth } from '../../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom'
+import { toast } from "react-toastify";
 
 
 
@@ -37,6 +38,8 @@ try {
   const user = await login(email, password)
 
   setUserData(user)
+
+  toast.success('Login successfull !')
 
   navigate('/')
 

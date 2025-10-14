@@ -1,7 +1,7 @@
 import React from "react";
-import "./Spinner.css";
+import "./SpinnerComponent.css";
 
-export default function Loading() {
+export default function SpinnerComponent() {
   return (
     <div className="loading-container">
       <div className="lds-roller">
