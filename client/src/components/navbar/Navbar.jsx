@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import "./Navbar.css"
 import { useAuth } from '../../contexts/AuthContext'
+import logo from '../../../public/images/logo3.png'
+
 
 const Navbar = () => {
 
@@ -13,7 +15,11 @@ const Navbar = () => {
   return (
     <header className="header">
         <nav className="navbar">
-          <a className="logo" href="/">Shelfie</a>
+          <div className='logo-container'>
+            <img src={logo} alt="asdasd" className='logo-img' />
+            <a className="logo" href="/">Shelfie</a>
+          </div>
+          
           <div className="burger" id="burger">
             <i className="fas fa-bars"></i>
           </div>

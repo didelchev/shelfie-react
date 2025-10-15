@@ -71,12 +71,6 @@ const SelectShelfComponent = ({ bookId }) => {
               </button>
             </div>
 
-            <button
-              className="popover-continue-button"
-              onClick={() => closeModal()}
-            >
-              Continue to tags
-            </button>
           </div>
         </>
       )}

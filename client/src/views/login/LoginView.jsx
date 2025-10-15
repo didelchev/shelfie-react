@@ -54,10 +54,13 @@ try {
 
   
 } catch (error) {
+  setIsLoading(false)
 
   const errorMessage = error.message || 'An unknown error occured during login attemp.'
 
   setError(errorMessage)
+
+
 }
 
 }

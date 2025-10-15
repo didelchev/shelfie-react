@@ -3,6 +3,7 @@ import "./RegisterView.css"
 import { login, register } from '../../api/auth-api'
 import { useAuth } from '../../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom'
+import SpinnerComponent from '../../components/spinner/SpinnerComponent'
 
 const RegisterView = () => {
 
@@ -16,6 +17,8 @@ const RegisterView = () => {
 
   const [error, setError]  = useState(null);
 
+  const [isLoading, setIsLoading] = useState(false)
+
   const navigate = useNavigate()
 
  const { setUserData  } = useAuth();
@@ -27,12 +30,16 @@ const RegisterView = () => {
 
   const registerHandler = async (e) => {
 
-      e.preventDefault()
+    e.preventDefault()
+
+    setIsLoading(true)
       
     const { email, username, password, rePassword } = authData;
 
     try {
       const newUser  = await register(email, username, password, rePassword)
+
+      //TODO: validate user 
 
       localStorage.setItem('auth', JSON.stringify(newUser))
 
@@ -43,6 +50,8 @@ const RegisterView = () => {
 
 
     } catch (error) {
+
+      setIsLoading(false)
 
       const errorMessage = error.message || 'An unknown error occured while trying to register !'
 
@@ -65,7 +74,11 @@ const RegisterView = () => {
             <input type="password" id="password" name="password" value={authData.password} onChange={changeHandler}/>
             <label htmlFor="re-password">Repeat Password</label>
             <input type="password" id="re-password" name="re-password" value={authData["re-password"]} onChange={changeHandler}/>
-            <button className ='submit' type="submit">Register</button>
+            <button className ='submit' type="submit">
+              {isLoading ? <SpinnerComponent size={25} color='white'/> : (
+                "Register"
+              )}
+            </button>
             {error && (
               <div style={{ color: 'red', border: '1px solid red', padding: '10px', marginTop: '10px', textAlign: "center" }}>
                 Login Failed: {error}

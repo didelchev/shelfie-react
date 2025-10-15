@@ -13,6 +13,16 @@
     z-index: 1000;
 }
 
+.logo-container{
+  display: flex;
+  gap: 1em;
+}
+
+.logo-img {
+  width: 40px;  /* Set a fixed width */
+  scale: 4  ;
+}
+
 .header .navbar .logo {
     font-size: 2.2em;
     font-weight: 600;
