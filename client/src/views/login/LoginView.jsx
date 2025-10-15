@@ -4,6 +4,7 @@ import { login } from '../../api/auth-api'
 import { useAuth } from '../../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom'
 import { toast } from "react-toastify";
+import SpinnerComponent from '../../components/spinner/SpinnerComponent'
 
 
 
@@ -16,7 +17,11 @@ const [authData, setAuthData] = useState({
 
 const [error, setError] = useState(null)
 
+const [isLoading, setIsLoading] = useState(false)
+
+
 const navigate = useNavigate();
+
 
 const { setUserData  } = useAuth();
 
@@ -31,12 +36,16 @@ const changeHandler = (e) => {
 const loginHandler = async (e) => {
 
 e.preventDefault()
+
   const { email, password } = authData;
+
+  setIsLoading(true)
 
 try {
 
   const user = await login(email, password)
 
+  
   setUserData(user)
 
   toast.success('Login successfull !')
@@ -55,7 +64,7 @@ try {
 
 
   return (
-    <div className="login-grid-container">
+  <div className="login-grid-container">
    <div className="left-section-container" data-aos="fade-right">
     <div className="content">
       <a href="/">
@@ -75,7 +84,11 @@ try {
         <input type="text" id="email" name="email" value={authData.email} onChange={changeHandler} />
         <label htmlFor="password">Password</label>
         <input type="password" id="password" name="password" value={authData.password} onChange={e => { setAuthData({...authData, password: e.target.value})}} />
-        <button type="submit" >Sign in</button>
+        <button type="submit">
+          {isLoading ? <SpinnerComponent size={25} color='white'/> : (
+            "Sign in"
+          )}
+          </button>
         {error && (
       <div style={{ color: 'red', border: '1px solid red', padding: '10px', marginTop: '10px', textAlign: "center" }}>
         Login Failed: {error}

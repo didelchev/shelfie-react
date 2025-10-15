@@ -6,7 +6,7 @@ import { getAllBooks } from "../../api/books-api";
 import BookTemplate from '../../components/book/BookTemplate'
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
-import SpinnerComponent from "../../components/spinner/SpinnerComponent";
+import { ClipLoader } from "react-spinners";
 
 const HomePage = () => {
 
@@ -44,7 +44,7 @@ const HomePage = () => {
   return (
     <>
       {isLoading ? (
-        <SpinnerComponent />
+        <ClipLoader />
       ) : (
         <>
           <section className="main-content" data-aos="fade-right">
