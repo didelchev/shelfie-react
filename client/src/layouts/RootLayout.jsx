@@ -7,8 +7,6 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'; 
 
 const RootLayout = () => {
-  const location = useLocation(); 
-
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -20,9 +18,11 @@ const RootLayout = () => {
     AOS.refresh(); 
   }, [location.pathname]); 
 
+
+
   return (
    <>
-    <Navbar />
+   <Navbar />
       <Outlet />
     <Footer />
     <ToastContainer 

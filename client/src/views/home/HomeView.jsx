@@ -49,46 +49,16 @@ const HomePage = () => {
         <>
           <section className="main-content" data-aos="fade-right">
             <div className="welcome-text">
-              <h1>Welcome to Shelfie</h1>
-              <h2>
-                Dive into a world of books. Organize your collection and find
-                new reads.
-              </h2>
+              <h1>Shelfie</h1>
+              <h2>Discover Your Next Great Read,<br/>Organize Your Library </h2>
               {!isAuthenticated ? (
                 <div className="action-buttons">
-                  <Link to={"/login"}>Login</Link>
-                  <Link to={"/register"}>Register</Link>
+                  {/* <Link to={"/login"}>Login</Link> */}
+                  <Link to={"/register"}>Sign Up</Link>
                 </div>
               ) : null}
             </div>
-            <div className="book-stack-wrapper">
-              <div className="book-stack">
-                <img
-                  src="/images/book1.webp"
-                  className="book book-1"
-                  alt="Book 1"
-                />
-                <img
-                  src="/images/book2.webp"
-                  className="book book-2"
-                  alt="Book 2"
-                />
-                <img
-                  src="/images/book3.webp"
-                  className="book book-3"
-                  alt="Book 3"
-                />
-                <img
-                  src="/images/book4.webp"
-                  className="book book-4"
-                  alt="Book 4"
-                />
-                <img
-                  src="/images/book5.webp"
-                  className="book book-5"
-                  alt="Book 5"
-                />
-              </div>
+            <div className="welcome-image">
             </div>
           </section>
 
@@ -141,7 +111,6 @@ const HomePage = () => {
               </p>
             </div>
           </div>
-
           <section
             className="about-app-container"
             data-aos="fade-left"
@@ -178,7 +147,6 @@ const HomePage = () => {
               </div>
             </div>
           </section>
-
           <section
             className="testimonials"
             data-aos="fade"
@@ -224,32 +192,6 @@ const HomePage = () => {
                   <FontAwesomeIcon icon={faStar} />
                 </div>
                 <blockquote className="testimonial-quote">
-                  "After a decade of using every book tracking app imaginable, I
-                  was about to give up hope of ever finding one that truly
-                  understood readers. Then I discovered Shelfie, and it was like
-                  finding a kindred spirit in app form. The attention to detail
-                  shows the developers genuinely care about books - from the way
-                  you can organize by mood and not just genre, to the thoughtful
-                  reading progress tracker that doesn't make you feel guilty for
-                  taking your time."
-                </blockquote>
-                <div className="testimonial-author">
-                  <img
-                    src="/images/profile-picture3.webp"
-                    alt="Profile Picture"
-                  />
-                  <h5>John Doe</h5>
-                </div>
-              </div>
-              <div className="testimonial-item">
-                <div className="star-wrapper">
-                  <FontAwesomeIcon icon={faStar} color="gold" />
-                  <FontAwesomeIcon icon={faStar} color="gold" />
-                  <FontAwesomeIcon icon={faStar} color="gold" />
-                  <FontAwesomeIcon icon={faStar} color="gold" />
-                  <FontAwesomeIcon icon={faStar} />
-                </div>
-                <blockquote className="testimonial-quote">
                   "Shelfie has brought a quiet joy back into my reading life. I
                   used to feel guilty about unread books or half-finished
                   stories, but this app reframes the experience — making it okay
@@ -261,57 +203,6 @@ const HomePage = () => {
                 <div className="testimonial-author">
                   <img
                     src="/images/profile-picture4.webp"
-                    alt="Profile Picture"
-                  />
-                  <h5>John Doe</h5>
-                </div>
-              </div>
-              <div className="testimonial-item">
-                <div className="star-wrapper">
-                  <FontAwesomeIcon icon={faStar} color="gold" />
-                  <FontAwesomeIcon icon={faStar} color="gold" />
-                  <FontAwesomeIcon icon={faStar} color="gold" />
-                  <FontAwesomeIcon icon={faStar} color="gold" />
-                  <FontAwesomeIcon icon={faStar} />
-                </div>
-                <blockquote className="testimonial-quote">
-                  "Using Shelfie feels like having a librarian friend in your
-                  pocket. The attention to detail — from tracking my favorite
-                  quotes to gently reminding me where I left off — is subtle but
-                  powerful. I’ve rediscovered books I’d forgotten about and
-                  started keeping better notes on how each book made me feel.
-                  For the first time, my reading app feels like part of the
-                  experience, not just a place to log titles."
-                </blockquote>
-                <div className="testimonial-author">
-                  <img
-                    src="/images/profile-picture5.webp"
-                    alt="Profile Picture"
-                  />
-                  <h5>John Doe</h5>
-                </div>
-              </div>
-              <div className="testimonial-item">
-                <div className="star-wrapper">
-                  <FontAwesomeIcon icon={faStar} color="gold" />
-                  <FontAwesomeIcon icon={faStar} color="gold" />
-                  <FontAwesomeIcon icon={faStar} color="gold" />
-                  <FontAwesomeIcon icon={faStar} color="gold" />
-                  <FontAwesomeIcon icon={faStar} />
-                </div>
-                <blockquote className="testimonial-quote">
-                  "Shelfie quickly became more than just a book tracker — it
-                  became part of my reading ritual. I log my progress every
-                  night, add little reflections, and even browse past reads to
-                  find comfort in stories I’ve loved. It’s rare to find an app
-                  that feels human, but Shelfie genuinely does. It doesn't
-                  pressure me to read faster or compete with others. Instead, it
-                  helps me stay in love with reading, and that means
-                  everything.”"
-                </blockquote>
-                <div className="testimonial-author">
-                  <img
-                    src="/images/profile-picture6.webp"
                     alt="Profile Picture"
                   />
                   <h5>John Doe</h5>
@@ -344,7 +235,6 @@ const HomePage = () => {
               </div>
             </div>
           </section>
-
           <section className="popular-books" data-aos="fade-down">
             <div className="divider">
               <span>Recently Added Books</span>

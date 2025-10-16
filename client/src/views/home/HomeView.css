@@ -1,27 +1,50 @@
 .main-content {
   display: grid;
-  height: 100vh;
+  height: 80vh;
   padding-left: 7em;
   gap: 2em;
-  grid-template-columns: 1fr 2fr;
-  background-image: url("/images/blob-scene-haikei(6).svg");
-  background-position: center;
+  grid-template-columns: 1.4fr 2fr;
+  
+}
+
+.main-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(112, 141, 129, 0.8); 
+  /* background-color: rgba(218, 208, 193, 0.7); */
+  z-index: 0;
+  pointer-events: none;
+}
+
+.welcome-image{
+  background-image: url("/images/mobile-background.webp");
   background-size: cover;
-  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
 }
 
 .welcome-text {
   display: flex;
+  position: relative;
+  z-index: 2;
   flex-direction: column;
   justify-content: center;
 }
+
 .welcome-text h1 {
+  margin-bottom: 0;
   font-weight: 700;
-  font-size: 5em;
+  color: #f2f2f2;
+  font-size: 4.5em;
 }
 
 .welcome-text h2 {
-  font-size: 1.6em;
+  color: #f2f2f2;
+  font-size: 2.2em;
+  font-weight: 600;
+
+
 }
 
 .welcome-text .action-buttons {
@@ -31,12 +54,12 @@
 
 .action-buttons > a {
   border: none;
-  background-color: #708d81;
+  background-color: black;
   color: white;
   padding: 1em 2em;
-  border-radius: 2em;
+  border-radius: 1em;
   font-size: 1.1em;
-  font-weight: 400;
+  font-weight: 500;
 }
 /* -------------------------------------- */
 
@@ -188,7 +211,7 @@
   display: grid;
   width: 100%;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr;
   align-items: stretch;
   padding: 3em 12em;
   justify-items: center;

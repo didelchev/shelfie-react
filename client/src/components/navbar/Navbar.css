@@ -6,11 +6,16 @@
     top: 0;
     left: 0;
     justify-content: space-between;
-    background-color: #f2f2f2;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
-    color: #0D0D0D;
+    /* background-color: #f2f2f2; */
+    /* box-shadow: 0 1px 2px rgba(0,0,0,0.15); */
+    /* color: #0D0D0D; */
+    color:#f2f2f2;
     padding: 1em 3em;
     z-index: 1000;
+}
+
+.navbar-home {
+
 }
 
 .logo-container{
@@ -20,7 +25,6 @@
 
 .logo-img {
   width: 40px;  /* Set a fixed width */
-  scale: 4  ;
 }
 
 .header .navbar .logo {
