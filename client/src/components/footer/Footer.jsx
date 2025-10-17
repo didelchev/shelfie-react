@@ -5,10 +5,20 @@ import {
   faDiscord 
 } from "@fortawesome/free-brands-svg-icons";
 import "./Footer.css"
+import { useLocation } from 'react-router-dom';
+
+
+
 
 const Footer = () => {
+
+  const location = useLocation();
+
+
   return (
-      <footer className="footer">
+    <>
+      {(location.pathname !== '/login' && location.pathname !=='/register') ? (
+        <footer className="footer">
         <div className="footer-container">
           <div className="footer-brand">
             <h2>Shelfie</h2>
@@ -43,6 +53,9 @@ const Footer = () => {
           <p>© 2025 Shelfie. All rights reserved.</p>
         </div>
       </footer>
+      ): null}
+    </>
+      
   )
 }
 
