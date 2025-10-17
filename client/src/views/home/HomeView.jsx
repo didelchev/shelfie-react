@@ -53,8 +53,8 @@ const HomePage = () => {
               <h2>Discover Your Next Great Read,<br/>Organize Your Library </h2>
               {!isAuthenticated ? (
                 <div className="action-buttons">
-                  {/* <Link to={"/login"}>Login</Link> */}
                   <Link to={"/register"}>Sign Up</Link>
+                  <Link to={"/login"}>Sign In</Link>
                 </div>
               ) : null}
             </div>

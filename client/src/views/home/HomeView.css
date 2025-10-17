@@ -50,18 +50,25 @@
 
 .welcome-text .action-buttons {
   display: flex;
-  gap: 4em;
+  gap: 2em;
+  text-align: center;
+  align-items: center;
 }
 
-.action-buttons > a {
+.action-buttons > a:first-child{
   border: none;
   background-color: black;
-  color: white;
+  color: #f2f2f2;
   padding: 1em 2em;
   border-radius: 1em;
   font-size: 1.1em;
   font-weight: 500;
 }
+
+ .action-buttons > a:last-child{ 
+  color: #f2f2f2;
+  text-decoration: underline;
+ }
 /* -------------------------------------- */
 
 .book-stack-wrapper {
