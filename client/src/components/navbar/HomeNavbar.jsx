@@ -17,7 +17,7 @@ const HomeNavbar = () => {
         </div>
 
         <ul className="home-guest home-nav-links">
-          <li><Link to="/catalog" className='home-link'>Browse</Link></li>
+          <li><Link to="/catalog" className='home-link'>Browse Books</Link></li>
         </ul>
       </nav>
     </header>
