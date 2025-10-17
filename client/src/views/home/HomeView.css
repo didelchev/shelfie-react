@@ -1,6 +1,6 @@
 .main-content {
   display: grid;
-  height: 80vh;
+  height: 70vh;
   padding-left: 7em;
   gap: 2em;
   grid-template-columns: 1.4fr 2fr;
@@ -30,6 +30,7 @@
   z-index: 2;
   flex-direction: column;
   justify-content: center;
+  padding: 5em;
 }
 
 .welcome-text h1 {
