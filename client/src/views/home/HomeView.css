@@ -74,10 +74,10 @@
 .app-info{
   text-align: center;
   width: 50%;
-  margin: 0 auto;
+  margin: 3em auto;
   padding: 5em 5em;
   letter-spacing: 0.025em;
-  font:unset
+  font: unset;
 }
 
 
@@ -132,13 +132,40 @@
 
 
 
+.discover-books{
+  display: flex;
+  padding-left: 12em;
+  gap: 8em;
+  align-items: center;
+  /* border: 3px solid lime; */
+}
+
+.discover-books .discover-description{
+  /* border: 3px solid lime; */
+  font-size: 1.6em;
+  width: 90%;
+  letter-spacing: 0.025em;
+}
+
+.discover-books .discover-description h3{
+  font-weight: 700;
+}
+
+.discover-books .discover-image img {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 0.3em;
+  /* border: 3px solid lime; */
+
+}
+
+
 
 /* --------------------WHY SHELFIE------------------------------- */
 
 .about-app-container {
   display: grid;
   grid-template-columns: 1.5fr 2fr;
-  margin-top: 2em;
+  margin-top: 6em;
   padding: 3em 12em;
   gap: 5em;
   background-image: url("/images/blob-haikei(10).svg");
@@ -156,11 +183,12 @@
 }
 
 .about-app-container .about-description h1 {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 3em;
 }
 .about-app-container .about-description p {
-  font-size: 1.2em;
+  font-size: 1.6em;
+  letter-spacing: 0.025em;
 }
 
 .about-app-container .about-description {
@@ -175,6 +203,7 @@
 
 .about-app-container .about-description .action-buttons a {
   background-color: #708d81;
+  text-decoration: none;
 }
 
 /* --------------------TESTIMONIALS-------------------------------- */

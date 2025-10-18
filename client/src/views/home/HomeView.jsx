@@ -7,6 +7,7 @@ import BookTemplate from '../../components/book/BookTemplate'
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { ClipLoader } from "react-spinners";
+import screenshot from '../../../public/images/shelfie-catalog-img.png'
 
 const HomePage = () => {
 
@@ -65,7 +66,18 @@ const HomePage = () => {
             <h3>We'll help you <strong>track your reading</strong> and <strong>choose your next book</strong> based on your favorite topics and genres. </h3>
           </section>
 
-          
+          <section className="discover-books">
+            <div className="discover-description">
+              <h3 >Discover books</h3>
+              <p>Use our powerful search and filtering tools to effortlessly explore thousands of titles.<br></br>
+              <br></br>
+               Filter by <strong>genre, rating, or author</strong> to quickly connect with the stories and knowledge that perfectly match your current mood and literary tastes.</p>
+            </div>
+            <div className="discover-image">
+              <img src={screenshot} alt="" />
+            </div>
+          </section>
+
           <section
             className="about-app-container"
             data-aos="fade-left"
@@ -81,20 +93,11 @@ const HomePage = () => {
               <div className="about-text-wrapper">
                 <h1>More Than a Bookshelf</h1>
                 <p>
-                  Shelfie isn’t just a tracker—it’s a celebration of your
-                  reading journey. Imagine a space where every book you’ve
-                  loved, every story that changed you, and every future
-                  adventure you’re dreaming of lives together in perfect
-                  harmony.
-                  <br />
-                  <br />
-                  Whether you're a casual reader or a lifelong book lover,
-                  Shelfie gives you the tools to stay organized, inspired, and
-                  connected to your reading life. Add books to personalized
-                  shelves, leave your thoughts with ratings and comments, and
-                  receive recommendations that truly reflect your unique tastes.
-                  It’s more than just keeping track—it’s about building a
-                  digital home for the stories that shape you.
+                  Shelfie is the ultimate digital home for your reading journey. It's more than a tracker, it's a celebration of every book you've loved and every story you dream of reading.
+                  <br></br>
+                  <br></br>
+                  Whether you're a casual or lifelong book lover, Shelfie keeps you organized and inspired. Add books to personalized shelves, share your thoughts with ratings and comments, and receive recommendations that truly reflect your tastes.
+
                 </p>
               </div>
               <div className="action-buttons">
@@ -102,6 +105,7 @@ const HomePage = () => {
               </div>
             </div>
           </section>
+
           <section
             className="testimonials"
             data-aos="fade"
