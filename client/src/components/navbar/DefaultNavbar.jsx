@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import './DefaultNavbar.css'
-import logo from '../../../public/images/logo.png' // adjust if needed
+import logo from '../../../public/images/logo-black.png' // adjust if needed
 
 
 const DefaultNavbar = ({ isAuthenticated }) => {
