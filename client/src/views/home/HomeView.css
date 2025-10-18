@@ -71,53 +71,18 @@
  }
 /* -------------------------------------- */
 
-.book-stack-wrapper {
-  position: relative;
-  display: flex;
-  width: 100%;
-  height: auto;
-  grid-column: 2 / span 2;
-  padding: 2em 0;
-}
-
-.book-stack {
-  position: relative;
-  width: 300px;
-  height: 300px;
+.app-info{
+  text-align: center;
+  width: 50%;
   margin: 0 auto;
+  padding: 5em 5em;
+  letter-spacing: 0.025em;
+  font:unset
 }
 
-.book-stack > img {
-  position: absolute;
-  border-radius: 0.2em;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
-    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-}
 
-.book-1 {
-  z-index: 4;
-  transform: translate(0px, 180px) scale(1);
-}
 
-.book-2 {
-  z-index: 3;
-  transform: translate(170px, 180px) scale(0.9);
-}
 
-.book-3 {
-  z-index: 3;
-  transform: translate(-150px, 180px) scale(0.9);
-}
-
-.book-4 {
-  z-index: 1;
-  transform: translate(-280px, 160px) scale(0.75);
-}
-
-.book-5 {
-  z-index: 2;
-  transform: translate(300px, 200px) scale(0.9);
-}
 
 /* ------------------------FEATURES------------------------------- */
 
@@ -164,6 +129,9 @@
 .feature-item i {
   color: #708d81;
 }
+
+
+
 
 /* --------------------WHY SHELFIE------------------------------- */
 
@@ -280,11 +248,11 @@
 
 .popular-books-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   padding: 3em 12em;
   margin-top: 3em;
   justify-content: center;
-  gap: 4em;
+  gap: 5em;
 }
 
 .divider {
@@ -308,11 +276,9 @@
 }
 
 .popular-books-grid .book {
-  background-color: white;
-  padding: 0.5em;
   position: relative;
   border-radius: 0.3em;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  text-align: left;
   transition: transform 0.2s ease;
 }
 
@@ -320,15 +286,14 @@
   transform: translateY(-5px);
 }
 
+
 .popular-books-grid img {
   border-radius: 0.4em;
-  border: 0.3em solid white;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .popular-books-grid .book h5 {
-  font-weight: 600;
-  font-size: 1rem;
+  font-weight: 500;
+  font-size: 1.2rem;
   white-space: normal;
   margin-top: 0.5em;
   margin-bottom: 0;
@@ -337,7 +302,7 @@
   color: orange;
 }
 .popular-books-grid .book p {
-  font-size: 0.9em;
+  font-size: 1em;
   padding: 0;
   color: #555;
 }

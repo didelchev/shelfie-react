@@ -61,11 +61,56 @@ const HomePage = () => {
             <div className="welcome-image">
             </div>
           </section>
-          <section className="app-info">
-            <h3>We'll help you <strong>track your reading</strong> and <strong>choose your next book</strong> based on your favorite topics and genres. </h3>
-          </section>
 
-          
+          <div
+            className="features-grid-container"
+            data-aos="fade"
+            data-aos-delay="100"
+            data-aos-duration="1000"
+          >
+            <div className="feature-item">
+              <div className="circle-border">
+                <FontAwesomeIcon icon={faSearch} size="3x" />
+              </div>
+              <h3>Search & Filter</h3>
+              <p>
+                Quickly find the books you’re looking for with powerful search
+                and filter tools. Browse your personal shelves by title, author,
+                or genre, and sort results to match your reading mood. Whether
+                your library is small or growing fast, finding the right book is
+                always just a few clicks away.
+              </p>
+            </div>
+
+            <div className="feature-item">
+              <div className="circle-border">
+                <FontAwesomeIcon icon={faWandMagicSparkles} size="3x" />
+              </div>
+              <h3>Personalized Book Recommendations</h3>
+              <p>
+                Discover your next great read with recommendations tailored to
+                your taste. Based on the books you've rated and added to your
+                shelves, Shelfie suggests titles you’re likely to enjoy. The
+                more you interact with books, the smarter your recommendations
+                get—helping you explore new stories that match your interests.
+              </p>
+            </div>
+
+            <div className="feature-item">
+              <div className="circle-border">
+                <FontAwesomeIcon icon={faBookOpenReader} size="3x" />
+              </div>
+              <h3>Reading Progress Tracker</h3>
+              <p>
+                Track your personal reading journey by adding books to your
+                custom shelves. Organize your collection the way you
+                like—whether it's “Want to Read,” “Currently Reading,” or
+                “Finished.” Rate and comment on books to share your thoughts and
+                keep a record of what you’ve read. Simple and personal, it’s
+                your bookshelf, your way.
+              </p>
+            </div>
+          </div>
           <section
             className="about-app-container"
             data-aos="fade-left"
