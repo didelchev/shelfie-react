@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import "./LoginView.css"
 import { login } from '../../api/auth-api'
 import { useAuth } from '../../contexts/AuthContext'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { toast } from "react-toastify";
 import SpinnerComponent from '../../components/spinner/SpinnerComponent'
+import logo from '../../../public/images/logo.png' 
+
 
 
 
@@ -70,9 +72,9 @@ try {
   <div className="login-grid-container">
    <div className="left-section-container" data-aos="fade-right">
     <div className="content">
-      <a href="/">
-        <img src="#" alt="Logo" className="logo" />
-      </a>
+      <Link href="/">
+        <img src={logo} alt="Logo" className="logo" />
+      </Link>
       <h1>Your Next Read Awaits</h1>
       <p>
         Organize, discover, and fall in love with books—all in one place.

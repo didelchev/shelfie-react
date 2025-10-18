@@ -117,22 +117,17 @@ const HomePage = () => {
             <div className="testimonials-grid-container">
               <div className="testimonial-item">
                 <div className="star-wrapper">
-                  <FontAwesomeIcon icon={faStar} color="gold" />
-                  <FontAwesomeIcon icon={faStar} color="gold" />
-                  <FontAwesomeIcon icon={faStar} color="gold" />
-                  <FontAwesomeIcon icon={faStar} color="gold" />
+                  <FontAwesomeIcon icon={faStar} color="#ca6d1b" />
+                  <FontAwesomeIcon icon={faStar} color="#ca6d1b" />
+                  <FontAwesomeIcon icon={faStar} color="#ca6d1b" />
+                  <FontAwesomeIcon icon={faStar} color="#ca6d1b" />
                   <FontAwesomeIcon icon={faStar} />
                 </div>
                 <blockquote className="testimonial-quote">
                   "I’ve bounced between spreadsheets, notes apps, and other
                   reading trackers, but nothing felt right until I found
                   Shelfie. The design is calm and thoughtful, and for once, I’m
-                  not overwhelmed by features I don’t need. It gives me just
-                  enough flexibility to reflect my reading habits — organizing
-                  by mood, logging thoughts mid-book, and celebrating books I
-                  re-read without judgment. It’s intuitive, it’s comforting, and
-                  it makes me feel more connected to my books. I didn’t know I
-                  needed an app like this until I used it."
+                  not overwhelmed by features I don’t need."
                 </blockquote>
                 <div className="testimonial-author">
                   <img
@@ -144,20 +139,17 @@ const HomePage = () => {
               </div>
               <div className="testimonial-item">
                 <div className="star-wrapper">
-                  <FontAwesomeIcon icon={faStar} color="gold" />
-                  <FontAwesomeIcon icon={faStar} color="gold" />
-                  <FontAwesomeIcon icon={faStar} color="gold" />
-                  <FontAwesomeIcon icon={faStar} color="gold" />
+                  <FontAwesomeIcon icon={faStar} color="#ca6d1b" />
+                  <FontAwesomeIcon icon={faStar} color="#ca6d1b" />
+                  <FontAwesomeIcon icon={faStar} color="#ca6d1b" />
+                  <FontAwesomeIcon icon={faStar} color="#ca6d1b" />
                   <FontAwesomeIcon icon={faStar} />
                 </div>
                 <blockquote className="testimonial-quote">
                   "Shelfie has brought a quiet joy back into my reading life. I
                   used to feel guilty about unread books or half-finished
                   stories, but this app reframes the experience — making it okay
-                  to pause, revisit, or simply enjoy a book slowly. I love that
-                  I can sort books by how they made me feel, not just by genre
-                  or rating. It's not just practical; it's personal, and that’s
-                  why I recommend it to every reader I know."
+                  to pause, revisit, or simply enjoy a book slowly. 
                 </blockquote>
                 <div className="testimonial-author">
                   <img
@@ -169,11 +161,11 @@ const HomePage = () => {
               </div>
               <div className="testimonial-item">
                 <div className="star-wrapper">
-                  <FontAwesomeIcon icon={faStar} color="gold" />
-                  <FontAwesomeIcon icon={faStar} color="gold" />
-                  <FontAwesomeIcon icon={faStar} color="gold" />
-                  <FontAwesomeIcon icon={faStar} color="gold" />
-                  <FontAwesomeIcon icon={faStar} color="gold" />
+                  <FontAwesomeIcon icon={faStar} color="#ca6d1b" />
+                  <FontAwesomeIcon icon={faStar} color="#ca6d1b" />
+                  <FontAwesomeIcon icon={faStar} color="#ca6d1b" />
+                  <FontAwesomeIcon icon={faStar} color="#ca6d1b" />
+                  <FontAwesomeIcon icon={faStar} color="#ca6d1b" />
                 </div>
                 <blockquote className="testimonial-quote">
                   "What I love most about Shelfie is how it respects the way
@@ -181,8 +173,7 @@ const HomePage = () => {
                   pause for weeks — and this app doesn’t judge. It lets me
                   organize my collection in a way that makes sense to me,
                   whether that’s mood-based, seasonal, or something entirely
-                  personal. It feels like the developers truly understand that
-                  reading is an emotional experience, not just a checklist."
+                  personal."
                 </blockquote>
                 <div className="testimonial-author">
                   <img
@@ -194,6 +185,10 @@ const HomePage = () => {
               </div>
             </div>
           </section>
+
+
+
+
           <section className="popular-books" data-aos="fade-down">
             <div className="divider">
               <span>Recently Added Books</span>

@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import "./RegisterView.css"
 import { login, register } from '../../api/auth-api'
 import { useAuth } from '../../contexts/AuthContext'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import SpinnerComponent from '../../components/spinner/SpinnerComponent'
+import logo from '../../../public/images/logo.png' 
+
 
 const RegisterView = () => {
 
@@ -76,7 +78,7 @@ const RegisterView = () => {
             <input type="password" id="re-password" name="re-password" value={authData["re-password"]} onChange={changeHandler}/>
             <button className ='submit' type="submit">
               {isLoading ? <SpinnerComponent size={25} color='white'/> : (
-                "Register"
+                "Sign Up"
               )}
             </button>
             {error && (
@@ -85,15 +87,15 @@ const RegisterView = () => {
               </div>
             )}
             <p className="registered">
-              Already have an account ? <a href="/login">Sign in</a>
+              Already have an account ? <Link to={'/login'}>Sign In</Link>
             </p>
         </form>
     </div>
     <div className="right-section">
       <div className="content">
-        <a href="/">
-            <img src="#" alt="Logo" className="logo" />
-        </a>
+        <Link to={'/'}>
+            <img src={logo} alt="Logo" className="logo" /> 
+        </Link>
         <h1>Your Next Read Awaits</h1>
         <p>
             Organize, discover, and fall in love with books—all in one place.

@@ -8,6 +8,7 @@
 .left-section-container {
   display: flex;
   background: url(/images/example1.webp) center/cover no-repeat;
+  position: relative;
   color: #fff;
   align-items:center;
   justify-content: flex-start;
@@ -25,6 +26,8 @@
 .left-section-container .logo {
   max-width: 50px;
   margin-bottom: 20px;
+  position: absolute;
+  bottom: 100px;
 }
 
 .left-section-container h1 {

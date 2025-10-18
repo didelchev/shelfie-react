@@ -246,9 +246,11 @@
   gap: 1em;
   margin-top: 2em;
 }
+
+
 .testimonials-grid-container .testimonial-item .testimonial-author::after {
   font-family: "Font Awesome 6 Free";
-  font-weight: 700;
+  font-weight: 900;
   font-size: 4em;
   content: "\f10e";
   position: absolute;

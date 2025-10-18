@@ -12,7 +12,13 @@ const isAuthenticated = useAuth();
 
 const location  = useLocation();
 
-const isHome = location.pathname === "/";
+const isHome = location.pathname === "/" 
+
+const isAuthPage = location.pathname === "/login" || location.pathname === "/register";
+
+  if (isAuthPage) {
+    return null;
+  }
 
 return isHome ? <HomeNavbar isAuthenticated={isAuthenticated} /> : <DefaultNavbar isAuthenticated={isAuthenticated}/>;
 
