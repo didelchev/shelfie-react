@@ -7,8 +7,6 @@
   --transition: 0.3s ease;
 }
 
-
-
 /* LAYOUT */
 .book-catalog {
   display: flex;
@@ -66,9 +64,6 @@
   border-color: var(--primary);
   outline: none;
 }
-
-
-
 
 /* ------SORT------------ */
 .sort-section {

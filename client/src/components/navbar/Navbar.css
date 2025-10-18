@@ -45,7 +45,7 @@ a {
   text-decoration: none;
   position: relative;
 }
-
+/* 
 a::before,
 a::after {
   content: "";
@@ -68,7 +68,7 @@ a::after {
 a:hover::before,
 a:hover::after {
   width: 100%;
-}
+} */
 
 /* Burger menu icon styles */
 .burger {
