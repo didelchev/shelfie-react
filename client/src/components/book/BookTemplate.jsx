@@ -16,7 +16,6 @@ const BookTemplate = ({ book }) => {
           <p>{book.author}</p>
           <span className="fa fa-star checked"></span>
           <span>
-            <FontAwesomeIcon icon={faStar} color='#e48b3dff'/> 
             {ratingValue.toFixed(2)}
           </span>
             
