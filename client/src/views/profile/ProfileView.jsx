@@ -37,17 +37,18 @@ const ProfileView = () => {
                 ]);
 
             setUserShelves({
-                read: readBooks,
-                currReading: currReadingBooks,
-                toRead: toReadBooks
+                read: { books: readBooks, status: 'read'} ,
+                currReading: {books :currReadingBooks, status: 'currReading'},
+                toRead: {books: toReadBooks, status: 'to-read'}
             })
 
         })()
 
+
     },[])
 
     const renderBook = (bookArray) => {
-       return  bookArray.map(book => <ProfileBookTemplate book = {book} key={book._id}/>)
+       return  bookArray?.map(book => <ProfileBookTemplate book = {book} key={book._id}/>)
         }
 
     const showEditFormHandler = () => {
@@ -74,6 +75,14 @@ const ProfileView = () => {
       } catch (error) {
           console.log(error)
       }
+
+      
+
+      const removeBookHandler = (bookId) => {
+
+      }
+
+
     }
 
 
@@ -113,15 +122,15 @@ const ProfileView = () => {
   <div className="book-shelf">
     <h3>Read</h3>
     <div className="shelf-row">
-      {renderBook(userShelves.read)}
+      {renderBook(userShelves.read.books)}
     </div>
     <h3>Currently Reading</h3>
     <div className="shelf-row">
-      {renderBook(userShelves.currReading)}
+      {renderBook(userShelves.currReading.books)}
     </div>
     <h3>To-Read</h3>
     <div className="shelf-row">
-      {renderBook(userShelves.toRead)}
+      {renderBook(userShelves.toRead.books)}
     </div>
   </div>
 </section>
