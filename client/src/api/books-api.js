@@ -13,6 +13,8 @@ export const addBookReview = (bookId, review) => api.post(`${API_URL}/reviews/${
 
 export const addBookToShelf = (bookId, shelf) => api.post(`${API_URL}/catalog/${bookId}`, shelf)
 
+export const removeBookFromShelf = (bookId, shelf) => api.patch(`${API_URL}/catalog/${bookId}`, shelf)
+
 export const getBookReviews = (bookId) => api.get(`${API_URL}/reviews/${bookId}`)
 
 export const addBookRating = (bookId, rating) => api.post(`${API_URL}/reviews/${bookId}/ratings`, rating)
