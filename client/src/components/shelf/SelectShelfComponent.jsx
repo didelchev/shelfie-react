@@ -9,22 +9,18 @@ const SelectShelfComponent = ({ bookId }) => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  const selectShelfHandler = async ( e ) => {
-      e.preventDefault();
-      try {
+  const selectShelfHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const shelf = e.target.value;
 
-        const shelf = e.target.value
+      await addBookToShelf(bookId, { shelf });
 
-        await addBookToShelf(bookId, { shelf })
-        
-        closeModal();
-
-        
-      } catch (error) {
-        console.log(error)
-      }
-
+      closeModal();
+    } catch (error) {
+      console.log(error);
     }
+  };
 
   return (
     <div className="trigger-and-modal-container">
@@ -38,7 +34,6 @@ const SelectShelfComponent = ({ bookId }) => {
 
           <div
             className="contextual-modal-content"
-            onClick={(e) => e.stopPropagation()}
           >
             <div className="modal-header">
               <h3>Choose a shelf for this book</h3>
@@ -50,7 +45,7 @@ const SelectShelfComponent = ({ bookId }) => {
             <div className="option-group">
               <button
                 className="popover-option-button primary"
-                value='toRead'
+                value="toRead"
                 onClick={selectShelfHandler}
               >
                 Want to read
@@ -64,13 +59,12 @@ const SelectShelfComponent = ({ bookId }) => {
               </button>
               <button
                 className="popover-option-button primary"
-                value='read'
+                value="read"
                 onClick={selectShelfHandler}
               >
                 Read
               </button>
             </div>
-
           </div>
         </>
       )}
