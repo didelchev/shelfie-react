@@ -63,10 +63,7 @@ catalogController.patch("/:bookId", async (req, res) => {
   const bookId = req.params.bookId
   const { shelfType } = req.body;
   const userId = req.user._id;
-  console.log(userId)
-  
-  
-
+    
     if (!['read', 'toRead', 'currReading'].includes(shelfType)) {
     return res.status(400).json({ message: 'Invalid shelf.' });
   }

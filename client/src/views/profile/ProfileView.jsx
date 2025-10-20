@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { fetchBooksForShelf, getOneBook } from '../../api/books-api';
+import { fetchBooksForShelf, getOneBook, removeBookFromShelf } from '../../api/books-api';
 import { editUserCredentials, getUserCredentials } from '../../api/user-api';
+import { toast } from "react-toastify";
 
 import ProfileBookTemplate from '../../components/profile-book/ProfileBookTemplate';
 
@@ -47,8 +48,11 @@ const ProfileView = () => {
 
     },[])
 
-    const renderBook = (bookArray) => {
-       return  bookArray?.map(book => <ProfileBookTemplate book = {book} key={book._id}/>)
+    const renderBook = (bookArray, shelfName) => {
+      
+       return  bookArray?.map(book => 
+       <ProfileBookTemplate book={book} key={book._id} onRemove={( ) => removeBookHandler(book._id, shelfName)}/>
+      )
         }
 
     const showEditFormHandler = () => {
@@ -76,15 +80,28 @@ const ProfileView = () => {
           console.log(error)
       }
 
-      
-
-      const removeBookHandler = (bookId) => {
-
-      }
-
-
     }
 
+    const removeBookHandler = async (bookId, shelfName) => {
+
+        try {
+          await removeBookFromShelf(bookId, shelfName)
+
+          setUserShelves(prevShelves => ({
+            ...prevShelves,
+            [shelfName]: {
+                ...prevShelves[shelfName],
+                books: prevShelves[shelfName].books.filter(book => book._id !== bookId)
+            }
+        }))
+        toast.success('Book has been removed successfully from shelf !')      
+        } catch (error) {
+          toast.error('Failed to remove book !')
+          console.error("Failed to remove book:", error);
+        }
+
+
+      }
 
 
     
@@ -122,15 +139,15 @@ const ProfileView = () => {
   <div className="book-shelf">
     <h3>Read</h3>
     <div className="shelf-row">
-      {renderBook(userShelves.read.books)}
+      {renderBook(userShelves.read.books, userShelves.read.status)}
     </div>
     <h3>Currently Reading</h3>
     <div className="shelf-row">
-      {renderBook(userShelves.currReading.books)}
+      {renderBook(userShelves.currReading.books, userShelves.currReading.status)}
     </div>
     <h3>To-Read</h3>
     <div className="shelf-row">
-      {renderBook(userShelves.toRead.books)}
+      {renderBook(userShelves.toRead.books, userShelves.toRead.status)}
     </div>
   </div>
 </section>
