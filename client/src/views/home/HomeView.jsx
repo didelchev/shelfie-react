@@ -13,7 +13,8 @@ const HomePage = () => {
 
   const [latestBooks, setLatestBooks ] = useState([])
 
-  const { isAuthenticated } = useAuth;
+  const  isAuthenticated  = useAuth();
+  
 
   const [isLoading, setIsLoading] = useState(false);
 

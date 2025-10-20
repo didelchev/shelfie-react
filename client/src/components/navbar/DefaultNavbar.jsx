@@ -2,10 +2,12 @@ import React from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import './DefaultNavbar.css'
 import logo from '../../../public/images/logo-black.png' 
+import { useAuth } from '../../contexts/AuthContext'
 
 
-const DefaultNavbar = ({ isAuthenticated }) => {
+const DefaultNavbar = () => {
 
+const isAuthenticated = useAuth();
 
 
   return (

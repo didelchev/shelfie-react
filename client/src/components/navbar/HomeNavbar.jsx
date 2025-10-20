@@ -1,9 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './HomeNavbar.css'
-import logo from '../../../public/images/logo.png' // adjust if needed
+import logo from '../../../public/images/logo.png'
 
 const HomeNavbar = () => {
+
+  
   return (
     <header className="home-header">
       <nav className="home-navbar">
