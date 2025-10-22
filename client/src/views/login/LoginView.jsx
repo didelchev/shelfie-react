@@ -72,7 +72,7 @@ try {
   <div className="login-grid-container">
    <div className="left-section-container" data-aos="fade-right">
     <div className="content">
-      <Link href="/">
+      <Link to={'/'}>
         <img src={logo} alt="Logo" className="logo" />
       </Link>
       <h1>Your Next Read Awaits</h1>
@@ -100,7 +100,7 @@ try {
       </div>
     )}
         <p className="not-registered">
-          Don't have an account ? <a href="/register">Sign up for free</a>
+          Don't have an account ? <Link to={'/register'}>Sign up for free</Link>
         </p>
       </form>
   </div>

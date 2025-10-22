@@ -7,7 +7,7 @@ import { useAuth } from '../../contexts/AuthContext'
 
 const DefaultNavbar = () => {
 
-const isAuthenticated = useAuth();
+const {isAuthenticated} = useAuth();
 
 
   return (

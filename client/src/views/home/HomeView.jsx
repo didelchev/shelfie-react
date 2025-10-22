@@ -13,8 +13,9 @@ const HomePage = () => {
 
   const [latestBooks, setLatestBooks ] = useState([])
 
-  const  isAuthenticated  = useAuth();
+  const  { isAuthenticated } = useAuth();
   
+  console.log(isAuthenticated)
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -53,12 +54,12 @@ const HomePage = () => {
             <div className="welcome-text">
               <h1>Shelfie</h1>
               <h2>Discover Your Next Great Read,<br/>Organize Your Library </h2>
-              {!isAuthenticated ? (
+              {!isAuthenticated && (
                 <div className="action-buttons">
                   <Link to={"/register"}>Sign Up</Link>
                   <Link to={"/login"}>Sign In</Link>
                 </div>
-              ) : null}
+              )}
             </div>
             <div className="welcome-image">
             </div>
