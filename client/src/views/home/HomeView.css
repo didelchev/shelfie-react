@@ -4,14 +4,13 @@
   padding-left: 7em;
   gap: 2em;
   grid-template-columns: 1.4fr 2fr;
-  
 }
 
 .main-content::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(112, 141, 129, 0.8); 
+  background-color: rgba(112, 141, 129, 0.8);
   /* background-color: rgba(218, 208, 193, 0.7); */
   z-index: 0;
   pointer-events: none;
@@ -44,8 +43,6 @@
   color: #f2f2f2;
   font-size: 2.2em;
   font-weight: 600;
-
-
 }
 
 .welcome-text .action-buttons {
@@ -65,7 +62,7 @@
   font-weight: 500;
 }
 
- .action-buttons > a:last-child{ 
+ .action-buttons > a:last-child{
   color: #f2f2f2;
   text-decoration: underline;
  }
@@ -79,10 +76,6 @@
   letter-spacing: 0.025em;
   font: unset;
 }
-
-
-
-
 
 /* ------------------------FEATURES------------------------------- */
 
@@ -405,34 +398,83 @@
 /* ======= RESPONSIVE STYLES ======= */
 
 @media (max-width: 1250px) {
-  .book-1 {
-    z-index: 4;
-    transform: translate(0px, 380px) scale(1);
+
+  .features-grid-container,
+  .about-app-container,
+  .testimonials-grid-container,
+  .popular-books-grid,
+  .discover-books {
+    padding: 3em 8em; 
   }
 
-  .book-2 {
-    z-index: 3;
-    transform: translate(100px, 380px) scale(0.9);
-  }
-
-  .book-3 {
-    z-index: 3;
-    transform: translate(-100px, 380px) scale(0.9);
-  }
-
-  .book-4 {
-    z-index: 1;
-    transform: translate(-180px, 360px) scale(0.75);
-  }
-
-  .book-5 {
-    z-index: 2;
-    transform: translate(200px, 400px) scale(0.9);
+  .discover-books {
+    padding-left: 8em; 
+    gap: 5em; 
   }
 }
 
-/* Tablets and below (<= 992px) */
+@media (max-width: 1100px) {
+  .main-content {
+    grid-template-columns: 1fr 1.5fr; 
+    padding-left: 5em; 
+  }
+
+  .welcome-text h1 {
+    font-size: 4em; 
+  }
+
+  .discover-books {
+    flex-direction: column; 
+    padding: 4em; 
+    gap: 3em;
+    text-align: center;
+  }
+
+  .discover-books .discover-description {
+    width: 100%;
+    font-size: 1.4em;
+  }
+
+  /* About Section */
+  .about-app-container {
+    grid-template-columns: 1fr;
+    padding: 4em;
+    text-align: center;
+  }
+
+  .about-app-container .about-description {
+    padding: 0;
+  }
+
+  .about-app-container .about-image {
+    order: -1; /
+  }
+
+  .about-app-container .about-description .action-buttons {
+    justify-content: center; 
+  }
+
+  /* Testimonials and Features */
+  .testimonials-grid-container {
+    grid-template-columns: repeat(2, 1fr); 
+    padding: 3em 4em;
+  }
+
+  .features-grid-container {
+    grid-template-columns: repeat(2, 1fr); 
+    padding: 3em 4em;
+    gap: 3em;
+  }
+}
+
+
 @media (max-width: 992px) {
+  .app-info {
+    width: 80%; 
+    padding: 3em 2em; 
+    margin: 3em auto;
+  }
+
   .main-content {
     grid-template-columns: 1fr 1fr;
     padding: 3em;
@@ -444,6 +486,7 @@
   .welcome-text {
     margin-top: 5em;
     margin-left: 2em;
+    padding: 0; 
   }
 
   .welcome-text h1 {
@@ -458,48 +501,18 @@
     flex-direction: row;
     gap: 1em;
     align-items: center;
+    margin-top: 1em;
   }
 
-  .book-stack-wrapper {
-    position: relative;
-    padding: 2em 0;
-  }
-
-  .book-stack > img {
-    position: absolute;
-    border-radius: 0.2em;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
-      rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-  }
-  .book-1 {
-    z-index: 4;
-    transform: translate(0px, -25px) scale(0.55);
-  }
-
-  .book-2 {
-    z-index: 3;
-    transform: translate(45px, -20px) scale(0.5);
-  }
-
-  .book-3 {
-    z-index: 3;
-    transform: translate(-45px, -20px) scale(0.5);
-  }
-
-  .book-4 {
-    z-index: 1;
-    transform: translate(-100px, -40px) scale(0.4);
-  }
-
-  .book-5 {
-    z-index: 2;
-    transform: translate(115px, 0px) scale(0.5);
-  }
 
   .features-grid-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; 
     padding: 2em;
     gap: 3em;
+  }
+
+  .discover-books {
+    padding: 2em;
   }
 
   .about-app-container {
@@ -513,7 +526,7 @@
   }
 
   .testimonials-grid-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; 
     gap: 2em;
     padding: 2em;
   }
@@ -531,12 +544,14 @@
   }
 }
 
-/* Phones (<= 576px) */
 @media (max-width: 576px) {
+  .app-info {
+    padding: 2em 1em;
+    width: 90%;
+  }
+
   .main-content {
     position: relative;
-    /* grid-template-columns: 1fr; */
-    /* grid-column: 1 / 4; */
     display: block;
     padding: 7em 3em;
     gap: 3em;
@@ -551,7 +566,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-color: rgba(112, 141, 129, 0.8); 
+    background-color: rgba(112, 141, 129, 0.8);
     z-index: 0;
     pointer-events: none;
   }
@@ -582,7 +597,15 @@
   }
 
   .book-stack {
-    display: none;
+    display: none; 
+  }
+
+  .discover-books {
+    padding: 1em;
+  }
+
+  .discover-books .discover-description {
+    font-size: 1.1em;
   }
 
   .feature-item {
@@ -604,6 +627,9 @@
     text-align: left;
   }
 
+  .about-description .action-buttons {
+    justify-content: flex-start; 
+  }
   .about-description .action-buttons a {
     font-size: 1em;
     padding: 1.2em 2em;
@@ -627,7 +653,7 @@
   }
 
   .popular-books-grid {
-    grid-template-columns: repeat(2, 1fr); /* Two columns on mobile */
+    grid-template-columns: repeat(2, 1fr); 
     gap: 2em;
     padding: 2em 1em;
   }

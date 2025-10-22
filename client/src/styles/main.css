@@ -1,2 +1,11 @@
+/* :root {
+  --primary-color: #708d81;
+  --text-light: #f2f2f2;
+  --text-dark: #222;
+  --max-width: 1200px;
+  --section-padding: clamp(2rem, 6vw, 6rem);
+} */
+
+
 @import url('./reset.css');
 @import url('./typography.css');
