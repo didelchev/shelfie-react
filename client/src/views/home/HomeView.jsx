@@ -15,7 +15,6 @@ const HomePage = () => {
 
   const  { isAuthenticated } = useAuth();
   
-  console.log(isAuthenticated)
 
   const [isLoading, setIsLoading] = useState(false);
 
