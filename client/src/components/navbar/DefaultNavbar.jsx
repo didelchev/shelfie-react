@@ -15,7 +15,7 @@ const {isAuthenticated} = useAuth();
     <header className="default-header">
       <nav className="default-navbar">
         <div className='default-logo-container'>
-          <img src={logo} alt="logo" className='default-logo-img' />
+          <NavLink to='/'> <img src={logo} alt="logo" className='default-logo-img' /> </NavLink>
           <NavLink to='/' className="default-logo" href="/">Shelfie</NavLink>
         </div>
         

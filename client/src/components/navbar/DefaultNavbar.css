@@ -82,6 +82,10 @@
     display: block;
   }
 
+  .default-logo{
+    display: none;
+  }
+
   .default-navbar .default-guest,
   .default-navbar .default-user {
     display: none;

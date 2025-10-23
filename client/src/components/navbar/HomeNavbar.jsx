@@ -14,9 +14,7 @@ const HomeNavbar = () => {
           <img src={logo} alt="logo" className='home-logo-img' />
           <a className="home-logo" href="/"></a>
         </div>
-
         <BurgerComponent />
-
         <ul className="home-guest home-nav-links">
           <li><Link to="/catalog" className='home-link'>Browse Books</Link></li>
         </ul>
