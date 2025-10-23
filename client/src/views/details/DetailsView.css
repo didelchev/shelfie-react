@@ -4,7 +4,8 @@
   grid-gap: 1em;
   grid-template-columns: repeat(5, 1fr);
   justify-content: center;
-  padding-top: 10em;
+  margin-top: 7em;
+  /* padding-top: 10em; */
   position: relative;
 }
 
@@ -153,6 +154,7 @@
 }
 
 .average-stars-container{
+  
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -191,6 +193,12 @@
 }
 
 /* REVIEWS */
+.book-reviews-bottom{
+  padding: 0 1em;
+}
+
+
+
 .book-reviews-bottom .add-review form {
   display: flex;
   flex-direction: column;
@@ -263,7 +271,6 @@
 @media (max-width: 1024px) {
   .book-details-grid-container {
     grid-template-columns: repeat(4, 1fr);
-    padding-top: 5em;
   }
 
   .book-details-left {
@@ -288,7 +295,9 @@
   .book-details-grid-container {
     display: flex;
     flex-direction: column;
-    padding: 2em;
+    padding: 0em 2em;
+    margin-top: 5em;
+    gap: 0;
   }
 
   .book-info {
@@ -327,7 +336,11 @@
   }
 
   .book-details-right h1 {
-    font-size: 1.6rem;
+    font-size: 2rem;
+  }
+
+  .book-details-right h3{
+    font-size: 1.5rem;
   }
 
   .book-description p,
