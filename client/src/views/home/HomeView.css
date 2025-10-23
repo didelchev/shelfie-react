@@ -133,10 +133,15 @@
 }
 
 
+/*------------------------------------*\
+  #DISCOVER BOOKS
+\*------------------------------------*/
+
 
 .discover-books{
   display: flex;
   padding-left: 12em;
+  margin-bottom: 4em;
   gap: 8em;
   align-items: center;
 }
@@ -169,7 +174,7 @@
 .about-app-container {
   display: grid;
   grid-template-columns: 1.5fr 2fr;
-  margin-top: 6em;
+  margin-top: 3em;
   padding: 3em 12em;
   gap: 5em;
   background-image: url("/images/blob-haikei(10).svg");
@@ -219,7 +224,7 @@
   #TESTIMONIALS
 \*------------------------------------*/
 
-.testimonials .divider {
+ .divider {
   margin-top: 2em;
   font-size: 2em;
 }
@@ -626,19 +631,20 @@
     color: #f2f2f2;
   }
 
-  .action-buttons > a {
+  /* .action-buttons > a {
     font-size: 1em;
     padding: 0.8em 1.5em;
     background-color: rgb(37, 37, 37);
     border-radius: 0.5em;
-  }
+  } */
 
-  .book-stack {
+  /* .book-stack {
     display: none; 
-  }
+  } */
 
   .discover-books {
     padding: 1em;
+    margin-bottom: 1em;
   }
 
   .discover-books .discover-description {
@@ -675,6 +681,10 @@
   .divider {
     font-size: 1.2em;
     width: 90%;
+  }
+
+  .about-app-container{
+    margin-top: 0;
   }
 
   .about-app-container .about-text-wrapper h1 {

@@ -65,8 +65,7 @@ const HomePage = () => {
           </section>
           <section className="app-info">
             <h3>We'll help you <strong>track your reading</strong> and <strong>choose your next book</strong> based on your favorite topics and genres. </h3>
-          </section>
-
+          </section>  
           <section className="discover-books">
             <div className="discover-description">
               <h3 >Discover books</h3>
@@ -77,13 +76,17 @@ const HomePage = () => {
             <div className="discover-image">
               <img src={screenshot} alt="" />
             </div>
+            
           </section>
+          <div className="divider">
+              <span>Why Shelfie ?</span>
+          </div>
 
           <section
             className="about-app-container"
             data-aos="fade-left"
             data-aos-delay="200"
-          >
+          > 
             <div className="about-image">
               <img
                 src="/images/example5.webp"
@@ -106,7 +109,7 @@ const HomePage = () => {
               </div>
             </div>
           </section>
-
+              
           <section
             className="testimonials"
             data-aos="fade"
