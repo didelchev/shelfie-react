@@ -1,0 +1,78 @@
+.burger-menu-container {
+  position: relative; 
+  z-index: 100; 
+}
+
+/* Wrapper for the library icon—ensures it's clickable and positioned correctly */
+.hamburger-wrapper {
+  position: relative;
+  width: 30px; /* Match the width of the icon */
+  height: 30px; /* Match the height of the icon */
+  cursor: pointer;
+  z-index: 10; 
+  margin-right: 15px; 
+  /* Center the Hamburger component within the wrapper */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* ------------------ NAVIGATION PANEL STYLING ------------------ */
+
+.menu-panel {
+  position: fixed;
+  top: 0;
+  right: 0; 
+  height: 100vh;
+  width: 300px; 
+  max-width: 100vw;
+  background-color: #f2f2f2;
+  padding-top: 60px; 
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  
+  /* Initial state: Slide the panel completely off-screen to the right */
+  transform: translateX(100%); 
+  transition: transform 0.3s ease-in-out;
+}
+
+/* State when the menu is open (class 'visible' is applied): */
+.menu-panel.visible {
+  /* Slide the panel back into view */
+  transform: translateX(0);
+}
+
+.menu-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  /* border: 2px solid lime; */
+}
+
+
+
+.menu-panel li {
+  display: block;
+  padding: 0.5em 1em;
+  border-bottom: 1px solid #ddd;
+  /* border: 2px solid lime; */
+
+}
+
+.menu-panel li a {
+  text-decoration: none;
+  text-align: left;
+  /* color: #333; */
+  font-size: 1em;
+  display: block;
+}
+
+/* ------------------ HIDING ON DESKTOP ------------------ */
+
+/* Use a media query to hide the burger icon and panel on large screens */
+@media (min-width: 992px) {
+  .hamburger-wrapper, 
+  .menu-panel {
+    display: none;
+  }
+}

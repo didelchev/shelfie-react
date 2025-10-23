@@ -685,10 +685,12 @@
 
   .about-app-container{
     margin-top: 0;
+    
   }
 
   .about-app-container .about-text-wrapper h1 {
     font-size: 1.9em;
+    margin-top: -1em;
   }
 
   .about-app-container .about-text-wrapper p {

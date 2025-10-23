@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './HomeNavbar.css'
 import logo from '../../../public/images/logo.png'
+import BurgerComponent from '../burger/BurgerComponent'
 
 const HomeNavbar = () => {
 
@@ -14,9 +15,7 @@ const HomeNavbar = () => {
           <a className="home-logo" href="/"></a>
         </div>
 
-        <div className="home-burger" id="burger">
-          <i className="fas fa-bars"></i>
-        </div>
+        <BurgerComponent />
 
         <ul className="home-guest home-nav-links">
           <li><Link to="/catalog" className='home-link'>Browse Books</Link></li>
