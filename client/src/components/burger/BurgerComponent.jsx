@@ -19,7 +19,8 @@ const BurgerComponent = () => {
           toggled={isOpen} 
           toggle={setOpen} 
           size={24}       
-          color= "#333"    
+          color={isOpen ? '#333' : "#f2f2f2"}    
+          direction="left"
           duration={0.8}  
         />
       </div>
