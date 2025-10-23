@@ -8,6 +8,9 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { ClipLoader } from "react-spinners";
 import screenshot from '../../../public/images/shelfie-catalog-img.png'
+import SpinnerComponent from "../../components/spinner/SpinnerComponent";
+import Navbar from "../../components/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
 
 const HomePage = () => {
 
@@ -46,9 +49,11 @@ const HomePage = () => {
   return (
     <>
       {isLoading ? (
-        <ClipLoader />
+        <SpinnerComponent customCss={{ marginTop: "45vh" }}/>
       ) : (
+
         <>
+        <Navbar />
           <section className="main-content" data-aos="fade-right">
             <div className="welcome-text">
               <h1>Shelfie</h1>
@@ -189,10 +194,6 @@ const HomePage = () => {
               </div>
             </div>
           </section>
-
-
-
-
           <section className="popular-books" data-aos="fade-down">
             <div className="divider">
               <span>Recently Added Books</span>
@@ -203,6 +204,7 @@ const HomePage = () => {
               ))}
             </div>
           </section>
+          <Footer />
         </>
       )}
     </>

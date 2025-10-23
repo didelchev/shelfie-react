@@ -8,7 +8,7 @@ import BurgerComponent from '../burger/BurgerComponent'
 
 const DefaultNavbar = () => {
 
-const {isAuthenticated} = useAuth();
+const { isAuthenticated } = useAuth();
 
 
   return (
