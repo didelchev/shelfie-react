@@ -17,14 +17,12 @@ const BookFilterSidebar = ({
 
     const toggleFilters = () => {
         setShowFilters(!showFilters)
-        console.log(showFilters);
-        
         
     }
      
     return (
       <>
-        <ToggleFiltersButton toggleFilters={toggleFilters}/>
+        <ToggleFiltersButton toggleFilters={toggleFilters} showFilters={showFilters}/>
 
 
         <div className={`left-section-filters ${showFilters ? 'visible' : ''} `}>

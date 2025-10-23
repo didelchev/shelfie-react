@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 
-const ToggleFiltersButton = ({toggleFilters}) => {
-
+const ToggleFiltersButton = ({toggleFilters, showFilters}) => {
+    
+    
     
   return (
     <button
@@ -9,7 +10,7 @@ const ToggleFiltersButton = ({toggleFilters}) => {
       class="toggle-filters-btn"
       onClick={toggleFilters}
     >
-      Show Filters
+       {showFilters ? 'Hide Filters' : 'Show Filters'}
     </button>
   );
 }
