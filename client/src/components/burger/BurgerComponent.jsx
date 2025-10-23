@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import './BurgerComponent.css'
 
-const BurgerComponent = () => {
+const BurgerComponent = ({ color="#f2f2f2" }) => {
   const [isOpen, setOpen] = useState(false);
 
   const { isAuthenticated } = useAuth();
@@ -22,7 +22,7 @@ const BurgerComponent = () => {
           toggled={isOpen} 
           toggle={setOpen} 
           size={24}       
-          color={isOpen ? '#333' : "#f2f2f2"}    
+          color={ isOpen ? "#333" : color }    
           direction="left"
           duration={0.8}  
         />

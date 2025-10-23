@@ -3,6 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom'
 import './DefaultNavbar.css'
 import logo from '../../../public/images/logo-black.png' 
 import { useAuth } from '../../contexts/AuthContext'
+import BurgerComponent from '../burger/BurgerComponent'
 
 
 const DefaultNavbar = () => {
@@ -18,9 +19,7 @@ const {isAuthenticated} = useAuth();
           <NavLink to='/' className="default-logo" href="/">Shelfie</NavLink>
         </div>
         
-        <div className="default-burger" id="burger">
-          <i className="fas fa-bars"></i>
-        </div>
+        <BurgerComponent  color={"#333"}/>
 
         {isAuthenticated ? (
           <ul className="default-user default-nav-links">
