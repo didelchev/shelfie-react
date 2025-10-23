@@ -23,7 +23,8 @@
   max-width: 300px;
   height: 100vh;
   background: #f2f2f2;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
+
   position: sticky;
   border-right: 1px solid lightgrey;
   top: calc(var(--navbar-height) + 2rem);
@@ -178,7 +179,7 @@
   width: 60%;
   background-color: #708D81;
   color: white;
-  margin-top: 1em;
+  margin-top: 2em;
   padding: 0.7em 1em;
   font-size: 1rem;
   border: none;
@@ -237,7 +238,6 @@
 /* Toggle button styling */
 .toggle-filters-btn {
   display: none;
-  width: 86%;
   background-color: #708D81;
   color: white;
   padding: 0.7em 1em;
@@ -281,6 +281,18 @@
   .left-section-filters.visible {
     display: block;
     margin-bottom: 1rem;
+  }
+
+}
+
+
+@media (max-width: 576px) {
+  .book-catalog{
+    padding: 0.2em;  
+  }
+
+  .toggle-filters-btn {
+    display: block;
   }
 
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faStar } from '@fortawesome/free-solid-svg-icons';
 
@@ -6,48 +6,59 @@ import SearchForm from './SearchForm';
 import SortDropdown from './SortDropdown';
 import RatingFilter from './RatingFilter';
 import CategoryFilter from './CategoryFilter'; 
+import ToggleFiltersButton from './ToggleFiltersButton';
 
 const BookFilterSidebar = ({
     query, sortCriteria, categoryCriteria, ratings,
-    onSearchChange, onSortChange, onCategoryChange, onRatingChange, onReset
-}) => {
+    onSearchChange, onSortChange, onCategoryChange, onRatingChange, onReset}) =>
+        
+{
+    const [showFilters, setShowFilters ] = useState(false);
+
+    const toggleFilters = () => {
+        setShowFilters(!showFilters)
+        console.log(showFilters);
+        
+        
+    }
+     
     return (
-        <div className="left-section-filters">
-            
-            {/* Search Form */}
-            <SearchForm 
-                query={query} 
-                onSearchChange={onSearchChange} 
-            />
+      <>
+        <ToggleFiltersButton toggleFilters={toggleFilters}/>
 
-            {/* Sort Dropdown */}
-            <SortDropdown 
-                sortCriteria={sortCriteria} 
-                onSortChange={onSortChange} 
-            />
 
-            {/* Category Filter */}
-            <CategoryFilter 
-                categoryCriteria={categoryCriteria} 
-                onCategoryChange={onCategoryChange} 
-                availableGenres={["Fiction","Fantasy","Biography","Science fiction","Business","Classics","Psychology","Mystery","Nonfiction","Romance"]}
-            />
+        <div className={`left-section-filters ${showFilters ? 'visible' : ''} `}>
+          <SearchForm query={query} onSearchChange={onSearchChange} />
 
-            {/* Rating Filter */}
-            <RatingFilter 
-                ratings={ratings} 
-                onRatingChange={onRatingChange} 
-            />
+          <SortDropdown
+            sortCriteria={sortCriteria}
+            onSortChange={onSortChange}
+          />
 
-            {/* Reset Button */}
-            {/* <button 
-                className="reset-filters" 
-                onClick={onReset}
-            >
-                Clear Filters
-            </button> */}
+          <CategoryFilter
+            categoryCriteria={categoryCriteria}
+            onCategoryChange={onCategoryChange}
+            availableGenres={[
+              "Fiction",
+              "Fantasy",
+              "Biography",
+              "Science fiction",
+              "Business",
+              "Classics",
+              "Psychology",
+              "Mystery",
+              "Nonfiction",
+              "Romance",
+            ]}
+          />
 
+          <RatingFilter ratings={ratings} onRatingChange={onRatingChange} />
+
+          <button className="reset-filters" onClick={onReset}>
+            Clear Filters
+          </button>
         </div>
+      </>
     );
 };
 

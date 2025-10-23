@@ -6,6 +6,7 @@ import { useBookCatalog } from "../../hooks/useBookCatalog";
 import BookFilterSidebar from "../../components/categories-filter/BookFilterSidebar";
 import { ClipLoader } from "react-spinners";
 import SpinnerComponent from "../../components/spinner/SpinnerComponent";
+import ToggleFiltersButton from "../../components/categories-filter/ToggleFiltersButton";
 
 const CatalogView = () => {
   const [books, setBooks] = useState([]);
@@ -59,6 +60,7 @@ const CatalogView = () => {
           onRatingChange={sortByRatingHandler}
           onReset={resetHandler}
         />
+         
         {isLoading ? (
           <SpinnerComponent customCss={{ marginTop: "35vh" }}/>
         ) : (
