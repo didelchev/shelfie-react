@@ -22,12 +22,10 @@ To set up the project, follow these steps:
 7) Start the frontend server: `npm run dev`, the server will run on http://localhost:5000
 
 ## Technologies Used
-* JavaScript
-* Lit-html
+* React
 * Express.js
 * MongoDB Atlas
 * CSS
-* HTML
 
 ## Requirements 
 * Build a full-stack application by making your own backend and your own front-end.
