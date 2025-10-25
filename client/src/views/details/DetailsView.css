@@ -1,11 +1,9 @@
-/* Base styles */
 .book-details-grid-container{
   display: grid;
-  grid-gap: 1em;
+  grid-gap: 1.5em; 
   grid-template-columns: repeat(5, 1fr);
   justify-content: center;
-  margin-top: 7em;
-  /* padding-top: 10em; */
+  margin-top: 8em; 
   position: relative;
 }
 
@@ -16,42 +14,45 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2em;
+  padding: 1.5em; 
 }
 
 .book-details-left img {
-  box-shadow: rgba(0, 0, 0, 0.512) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px; 
   margin: 0 auto;
 }
 
 .book-details-right{
-  border-bottom:  1px solid rgba(128, 128, 128, 0.248);
   grid-column: 3 / span 2; 
+  padding: 1em 0em; 
 }
 
 .book-details-right h1{
-  font-size: 2.5em;
-  font-weight: 500;
-  margin-bottom: 0;
+  font-size: 2.8em; 
+  font-weight: 600;
+  margin-bottom: 0.1em; 
 }
+
+.book-details-right h3{
+  font-size: 1.5em;
+  font-weight: 400;
+  color: #555; 
+  margin-top: 0;
+}
+
 
 .book-average-ratings{
   display: flex;
-  padding: 1em;
+  padding: 1.5em;
   gap: 1em;
   flex-direction: column;
   grid-column: 2 / 3;
 }
 
-.book-average-ratings h1{
-  grid-column: 1;
-}
-
-.book-average-ratings .averege-stars{
-  display: flex;
-  gap: 1em;
-  align-items: baseline;
-  grid-column: 1;
+.book-average-ratings h2{
+  font-size: 1.6em;
+  margin-bottom: 0;
+  font-weight: 500; 
 }
 
 .book-reviews-bottom {
@@ -59,15 +60,17 @@
 }
 
 .book-description p {
-  font-size: 1.2em;
-  margin-bottom: 0;
-  padding-bottom: 1em;
+  font-size: 1.15em; 
+  line-height: 1.7; 
+  margin-bottom: 1em;
+  padding-bottom: 0;
 }
 
 .book-description p:last-of-type {
-  font-size: 1.2em;
+  font-size: 1.15em;
   font-style: italic;
   font-weight: 300;
+  color: #777; 
 }
 
 .book-description .label {
@@ -76,6 +79,7 @@
 
 .book-description a {
   text-decoration: underline;
+  color: #708D81; 
 }
 
 .book-info{
@@ -84,12 +88,18 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 1em;
+  padding: 1.5em; 
   gap: 1em;
+  border-left: 1px solid rgba(128, 128, 128, 0.1); 
+}
+
+.book-info p {
+  margin: 0.4em 0; /* Tighter line spacing for info */
 }
 
 .book-info .label {
   font-weight: 600; 
+  color: #333; /* Darker label for contrast */
 }
 
 .book-info-left{
@@ -103,7 +113,7 @@
 /* ADD BOOK TO SHELF */
 .dropdown {
   display: inline-block;
-  margin-top: 1em;
+  margin-top: 1.5em; /* Increased margin top */
   width: 100%;
   position: relative;
 }
@@ -111,21 +121,27 @@
 .dropdown button {
   display: block;
   margin: 0 auto;
-  width: 70%;
+  width: 80%; /* Slightly wider button */
   background-color: #708D81;
   color: white;
   font-weight: 500;
-  padding: 1em;
+  padding: 0.8em 1em; /* Slightly less vertical padding */
   border: none;
   cursor: pointer;
   border-radius: 2em;
+  transition: background-color 0.2s;
 }
 
 .dropdown .options {
   display: none;
   width: 100%;
   text-align: center;
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Softer border */
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 8px; /* Added shadow */
+  background-color: white;
+  border-radius: 0.5em; /* Rounded corners for the container */
+  overflow: hidden; /* Ensure options respect container radius */
+  margin-top: 0.5em;
 }
 
 .dropdown:hover  .options {
@@ -139,51 +155,54 @@
   width: 100%;
   background-color: white;
   color: black;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Separator between options */
+}
+
+.dropdown .dropdown-options:last-child {
+  border-bottom: none;
 }
 
 .dropdown .dropdown-options:hover {
-  background-color: rgba(15, 1, 1, 0.363);
+  background-color: #f0f0f0; 
+  color: #333;
 }
 
 
 /* -------------------AVERAGE---------------------- */
-.book-average-ratings h2{
-  font-size: 1.6em;
-  margin-bottom: 0;
-  font-weight: 400;
-}
-
 .average-stars-container{
-  
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.3em;
+  gap: 0.5em; 
 }
 
 .average-stars.filled {
-  color: rgb(202, 109, 27);
+  color: #f5b041; 
 }
 .average-stars {
-  font-size: 1.8rem;
+  font-size: 2rem; 
   color: lightgray;
 }
 
 .average-header {
-  font-size: 2.5rem;
+  font-size: 2.8rem; 
+  font-weight: 600;
   margin: 0;
+  color: #333;
 }
 
 .star-wrapper {
   display: flex;
-  gap: 5px;
+  align-items: center; 
+  gap: 8px;
 }
 
 .reviews-count {
   margin-top: 0.2em;
   padding: 0;
   align-self: center;
-  font-size: 0.9rem;
+  font-size: 1em; 
+  color: #777;
 }
 
 .label {
@@ -194,80 +213,103 @@
 
 /* REVIEWS */
 .book-reviews-bottom{
-  padding: 0 1em;
+  padding: 0 1.5em; /* Consistent padding */
+  margin-top: 1.5em;
 }
 
-
+.book-reviews-bottom h3 {
+  font-size: 1.8em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid #708D81; /* Accent under title */
+  display: inline-block;
+  padding-bottom: 0.2em;
+}
 
 .book-reviews-bottom .add-review form {
   display: flex;
   flex-direction: column;
+  gap: 0.5em; /* Space between input and button */
 }
 
-.book-reviews-bottom .add-review input[type="text"] {
-  border: none;
+.book-reviews-bottom .add-review .review-input { /* Changed type selector to class for clarity */
+  border: 1px solid rgba(128, 128, 128, 0.2); 
   border-radius: 0.5em;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: none; /* Removed initial shadow */
   font-size: 1em;
-  padding: 2em;
+  padding: 1em 1.5em; /* Reduced vertical padding, kept horizontal */
   width: 100%;
+  height: 80px; /* Set a default height for the textarea feel */
+  resize: none; /* Prevent manual resize (if it was a textarea) */
   outline: none;
   transition: border 0.3s, box-shadow 0.3s;
 }
 
-.book-reviews-bottom .add-review input[type="text"]:focus{
-  box-shadow: 0 0 0 2px #708D81;
+.book-reviews-bottom .add-review .review-input:focus{
+  border-color: #708D81;
+  box-shadow: 0 0 0 1px #708D81; /* Subtle focus ring */
 }
 
 .book-reviews-bottom .add-review button {
-  flex-basis: 40%;
+  flex-basis: auto; /* Removed flex-basis */
   align-self: flex-end;
   border: none;
   background-color: #708D81;
   color: white;
-  padding: 1em 2em;
+  padding: 0.8em 2em; /* Adjusted padding */
   border-radius: 2em;
-  font-size: 1.1em;
-  font-weight: 400;
+  font-size: 1em; /* Adjusted font size */
+  font-weight: 500;
   cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 .book-reviews-bottom .add-review button:hover{
-  background-color: #708d81c7;
+  background-color: #557166; /* Darker, more definite hover */
   cursor: pointer;
 }
 
-.book-reviews-bottom .review {
+.book-reviews-bottom .review-template { /* Added class to the review wrapper */
   display: flex;
   margin-top: 1em;
-  padding: 2em;
+  padding: 1.5em; /* Reduced padding for cleaner look */
   align-items:flex-start;
   justify-content: flex-start;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem; /* Increased separation between reviews */
   background-color: white;
   border-radius: 0.5em;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px; /* Softer shadow */
 }
 
-.book-reviews-bottom .review p {
-  padding: 1px;
+.book-reviews-bottom .review-content p { /* Targeting review text */
+  padding: 0;
+  margin: 0;
+}
+
+.book-reviews-bottom .user-info{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 0;
 }
 
 .book-reviews-bottom .user-email{
   padding: 1px;
   font-size: 1.2em;
-  font-weight: 400;
+  font-weight: 500; /* Increased weight */
+  color: #333;
+  margin-bottom: 0.3em;
 }
 
 .book-reviews-bottom .review img {
   border-radius: 50%;
-  height: 50px;
-  margin-right: 20px;
+  height: 45px; /* Slightly smaller avatar */
+  margin-right: 15px; /* Reduced margin */
   object-fit: cover;
-  width: 50px;
+  width: 45px;
+  flex-shrink: 0; /* Prevent avatar from shrinking */
 }
 
-/* Responsive */
+/* Responsive (Minor tweaks for consistency) */
 @media (max-width: 1024px) {
   .book-details-grid-container {
     grid-template-columns: repeat(4, 1fr);
@@ -284,6 +326,8 @@
   .book-info {
     grid-column: 1 / -1;
     flex-direction: column;
+    border-left: none; /* Remove vertical divider on smaller screens */
+    border-top: 1px solid rgba(128, 128, 128, 0.1);
   }
 
   .book-average-ratings {
@@ -296,8 +340,8 @@
     display: flex;
     flex-direction: column;
     padding: 0em 2em;
-    margin-top: 5em;
-    gap: 0;
+    margin-top: 4em; /* Reduced top margin for mobile */
+    gap: 1em;
   }
 
   .book-info {
@@ -314,11 +358,11 @@
 
   .book-details-right h1,
   .average-header {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   .average-stars {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
   }
 }
 
@@ -327,20 +371,16 @@
     width: 100%;
   }
 
-  .star {
-    font-size: 1.6em;
-  }
-
   .average-header {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
 
   .book-details-right h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
   .book-details-right h3{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   .book-description p,
