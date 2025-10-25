@@ -15,7 +15,7 @@ const BookDetailsView = () => {
 
   const book = location.state.book;
 
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, userProfileImage } = useAuth();
 
   const { bookId } = useParams();
 
@@ -28,14 +28,21 @@ const BookDetailsView = () => {
     average: ""
   })
 
+
   const addReviewHandler = async (e) => {
     e.preventDefault();
-    const reviewObject = { review };
+    const userReview = {
+      review,
+      userProfileImage: userProfileImage
+    };
 
     try {
-      const newReview = await addBookReview(bookId, reviewObject);
+      const response = await addBookReview(bookId, userReview);
+
+      const newReview = response.review;
+    
       
-      setUserReviews([...userReviews, newReview.review]);
+      setUserReviews([...userReviews, newReview]);
 
       setReview("");
     } catch (err) {

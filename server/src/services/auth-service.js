@@ -40,6 +40,7 @@ export const login = async (email, password) => {
     return {
       _id: user.id,
       email: user.email,
+      image: user.profileImageUrl,
       accessToken: token,
       isAuthenticated: true
     }     

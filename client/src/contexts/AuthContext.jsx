@@ -5,6 +5,7 @@ const AuthContext = createContext({
     userId: null,
     email: null,
     username: null,
+    userProfileImage: null,
     isAuthenticated: false,
     accessToken: null,
     logout: () => null
@@ -21,6 +22,7 @@ export const AuthContextProvider = ( { children }) => {
     const contextData = {
             userId: userData?._id,
             email: userData?.email,
+            userProfileImage: userData?.image,
             accessToken: userData?.accessToken,
             isAuthenticated: !!userData?.isAuthenticated,
             setUserData,

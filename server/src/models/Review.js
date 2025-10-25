@@ -10,6 +10,10 @@ const reviewSchema = new Schema({
         required: true
 
     },
+        userProfileImage: {
+            type: String,
+            default: ''
+        },
     review: {
         type: String,
         required: true

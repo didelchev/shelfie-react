@@ -2,11 +2,12 @@ import React from 'react'
 import './ReviewTemplate.css'
 
 const ReviewTemplate = ({review}) => {
+  
   return (
      <div className='review-template'> 
         <div className="image">
           
-          <img src="../../images/profile-blank.webp" alt="Profile picture" />
+          <img src={review?.userProfileImage} alt="Profile picture" />
         </div>
         <div className='user-info'> 
             <p className="user-email">{review?.userEmail}</p>

@@ -9,7 +9,7 @@ export const getOneBook = (bookId) => api.get(`${API_URL}/catalog/${bookId}`)
 
 export const getLatestBooks = () => api.get(`${API_URL}/catalog`)
 
-export const addBookReview = (bookId, review) => api.post(`${API_URL}/reviews/${bookId}`, review) 
+export const addBookReview = (bookId, userReview) => api.post(`${API_URL}/reviews/${bookId}`, userReview) 
 
 export const addBookToShelf = (bookId, shelf) => api.post(`${API_URL}/catalog/${bookId}`, shelf)
 
