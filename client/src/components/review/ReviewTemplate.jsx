@@ -1,14 +1,18 @@
 import React from 'react'
+import './ReviewTemplate.css'
 
 const ReviewTemplate = ({review}) => {
   return (
-     <div className='review'>
+     <div className='review-template'> 
         <div className="image">
+          
           <img src="../../images/profile-blank.webp" alt="Profile picture" />
         </div>
-        <div className='user-data'>
-            <p className="user-email">{review.userEmail}</p>
-            <p>{review.review}</p>
+        <div className='user-info'> 
+            <p className="user-email">{review?.userEmail}</p>
+            <div className='review-content'> 
+              <p>{review?.review}</p>
+            </div>
         </div>
     </div>
   )

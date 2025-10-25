@@ -6,11 +6,13 @@ const reviewSchema = new Schema({
         ref: 'Books'
     },
     userEmail: {
-        type: String
+        type: String,
+        required: true
 
     },
     review: {
         type: String,
+        required: true
 
     }
 })

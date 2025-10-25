@@ -14,12 +14,13 @@ const BookDetailsView = () => {
   const location = useLocation();
 
   const book = location.state.book;
+
   const { isAuthenticated } = useAuth();
 
   const { bookId } = useParams();
 
-  // Changed state to an empty string to allow for a textarea look in CSS
-  const [review, setReview] = useState(""); 
+  const [review, setReview] = useState(''); 
+
   const [userReviews, setUserReviews] = useState([]);
 
   const [bookRatings, setBookRatings] = useState({
@@ -33,8 +34,7 @@ const BookDetailsView = () => {
 
     try {
       const newReview = await addBookReview(bookId, reviewObject);
-      // Ensure the new review object is correctly structured before adding it
-      // Assuming newReview.review is the full object (including user info)
+      
       setUserReviews([...userReviews, newReview.review]);
 
       setReview("");
@@ -51,15 +51,19 @@ const BookDetailsView = () => {
     const getReviews = async () => {
       try {
         const reviews = await getBookReviews(bookId);
-
+        
         setUserReviews(reviews);
+
+
       } catch (err) {
         console.log(err);
       }
     };
     getReviews();
-  }, [bookId]);
+  }, [bookId, userReviews]);
   
+  
+
   useEffect(() => {
     (async () => {
 
@@ -75,9 +79,9 @@ const BookDetailsView = () => {
     })()
   },[bookId])
 
-  // Helper to format average rating for display
+
   const displayAverage = bookRatings.average ? parseFloat(bookRatings.average).toFixed(2) : 'N/A';
-  // Assuming the number of reviews is available in a property like book.reviewsCount
+
   const reviewsCountText = book.reviewsCount ? `(${book.reviewsCount} ratings)` : '(0 ratings)';
 
   return (
@@ -136,12 +140,10 @@ const BookDetailsView = () => {
       <div className="book-average-ratings">
         <h2>Community Ratings</h2>
         <div className="average-stars-container">
-          {/* Display the average number prominently */}
           <h1 className="average-header">{displayAverage}</h1> 
          
           <div className="star-wrapper">
             <CommunityStarsRating bookRatings={bookRatings.average} />
-            {/* Using text from a placeholder property for the count */}
             <p className="reviews-count">{reviewsCountText}</p> 
           </div>
         </div>

@@ -1,0 +1,55 @@
+/* REVIEWS */
+.book-reviews-bottom{
+  grid-column: 2/-2;
+  padding: 0 1.5em; 
+  margin-top: 1.5em;
+}
+
+.book-reviews-bottom h3 {
+  font-size: 1.8em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid #708D81; 
+  display: inline-block;
+  padding-bottom: 0.2em;
+}
+
+.book-reviews-bottom .review-template { 
+  display: flex;
+  margin-top: 1em;
+  padding: 1.5em; 
+  align-items:flex-start;
+  justify-content: flex-start;
+  margin-bottom: 1.5rem; 
+  background-color: white;
+  border-radius: 0.5em;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px; 
+}
+
+.book-reviews-bottom .review-template img {
+  border-radius: 50%;
+  height: 45px; 
+  margin-right: 15px;
+  object-fit: cover;
+  width: 45px;
+  flex-shrink: 0; 
+}
+
+.book-reviews-bottom .user-info{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 0;
+}
+
+.book-reviews-bottom .user-email{
+  padding: 1px;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 0.3em;
+}
+
+.book-reviews-bottom .review-content p { 
+  padding: 0;
+  margin: 0;
+}

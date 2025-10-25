@@ -1,3 +1,4 @@
+/* Base styles */
 .book-details-grid-container{
   display: grid;
   grid-gap: 1.5em; 
@@ -29,7 +30,7 @@
 
 .book-details-right h1{
   font-size: 2.8em; 
-  font-weight: 600;
+  font-weight: 600; 
   margin-bottom: 0.1em; 
 }
 
@@ -40,10 +41,10 @@
   margin-top: 0;
 }
 
-
+/* Average Ratings Section */
 .book-average-ratings{
   display: flex;
-  padding: 1.5em;
+  padding: 1.5em; 
   gap: 1em;
   flex-direction: column;
   grid-column: 2 / 3;
@@ -88,18 +89,18 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 1.5em; 
+  padding: 1.5em;
   gap: 1em;
   border-left: 1px solid rgba(128, 128, 128, 0.1); 
 }
 
 .book-info p {
-  margin: 0.4em 0; /* Tighter line spacing for info */
+  margin: 0.4em 0; 
 }
 
 .book-info .label {
   font-weight: 600; 
-  color: #333; /* Darker label for contrast */
+  color: #333; 
 }
 
 .book-info-left{
@@ -113,7 +114,7 @@
 /* ADD BOOK TO SHELF */
 .dropdown {
   display: inline-block;
-  margin-top: 1.5em; /* Increased margin top */
+  margin-top: 1.5em; 
   width: 100%;
   position: relative;
 }
@@ -121,11 +122,11 @@
 .dropdown button {
   display: block;
   margin: 0 auto;
-  width: 80%; /* Slightly wider button */
+  width: 80%; 
   background-color: #708D81;
   color: white;
   font-weight: 500;
-  padding: 0.8em 1em; /* Slightly less vertical padding */
+  padding: 0.8em 1em; 
   border: none;
   cursor: pointer;
   border-radius: 2em;
@@ -136,11 +137,11 @@
   display: none;
   width: 100%;
   text-align: center;
-  border: 1px solid rgba(0, 0, 0, 0.1); /* Softer border */
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 8px; /* Added shadow */
+  border: 1px solid rgba(0, 0, 0, 0.1); 
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 8px; 
   background-color: white;
-  border-radius: 0.5em; /* Rounded corners for the container */
-  overflow: hidden; /* Ensure options respect container radius */
+  border-radius: 0.5em; 
+  overflow: hidden; 
   margin-top: 0.5em;
 }
 
@@ -155,7 +156,7 @@
   width: 100%;
   background-color: white;
   color: black;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Separator between options */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05); 
 }
 
 .dropdown .dropdown-options:last-child {
@@ -211,16 +212,16 @@
   color: #333;
 }
 
-/* REVIEWS */
+/* REVIEWS - ADD REVIEW FORM STYLES ONLY */
 .book-reviews-bottom{
-  padding: 0 1.5em; /* Consistent padding */
-  margin-top: 1.5em;
+  padding: 0 1.5em; 
+  margin: 1.5em 0em;
 }
 
 .book-reviews-bottom h3 {
   font-size: 1.8em;
   margin-bottom: 1em;
-  border-bottom: 2px solid #708D81; /* Accent under title */
+  border-bottom: 2px solid #708D81; 
   display: inline-block;
   padding-bottom: 0.2em;
 }
@@ -228,88 +229,48 @@
 .book-reviews-bottom .add-review form {
   display: flex;
   flex-direction: column;
-  gap: 0.5em; /* Space between input and button */
+  gap: 0.5em; 
 }
 
-.book-reviews-bottom .add-review .review-input { /* Changed type selector to class for clarity */
+.book-reviews-bottom .add-review .review-input { 
   border: 1px solid rgba(128, 128, 128, 0.2); 
   border-radius: 0.5em;
-  box-shadow: none; /* Removed initial shadow */
+  box-shadow: none; 
   font-size: 1em;
-  padding: 1em 1.5em; /* Reduced vertical padding, kept horizontal */
+  padding: 1em 1.5em; 
   width: 100%;
-  height: 80px; /* Set a default height for the textarea feel */
-  resize: none; /* Prevent manual resize (if it was a textarea) */
+  height: 80px; 
+  resize: none; 
   outline: none;
   transition: border 0.3s, box-shadow 0.3s;
 }
 
 .book-reviews-bottom .add-review .review-input:focus{
   border-color: #708D81;
-  box-shadow: 0 0 0 1px #708D81; /* Subtle focus ring */
+  box-shadow: 0 0 0 1px #708D81; 
 }
 
 .book-reviews-bottom .add-review button {
-  flex-basis: auto; /* Removed flex-basis */
   align-self: flex-end;
+  margin-top: 0.5em;
   border: none;
   background-color: #708D81;
   color: white;
-  padding: 0.8em 2em; /* Adjusted padding */
+  padding: 0.8em 2em; 
   border-radius: 2em;
-  font-size: 1em; /* Adjusted font size */
+  font-size: 1em; 
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .book-reviews-bottom .add-review button:hover{
-  background-color: #557166; /* Darker, more definite hover */
+  background-color: #557166;
   cursor: pointer;
 }
 
-.book-reviews-bottom .review-template { /* Added class to the review wrapper */
-  display: flex;
-  margin-top: 1em;
-  padding: 1.5em; /* Reduced padding for cleaner look */
-  align-items:flex-start;
-  justify-content: flex-start;
-  margin-bottom: 1.5rem; /* Increased separation between reviews */
-  background-color: white;
-  border-radius: 0.5em;
-  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px; /* Softer shadow */
-}
 
-.book-reviews-bottom .review-content p { /* Targeting review text */
-  padding: 0;
-  margin: 0;
-}
-
-.book-reviews-bottom .user-info{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-top: 0;
-}
-
-.book-reviews-bottom .user-email{
-  padding: 1px;
-  font-size: 1.2em;
-  font-weight: 500; /* Increased weight */
-  color: #333;
-  margin-bottom: 0.3em;
-}
-
-.book-reviews-bottom .review img {
-  border-radius: 50%;
-  height: 45px; /* Slightly smaller avatar */
-  margin-right: 15px; /* Reduced margin */
-  object-fit: cover;
-  width: 45px;
-  flex-shrink: 0; /* Prevent avatar from shrinking */
-}
-
-/* Responsive (Minor tweaks for consistency) */
+/* Responsive (Layout and size adjustments) */
 @media (max-width: 1024px) {
   .book-details-grid-container {
     grid-template-columns: repeat(4, 1fr);
@@ -326,7 +287,7 @@
   .book-info {
     grid-column: 1 / -1;
     flex-direction: column;
-    border-left: none; /* Remove vertical divider on smaller screens */
+    border-left: none; 
     border-top: 1px solid rgba(128, 128, 128, 0.1);
   }
 
@@ -340,7 +301,7 @@
     display: flex;
     flex-direction: column;
     padding: 0em 2em;
-    margin-top: 4em; /* Reduced top margin for mobile */
+    margin-top: 4em; 
     gap: 1em;
   }
 

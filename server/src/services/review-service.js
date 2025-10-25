@@ -9,6 +9,11 @@ export const getBookReviews = async (bookId) => {
 }
 
 export const addReview = (bookId, userEmail, review) => {
+
+   if(!bookId || !userEmail || !review){
+      throw new Error('Failed to add a review')
+
+   }
   
    return Review.create({bookId, userEmail, review})
 }

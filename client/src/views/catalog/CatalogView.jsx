@@ -7,6 +7,7 @@ import BookFilterSidebar from "../../components/categories-filter/BookFilterSide
 import { ClipLoader } from "react-spinners";
 import SpinnerComponent from "../../components/spinner/SpinnerComponent";
 import ToggleFiltersButton from "../../components/categories-filter/ToggleFiltersButton";
+import DefaultNavbar from "../../components/navbar/DefaultNavbar";
 
 const CatalogView = () => {
   const [books, setBooks] = useState([]);
@@ -48,6 +49,7 @@ const CatalogView = () => {
 
   return (
     <>
+    <DefaultNavbar />
       <main className="book-catalog" data-aos="fade-down">
         <BookFilterSidebar
           query={query}
