@@ -25,7 +25,8 @@ const BookDetailsView = () => {
 
   const [bookRatings, setBookRatings] = useState({
     userRating: "",
-    average: ""
+    averageRating: "",
+    ratingCount: ""
   })
 
 
@@ -78,9 +79,9 @@ const BookDetailsView = () => {
 
         const userBookRating =  await getUserBookRating(bookId)
         
-        console.log(userBookRating)
         setBookRatings(userBookRating)
 
+        
       } catch (error) {
           console.log('Error while fetching book ratings' + error)
         }
@@ -88,9 +89,9 @@ const BookDetailsView = () => {
   },[bookId])
 
 
-  const displayAverage = bookRatings.average ? parseFloat(bookRatings.average).toFixed(2) : 'N/A';
+  const displayAverage = bookRatings.averageRating ? parseFloat(bookRatings.averageRating).toFixed(2) : 'N/A';
 
-  const reviewsCountText = book.reviewsCount ? `(${book.reviewsCount} ratings)` : '(0 ratings)';
+  const reviewsCountText = bookRatings.ratingCount ? `(${bookRatings.ratingCount} ratings)` : '(0 ratings)';
 
   return (
   <>
@@ -151,7 +152,7 @@ const BookDetailsView = () => {
           <h1 className="average-header">{displayAverage}</h1> 
          
           <div className="star-wrapper">
-            <CommunityStarsRating bookRatings={bookRatings.average} />
+            <CommunityStarsRating bookRatings={bookRatings.averageRating} />
             <p className="reviews-count">{reviewsCountText}</p> 
           </div>
         </div>
