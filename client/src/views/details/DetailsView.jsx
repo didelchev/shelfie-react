@@ -78,6 +78,7 @@ const BookDetailsView = () => {
 
         const userBookRating =  await getUserBookRating(bookId)
         
+        console.log(userBookRating)
         setBookRatings(userBookRating)
 
       } catch (error) {

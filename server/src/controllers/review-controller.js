@@ -31,7 +31,7 @@ reviewController.post("/:bookId",  (req,res) => {
 
 reviewController.get("/:bookId/ratings", (req, res) => {
     const bookId = req.params.bookId
-    const userId = req.user._id
+    const userId = req.user?._id ?? null
 
     getRating(bookId, userId)
         .then(response => res.json({userRating: response.userRating, average: response.averageRating}))
