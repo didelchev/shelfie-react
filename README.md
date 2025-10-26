@@ -14,7 +14,7 @@ The app provides a clean, responsive interface for browsing books, managing your
 
 
 ##  Deployment
-**Live Demo:** [https://shelfie-book-app.netlify.app/](https://shelfie-book-app.netlify.app/)
+**Live Demo:** [https://shelfie-book-app.netlify.app/](https://shelfie-v2.netlify.app/)
 
 **Demo Credentials:**
 - **Email:** johndoe@gmail.com  
