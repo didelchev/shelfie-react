@@ -94,7 +94,8 @@ const ProfileView = () => {
                 books: prevShelves[shelfName].books.filter(book => book._id !== bookId)
             }
         }))
-        toast.success('Book has been removed successfully from shelf !')      
+
+          toast.success('Book has been removed successfully from shelf !')      
         } catch (error) {
           toast.error('Failed to remove book !')
           console.error("Failed to remove book:", error);
@@ -132,9 +133,9 @@ const ProfileView = () => {
   ): null}
 
   <div className="profile-stats">
-    <div><strong>{userShelves.read.length}</strong><span>Read</span></div>
-    <div><strong>{userShelves.currReading.length}</strong><span>Currently Reading</span></div>
-    <div><strong>{userShelves.toRead.length}</strong><span>To-Read</span></div>
+    <div><strong>{userShelves.read.books.length}</strong><span>Read</span></div>
+    <div><strong>{userShelves.currReading.books.length}</strong><span>Currently Reading</span></div>
+    <div><strong>{userShelves.toRead.books.length}</strong><span>To-Read</span></div>
   </div>
   <div className="book-shelf">
     <h3>Read</h3>

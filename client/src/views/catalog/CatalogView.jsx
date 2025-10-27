@@ -68,7 +68,10 @@ const CatalogView = () => {
         ) : (
           <div className="book-catalog-grid">
             {displayBooks.map((book) => {
-              return <BookTemplate book={book} key={book._id} />;
+              return <BookTemplate 
+                book={book} 
+                key={book._id} 
+                />;
             })}
           </div>
         )}

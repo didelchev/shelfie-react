@@ -8,8 +8,8 @@ const BookTemplate = ({ book }) => {
 ``
   const ratingValue = book.ratings.average
 
-  return (
-    <div className='book'>
+  return (                
+    <div className='book' data-aos="fade-up"  >
       <Link to={`/catalog/${book._id}`} state= {{book: book} } className='link'>
           <img src={book.image} alt={book.title}/>
           <h5>{book.title}</h5>
