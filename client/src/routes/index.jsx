@@ -1,14 +1,18 @@
+import React from "react";
 import { createBrowserRouter } from "react-router-dom";
+import { Suspense } from "react";
 import RootLayout from "../layouts/RootLayout";
 import HomeView from "../views/home/HomeView.jsx";
 import LoginView from "../views/login/LoginView";
 import RegisterView from "../views/register/RegisterView";
 import Logout from "../components/logout/Logout.jsx";
 import PageNotFound from "../components/404/404Page.jsx";
-import CatalogView from "../views/catalog/CatalogView.jsx";
 import BookDetailsView from "../views/details/DetailsView.jsx";
 import ProfileView from "../views/profile/ProfileView.jsx";
 import ProtectedRoute from "../components/guard/ProtectedRoute.jsx";
+import CatalogViewSkeleton from "../views/catalog/CatalogViewSkeleton.jsx";
+
+const CatalogView = React.lazy(() => import("../views/catalog/CatalogView.jsx"));
 
 export const router = createBrowserRouter([
   {
@@ -16,7 +20,14 @@ export const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       { index: true, element: <HomeView /> },
-      { path: "/catalog", element: <CatalogView /> },
+      {
+        path: "/catalog",
+        element: (
+          <Suspense fallback={<CatalogViewSkeleton />}>
+            <CatalogView />
+          </Suspense>
+        ),
+      },
       { path: "/catalog/:bookId", element: <BookDetailsView /> },
       {
         path: "/profile",
@@ -29,7 +40,7 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: (
-          <ProtectedRoute >
+          <ProtectedRoute>
             <LoginView />
           </ProtectedRoute>
         ),
@@ -37,7 +48,7 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: (
-          <ProtectedRoute >
+          <ProtectedRoute>
             <RegisterView />
           </ProtectedRoute>
         ),
