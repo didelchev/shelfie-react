@@ -127,10 +127,9 @@ const Profilev2 = () => {
             </div>
         </section>
         <section className='profile-right-section'>
-            <div className="left-column">
-                <div className="book-item">
+            <div className="book-item">
                     <div className="image-container">
-                        <img src="/images/example1.webp" alt="" />
+                        <img src="/images/book1.webp" alt="" />
                     </div>
                     <div className="book-desc">
                         <h3>Book Title</h3>
@@ -138,15 +137,18 @@ const Profilev2 = () => {
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur facere vero hic laborum quae commodi nisi. Tempore exercitationem officia veritatis?</p>
                     </div>
                 </div>
-                <div className="book-item"></div>
-                <div className="book-item"></div>
-            </div>
-            <div className="right-column">
-                <div className="book-item"></div>
-                <div className="book-item"></div>
-                <div className="book-item"></div>
-            </div>
+            <div className="book-item">
+                    <div className="image-container">
+                        <img src="/images/book1.webp" alt="" />
+                    </div>
+                    <div className="book-desc">
+                        <h3>Book Title</h3>
+                        <h5>Author</h5>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur facere vero hic laborum quae commodi nisi. Tempore exercitationem officia veritatis?</p>
+                    </div>
+                </div>
         </section>
+        
 
     </section>
     </>
