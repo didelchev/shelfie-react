@@ -120,6 +120,9 @@ const Profilev2 = () => {
                 <h3>John Doe</h3>
             </div>
             <div className="book-shelves">
+                <p>Read</p>
+                <p>Currently Reading</p>
+                <p>To Read</p>
 
             </div>
         </section>
@@ -127,10 +130,11 @@ const Profilev2 = () => {
             <div className="left-column">
                 <div className="book-item">
                     <div className="image-container">
-                        <img src="" alt="" />
+                        <img src="/images/example1.webp" alt="" />
                     </div>
                     <div className="book-desc">
-                        <h4>Book Title</h4>
+                        <h3>Book Title</h3>
+                        <h5>Author</h5>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur facere vero hic laborum quae commodi nisi. Tempore exercitationem officia veritatis?</p>
                     </div>
                 </div>
