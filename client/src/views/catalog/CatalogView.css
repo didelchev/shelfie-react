@@ -199,7 +199,7 @@
 }
 
 /* BOOK CARD TEMPLATE */
-.book-catalog-grid .book {
+/* .book-catalog-grid .book {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -233,7 +233,7 @@
 
 .book-catalog-grid .book .checked {
   color: orange;
-}
+} */
 
 /* Toggle button styling */
 .toggle-filters-btn {

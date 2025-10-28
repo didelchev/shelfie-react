@@ -174,9 +174,9 @@ const Profilev2 = () => {
             <div><strong>{userShelves.toRead.books?.length}</strong><span>Read</span></div>
           </div>
           <div className="recommended-books">
-            {/* {userShelves.toRead.books.map((book => {
+            {userShelves.toRead.books.map((book => {
              return <BookTemplate book={book} key={book._id}/>
-            }))} */}
+            }))}
           </div>
         </section>
       </section>

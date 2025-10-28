@@ -1,0 +1,35 @@
+.book {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: 0.2em;
+  padding: 1em;
+  text-align: left;
+  transition: transform var(--transition);
+}
+
+ .book:hover {
+  transform: translateY(-4px);
+}
+
+ .book img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.book h5 {
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+ .book p {
+  font-size: 0.9rem;
+  padding-bottom: 0.5em ;
+  color: #555;
+}
+
+ .book .checked {
+  color: orange;
+}
