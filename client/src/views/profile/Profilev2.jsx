@@ -8,6 +8,7 @@ import ProfileBookTemplate from '../../components/profile-book/ProfileBookTempla
 
 import "./Profilev2.css"
 import DefaultNavbar from '../../components/navbar/DefaultNavbar';
+import ProfileBookTemplatev2 from '../../components/profile-book/ProfileBookTemplatev2';
 
 const Profilev2 = () => {
 
@@ -26,6 +27,10 @@ const Profilev2 = () => {
     })
 
     const [isEditing, setIsEditing] = useState(false);
+
+
+    const [ activeShelf, setActiveShelf] = useState('all');
+
 
     useEffect(() => {
         (async () => {
@@ -50,12 +55,10 @@ const Profilev2 = () => {
 
     },[])
 
-    const renderBook = (bookArray, shelfName) => {
-      
-       return  bookArray?.map(book => 
-       <ProfileBookTemplate book={book} key={book._id} onRemove={( ) => removeBookHandler(book._id, shelfName)}/>
-      )
-        }
+    
+    const handleShelfFilter = (shelfName) => {
+      setActiveShelf(shelfName)
+    }
 
     const showEditFormHandler = () => {
       setIsEditing(prevState => !prevState)
@@ -107,7 +110,45 @@ const Profilev2 = () => {
       }
 
 
+    const getBooksToDisplay = () => {
+        const readBooks = userShelves.read?.books || [];
+        const currReadingBooks = userShelves.currReading?.books || [];
+        const toReadBooks = userShelves.toRead?.books || [];
     
+    switch (activeShelf) {
+        case 'read':
+            return readBooks;
+        case 'currReading':
+            return currReadingBooks;
+        case 'toRead':
+            return toReadBooks;
+        case 'all':
+        default:
+            return [
+                ...readBooks,
+                ...currReadingBooks,
+                ...toReadBooks,
+            ];
+    }
+};
+
+    const booksToRender = getBooksToDisplay();
+
+
+    const renderBookCards = (bookArray) => {
+      return bookArray?.map(book => {
+        const shelfName = book.status
+
+
+        return (
+          <ProfileBookTemplatev2 
+            book={book}
+            key={book._id}
+            // onRemove={removeBookHandler(book._id, book.status)}
+          />
+        )
+      })
+    }
 
     
   return (
@@ -119,36 +160,22 @@ const Profilev2 = () => {
                 <img src="/images/profile-picture.webp" alt="avatar" className='profile-image'/>
                 <h3>John Doe</h3>
             </div>
+            <div className="profile-stats">
+              <span>Read: 4</span>
+              <span>Reading: 2</span>
+              <span>To-Read: 5</span>
+            </div>
             <div className="book-shelves">
-                <p>Read</p>
-                <p>Currently Reading</p>
-                <p>To Read</p>
-
+              <h5>My Books</h5>
+              <button onClick={() => handleShelfFilter('all')}>All Books</button>
+              <button onClick={() => handleShelfFilter('read')} >Read</button>
+              <button onClick={() => handleShelfFilter('currReading')} >Currently Reading</button>
+              <button onClick={() => handleShelfFilter('toRead')} >To Read</button>
             </div>
         </section>
         <section className='profile-right-section'>
-            <div className="book-item">
-                    <div className="image-container">
-                        <img src="/images/book1.webp" alt="" />
-                    </div>
-                    <div className="book-desc">
-                        <h3>Book Title</h3>
-                        <h5>Author</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur facere vero hic laborum quae commodi nisi. Tempore exercitationem officia veritatis?</p>
-                    </div>
-                </div>
-            <div className="book-item">
-                    <div className="image-container">
-                        <img src="/images/book1.webp" alt="" />
-                    </div>
-                    <div className="book-desc">
-                        <h3>Book Title</h3>
-                        <h5>Author</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur facere vero hic laborum quae commodi nisi. Tempore exercitationem officia veritatis?</p>
-                    </div>
-                </div>
+          {renderBookCards(booksToRender)}
         </section>
-        
 
     </section>
     </>
