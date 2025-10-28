@@ -8,7 +8,7 @@
     display: flex;
     background-color: var(--bg);
     width: 100vw;
-    margin-top: 70px;
+    margin-top: 65px;
     gap: 2em;
     position: relative;
 }
@@ -49,7 +49,7 @@
 }
 
 .profile-left-section .book-shelves{
-    border: 2px dashed;
+    /* border: 2px dashed; */
     display: flex;
     flex-direction: column;
     gap: 1em;
@@ -71,6 +71,18 @@
     margin-top: 1em;
 }
 
+.profile-left-section .book-shelves > button{
+    cursor: pointer;
+    border: none;    
+    background-color: inherit;
+}
+
+
+.profile-left-section .book-shelves > button:hover{
+    cursor: pointer;
+    color: #708D81;
+
+}
 
 
 
@@ -118,12 +130,6 @@
 }
 
 
-
-.book-item > * { /* remove later */
-    border: 1px solid salmon;
-    border-radius: 1em;
-}
-
 .book-item .image-container{
     flex: 0 0 80px;
     aspect-ratio: 3/4;
@@ -146,6 +152,32 @@
     line-clamp: 3 ;
     -webkit-line-clamp: 6; /* Limits the text to 6 lines before adding ellipsis */
     -webkit-box-orient: vertical;
+    position: relative;
+}
+
+.book-item .book-desc h3 {
+    margin-bottom: 0;
+    color: #708D81;
+
+}
+
+
+.remove-btn {
+  position: absolute;
+  top: 0;
+  right: 6px;
+  background-color: rgba(220, 0, 0, 0.85);
+  color: white;
+  border: none;
+  border-radius: 25%;
+  padding: 4px 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.remove-btn:hover {
+  background-color: rgba(180, 0, 0, 1);
 }
 
 
