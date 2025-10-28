@@ -12,6 +12,7 @@ import ProfileBookTemplate from "../../components/profile-book/ProfileBookTempla
 import "./Profilev2.css";
 import DefaultNavbar from "../../components/navbar/DefaultNavbar";
 import ProfileBookTemplatev2 from "../../components/profile-book/ProfileBookTemplatev2";
+import BookTemplate from "../../components/book/BookTemplate";
 
 const Profilev2 = () => {
   const [userCredentials, setUserCredentials] = useState({});
@@ -21,11 +22,17 @@ const Profilev2 = () => {
     profileImageUrl: "",
   });
 
-  const [userShelves, setUserShelves] = useState({
-    read: [],
-    currReading: [],
-    toRead: [],
-  });
+  // const [userShelves, setUserShelves] = useState({
+  //   read: [],
+  //   currReading: [],
+  //   toRead: [],
+  // });
+  const [userShelves, setUserShelves ] = useState({
+    // MATCH the structure you use in the useEffect update
+    read: { books: [], status: 'read'}, 
+    currReading: {books :[], status: 'currReading'},
+    toRead: {books: [], status: 'to-read'}
+});
 
   const [isEditing, setIsEditing] = useState(false);
 
@@ -146,11 +153,6 @@ const Profilev2 = () => {
             />
             <h3>John Doe</h3>
           </div>
-          <div className="profile-stats">
-            <span>Read: 4</span>
-            <span>Reading: 2</span>
-            <span>To-Read: 5</span>
-          </div>
           <div className="book-shelves">
             <h5>My Books</h5>
             <button onClick={() => filterHandler("all")}>All Books</button>
@@ -163,6 +165,19 @@ const Profilev2 = () => {
         </section>
         <section className="profile-right-section">
           {renderBookCards(booksToRender)}
+        </section>
+        <section className="profile-end-section">
+          <h4>Reading Stats</h4>
+          <div className="profile-stats">
+            <div><strong>{userShelves.read.books?.length}</strong><span>Read</span></div>
+            <div><strong>{userShelves.currReading.books?.length}</strong><span>Read</span></div>
+            <div><strong>{userShelves.toRead.books?.length}</strong><span>Read</span></div>
+          </div>
+          <div className="recommended-books">
+            {/* {userShelves.toRead.books.map((book => {
+             return <BookTemplate book={book} key={book._id}/>
+            }))} */}
+          </div>
         </section>
       </section>
     </>

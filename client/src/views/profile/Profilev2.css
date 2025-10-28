@@ -20,7 +20,7 @@
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     height: 100vh;
     padding: 1em;
-    flex: 0 0 250px;
+    flex: 0 0 300px;
     position: sticky;
     top: var(--navbar-height);
 }
@@ -102,7 +102,7 @@
     /* border: 3px solid blue; */
     gap: 2em;
     flex-grow: 1;
-    padding: 2em 2em 0 0;
+    padding-top: 3em;
 }
 
 
@@ -155,7 +155,7 @@
     position: relative;
 }
 
-.book-item .book-desc h3 {
+.book-item .book-desc h4 {
     margin-bottom: 0;
     color: #708D81;
 
@@ -178,6 +178,40 @@
 
 .remove-btn:hover {
   background-color: rgba(180, 0, 0, 1);
+}
+
+
+
+/*------------------------------------*\
+  #RIGHT SECTION
+\*------------------------------------*/
+
+
+.profile-end-section{
+    box-shadow: rgba(0, 0, 0, 0.15) -1.95px -1.95px 2.6px;
+    height: 100vh;
+    padding: 1em;
+    flex: 0 0 300px;
+    position: sticky;
+    top: var(--navbar-height);
+}
+
+.profile-end-section h4{ 
+    margin-top: 1em;
+    text-align: center;
+    color: #708D81;
+
+}
+
+.profile-end-section .profile-stats{
+    margin-top: 2em;
+    display: flex;
+}
+
+
+.profile-end-section .recommended-books {
+    border: 2px solid lime;
+    height: 750px;
 }
 
 
