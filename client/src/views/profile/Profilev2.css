@@ -248,4 +248,8 @@
         /* display: none; */
         /* background-color: red; */
     }
+
+    .profile-end-section{
+        display: none;
+    }
 }
