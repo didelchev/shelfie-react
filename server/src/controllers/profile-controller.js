@@ -2,6 +2,7 @@ import { Router } from "express";
 import { getUserById, updateUserById } from "../services/user-service.js";
 import { isAuth } from "../middlewares/auth-middleware.js";
 import User from "../models/User.js";
+import getRecommendations from "../middlewares/recommendation-middleware.js";
 
 const profileController = Router()
 
@@ -16,6 +17,11 @@ try {
     res.status(400).json({message: "User not found !"})
 }
 
+})
+
+
+profileController.get('/:userId', getRecommendations, (req, res) => {
+    res.json(req.recommendations)
 })
 
 

@@ -173,10 +173,11 @@ const Profilev2 = () => {
             <div><strong>{userShelves.currReading.books?.length}</strong><span>Read</span></div>
             <div><strong>{userShelves.toRead.books?.length}</strong><span>Read</span></div>
           </div>
-          <div className="recommended-books">
-            {userShelves.toRead.books.map((book => {
-             return <BookTemplate book={book} key={book._id}/>
-            }))}
+          <div className="recommended-section">
+            <h4>Recommended Books</h4>
+            <div className="recommended-books">
+              
+            </div>
           </div>
         </section>
       </section>
