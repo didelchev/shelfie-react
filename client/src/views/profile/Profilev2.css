@@ -158,7 +158,14 @@
 .book-item .book-desc h4 {
     margin-bottom: 0;
     color: #708D81;
+    font-weight: 500;
 
+}
+
+.book-item .book-desc p{
+    color: grey;
+    font-size: 0.9em;
+    font-style: italic;
 }
 
 
