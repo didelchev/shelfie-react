@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  border-radius: 0.2em;
   padding: 1em;
   text-align: left;
   transition: transform var(--transition);
@@ -16,9 +15,37 @@
 
 
  .rec-book img {
-  width: 60%;
+  width: 70%;
   height: auto;
   margin: 0 auto;
-  border-radius: 8px;
+  border-top-right-radius: 1em;
+  border-bottom-right-radius: 1em;
   object-fit: cover;
+}
+
+.book-info{
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+}
+
+.rec-book .book-info h5,
+.rec-book .book-info h6{
+    margin-bottom: 0;
+}
+
+.rec-book .book-info h5{
+    font-size: 1.3em;
+}
+
+.rec-book .book-info h6{
+    font-size: 1.1em;
+    font-style: italic;
+}
+
+.book-info .checked {
+  color: orange;
+
 }

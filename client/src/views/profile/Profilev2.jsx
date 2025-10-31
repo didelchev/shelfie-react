@@ -154,7 +154,8 @@ const Profilev2 = () => {
               alt="avatar"
               className="profile-image"
             />
-            <h3>John Doe</h3>
+            <h3>{userCredentials.username}</h3>
+            <h5>{userCredentials.email}</h5>
             
           </div>
           <div className="book-shelves">
