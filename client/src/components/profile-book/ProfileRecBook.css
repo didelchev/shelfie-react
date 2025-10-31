@@ -1,0 +1,24 @@
+.rec-book {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: 0.2em;
+  padding: 1em;
+  text-align: left;
+  transition: transform var(--transition);
+  text-align: center;
+}
+
+ .rec-book:hover {
+  transform: translateY(-4px);
+}
+
+
+
+ .rec-book img {
+  width: 60%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 8px;
+  object-fit: cover;
+}

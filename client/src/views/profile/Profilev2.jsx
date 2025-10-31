@@ -2,17 +2,17 @@ import React, { useEffect, useState } from "react";
 import {
   fetchBooksForShelf,
   getOneBook,
+  getRecommendetBooks,
   removeBookFromShelf,
 } from "../../api/books-api";
 import { editUserCredentials, getUserCredentials } from "../../api/user-api";
 import { toast } from "react-toastify";
 
-import ProfileBookTemplate from "../../components/profile-book/ProfileBookTemplate";
 
 import "./Profilev2.css";
 import DefaultNavbar from "../../components/navbar/DefaultNavbar";
 import ProfileBookTemplatev2 from "../../components/profile-book/ProfileBookTemplatev2";
-import BookTemplate from "../../components/book/BookTemplate";
+import ProfileRecBook from "../../components/profile-book/ProfileRecBook";
 
 const Profilev2 = () => {
   const [userCredentials, setUserCredentials] = useState({});
@@ -22,13 +22,9 @@ const Profilev2 = () => {
     profileImageUrl: "",
   });
 
-  // const [userShelves, setUserShelves] = useState({
-  //   read: [],
-  //   currReading: [],
-  //   toRead: [],
-  // });
+  const [recommendedBooks, setRecommendetBooks] = useState([]);
+
   const [userShelves, setUserShelves ] = useState({
-    // MATCH the structure you use in the useEffect update
     read: { books: [], status: 'read'}, 
     currReading: {books :[], status: 'currReading'},
     toRead: {books: [], status: 'to-read'}
@@ -44,6 +40,10 @@ const Profilev2 = () => {
 
       setUserCredentials(user);
 
+      const recBooks = await getRecommendetBooks(user._id);
+
+      setRecommendetBooks(recBooks)
+
       const [readBooks, currReadingBooks, toReadBooks] = await Promise.all([
         fetchBooksForShelf(user.read),
         fetchBooksForShelf(user.currReading),
@@ -56,7 +56,10 @@ const Profilev2 = () => {
         toRead: { books: toReadBooks, status: "to-read" },
       });
     })();
-  }, []);
+  }, [recommendedBooks]);
+
+
+
 
   const filterHandler = (shelfName) => {
     setActiveShelf(shelfName);
@@ -152,6 +155,7 @@ const Profilev2 = () => {
               className="profile-image"
             />
             <h3>John Doe</h3>
+            
           </div>
           <div className="book-shelves">
             <h5>My Books</h5>
@@ -176,7 +180,9 @@ const Profilev2 = () => {
           <div className="recommended-section">
             <h4>Recommended Books</h4>
             <div className="recommended-books">
-              
+                {recommendedBooks.map(book => {
+                  return <ProfileRecBook book={book} key={book._id}/> 
+                })}
             </div>
           </div>
         </section>
