@@ -19,6 +19,8 @@ export const getBookReviews = (bookId) => api.get(`${API_URL}/reviews/${bookId}`
 
 export const addBookRating = (bookId, rating) => api.post(`${API_URL}/reviews/${bookId}/ratings`, rating)
 
+export const getRecommendetBooks = (userId) => api.get(`${API_URL}/profile/${userId}`)
+
 export const fetchBooksForShelf = async (bookShelf) => {
     
     const stringIds = bookShelf.map(item => item);
