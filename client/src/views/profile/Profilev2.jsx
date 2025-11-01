@@ -160,12 +160,31 @@ const Profilev2 = () => {
           </div>
           <div className="book-shelves">
             <h5>My Books</h5>
-            <button onClick={() => filterHandler("all")}>All Books</button>
-            <button onClick={() => filterHandler("read")}>Read</button>
-            <button onClick={() => filterHandler("currReading")}>
+            <button 
+              onClick={() => filterHandler("all")}
+              className={activeShelf === "all" ? "active-shelf" : ""}
+            >
+              All Books
+            </button>
+        
+            <button 
+              onClick={() => filterHandler("read")}
+              className={activeShelf === "read" ? "active-shelf" : ""}
+            >
+              Read
+            </button>
+            <button 
+              onClick={() => filterHandler("currReading")}
+              className={activeShelf === "currReading" ? "active-shelf" : ""}
+            >
               Currently Reading
             </button>
-            <button onClick={() => filterHandler("toRead")}>To Read</button>
+            <button 
+              onClick={() => filterHandler("toRead")}
+              className={activeShelf === "toRead" ? "active-shelf" : ""}
+            >
+              To Read
+            </button>
           </div>
         </section>
         <section className="profile-right-section">

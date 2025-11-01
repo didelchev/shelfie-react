@@ -88,9 +88,9 @@
 }
 
 .profile-left-section .book-shelves > button.active-shelf {
-    font-weight: bold;
+    /* color: #708D81; */
     color: white;
-    background-color: #708D81;
+    background-color: rgba(112, 141, 129, 0.7);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
@@ -98,10 +98,6 @@
     color: white; 
     background-color: #5d746a; 
 }
-
-
-
-
 
 
 
