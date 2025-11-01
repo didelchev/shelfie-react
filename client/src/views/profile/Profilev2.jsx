@@ -18,8 +18,8 @@ const Profilev2 = () => {
   const [userCredentials, setUserCredentials] = useState({});
 
   const [editUser, setEditUser] = useState({
-    username: "",
-    profileImageUrl: "",
+    username: userCredentials.username,
+    profileImageUrl: userCredentials.profileImageUrl,
   });
 
   const [recommendedBooks, setRecommendetBooks] = useState([]);
@@ -83,19 +83,25 @@ const Profilev2 = () => {
     try {
       const { username, profileImageUrl } = editUser;
 
+
       const newUserData = await editUserCredentials({
         username,
         profileImageUrl,
       });
 
       setUserCredentials(newUserData.user);
+
+      setIsEditing(false)
+
+      toast.success("User has been updated successfully.");
+
     } catch (error) {
-      console.log(error);
+      toast.error("Failed to update user !");
+
     }
   };
 
   const removeBookHandler = async ( bookId, shelfName) => {
-    console.log(shelfName)
     try {
       await removeBookFromShelf(bookId, shelfName);
 
@@ -161,30 +167,55 @@ const Profilev2 = () => {
             />
             <h3>{userCredentials.username}</h3>
             <h5>{userCredentials.email}</h5>
-            
+          <button className="edit-btn" onClick={showEditFormHandler}>Edit Profile</button>
+
           </div>
+          {isEditing ? (
+            <form className="edit-form" onSubmit={submitHandler}>
+              <input
+                name="username"
+                type="text"
+                value={editUser.username}
+                placeholder="Enter new username"
+                onChange={editHandler}
+              />
+              <input
+                name="profileImageUrl"
+                type="text"
+                value={editUser.profileImageUrl}
+                placeholder="Image URL (optional)"
+                onChange={editHandler}
+              />
+              <div className="edit-actions">
+                <button type="submit">Save</button>
+                <button type="button" onClick={showEditFormHandler}>
+                  Cancel
+                </button>
+              </div>
+            </form>
+          ) : null}
           <div className="book-shelves">
             <h5>My Books</h5>
-            <button 
+            <button
               onClick={() => filterHandler("all")}
               className={activeShelf === "all" ? "active-shelf" : ""}
             >
               All Books
             </button>
-        
-            <button 
+
+            <button
               onClick={() => filterHandler("read")}
               className={activeShelf === "read" ? "active-shelf" : ""}
             >
               Read
             </button>
-            <button 
+            <button
               onClick={() => filterHandler("currReading")}
               className={activeShelf === "currReading" ? "active-shelf" : ""}
             >
               Currently Reading
             </button>
-            <button 
+            <button
               onClick={() => filterHandler("toRead")}
               className={activeShelf === "toRead" ? "active-shelf" : ""}
             >
@@ -214,9 +245,9 @@ const Profilev2 = () => {
           <div className="recommended-section">
             <h4>Recommended Books</h4>
             <div className="recommended-books">
-                {recommendedBooks.map(book => {
-                  return <ProfileRecBook book={book} key={book._id}/> 
-                })}
+              {recommendedBooks.map((book) => {
+                return <ProfileRecBook book={book} key={book._id} />;
+              })}
             </div>
           </div>
         </section>

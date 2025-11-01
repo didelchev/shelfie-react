@@ -86,6 +86,86 @@
 }
 
 /*------------------------------------*\
+  #EDIT FORM 
+\*------------------------------------*/
+.profile-info .edit-btn {
+    margin-top: 1em; 
+    padding: 0.5em 1.2em;
+    border: 1px solid #708D81; 
+    border-radius: 20px;
+    background-color: transparent;
+    color: #708D81;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    font-size: 0.85em;
+}
+
+.profile-info .edit-btn:hover {
+    background-color: #708D81;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 1.5em 0;
+    margin-top: 1.5em; 
+}
+
+.edit-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.2s;
+}
+
+.edit-form input:focus {
+    border-color: #708D81;
+    outline: none;
+}
+
+.edit-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.edit-actions button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    flex-grow: 1; 
+}
+
+.edit-actions button[type="submit"] {
+    background-color: #708D81; 
+    color: white;
+    transition: background-color 0.2s;
+}
+
+.edit-actions button[type="submit"]:hover {
+    background-color: #5d7469;
+}
+
+.edit-actions button[type="button"] {
+    background-color: #eee;
+    color: #333;
+    transition: background-color 0.2s;
+}
+
+.edit-actions button[type="button"]:hover {
+    background-color: #ddd;
+}
+
+
+
+/*------------------------------------*\
   #RIGHT SECTION
 \*------------------------------------*/
 
