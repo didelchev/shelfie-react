@@ -40,7 +40,6 @@
   width: 30em;
 }
 
-/* --- 4. General Styles (Same as before for visual consistency) --- */
 .modal-header {
     display: flex;
     justify-content: space-between;
@@ -65,7 +64,7 @@
 }
 
 .option-group {
-    padding: 0 10px;
+    padding: 0 1px;
 }
 
 .popover-option-button {

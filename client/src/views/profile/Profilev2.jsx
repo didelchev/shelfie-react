@@ -155,7 +155,7 @@ const Profilev2 = () => {
         <section className="profile-left-section">
           <div className="profile-info">
             <img
-              src="/images/profile-picture.webp"
+              src={userCredentials.profileImageUrl}
               alt="avatar"
               className="profile-image"
             />
