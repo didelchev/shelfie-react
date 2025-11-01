@@ -6,7 +6,7 @@ const ProfileRecBook = ({ book }) => {
   const ratingValue = book.ratings.average;
 
   return (
-    <Link to={`/catalog/${book._id}`} className="rec-book">
+    <Link to={`/catalog/${book._id}`} state={{book:book}}className="rec-book">
       <div className="image-container">
         <img src={book.image} alt={book.title} />
       </div>
