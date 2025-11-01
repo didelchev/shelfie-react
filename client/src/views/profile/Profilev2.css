@@ -237,7 +237,7 @@
 \*------------------------------------*/
 
 
-/* === 2. MOBILE LAYOUT (max-width: 768px) === */
+/* MOBILE LAYOUT*/
 @media (max-width: 768px) {
     .profile-page-wrapper {
         display: flex;
@@ -246,18 +246,16 @@
         padding: 0 1.5em;
     }
 
-    /* LEFT SECTION (Profile Info and Shelves) */
     .profile-left-section {
         flex: 0 0 100%;
         position: static; 
         border-right: none;
-        padding: 1em 0;
-        margin-bottom: 1em;
+        padding: 0em;
         box-shadow: none;
     }
     
     .profile-left-section .profile-info {
-        flex-direction: column; /* Layout profile image and text horizontally */
+        flex-direction: column; 
         align-items: center;
         gap: 1em;
     }
@@ -277,7 +275,7 @@
         justify-content: center;
         gap: 0;
         padding: 1em 0em;
-        margin: 0.5em 1em;
+        margin: 0em 1em;
         font-size: 1.1em;
         border-bottom: 1px solid rgba(128, 128, 128, 0.1); 
     }
@@ -290,7 +288,6 @@
         flex: 0 0 100%;
         padding-top: 0;
         padding-right: 0;
-        gap: 1em;
         margin-bottom: 3em; 
     }
     
