@@ -260,12 +260,11 @@
         flex-direction: column; /* Layout profile image and text horizontally */
         align-items: center;
         gap: 1em;
-        margin-bottom: 1em;
     }
 
     .profile-left-section .profile-info .profile-image {
-        width: 70px; /* Smaller image on mobile */
-        height: 70px;
+        width: 100px; 
+        height: 100px;
     }
 
     .profile-left-section .profile-info h3, 
@@ -274,14 +273,13 @@
     }
 
     .profile-left-section .book-shelves {
-        /* Switch shelf buttons to a horizontal scrollable list */
         flex-direction: row;
         justify-content: center;
         gap: 0;
-        padding: 1em 0;
-        margin: 0 1em;
-        /* border-bottom: 1px solid rgba(128, 128, 128, 0.1);  */
-        border: 1px solid lime;
+        padding: 1em 0em;
+        margin: 0.5em 1em;
+        font-size: 1.1em;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.1); 
     }
 
     .profile-left-section .book-shelves > h5 {
