@@ -33,12 +33,6 @@
   border-radius: 50%;
   width: 120px;
 }
-/* 
-.profile-left-section .profile-stats{
-    display: flex;
-    margin-top: 2em;
-    flex-direction: row-reverse;
-} */
 
 .profile-left-section .book-shelves {
   /* border: 2px dashed; */
@@ -153,9 +147,9 @@
 
 .book-item .book-desc h4 {
   margin: 0 0 0.2em 0;
-  color: #333;
+  color: #708d81;;
   font-weight: 600;
-  font-size: 1.1em;
+  font-size: 1.2em;
 }
 
 .book-item .book-desc p {
@@ -238,33 +232,86 @@
   gap: 1.5em;
 }
 
+/*------------------------------------*\
+  #RESPONSIVENESS
+\*------------------------------------*/
+
+
+/* === 2. MOBILE LAYOUT (max-width: 768px) === */
 @media (max-width: 768px) {
-  .book-item {
-    flex: 1 1 100%;
-  }
-}
+    .profile-page-wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 0 1.5em;
+    }
 
-@media (max-width: 992px) {
-  .book-item {
-    flex: 0 1 calc(50% - 1em);
-  }
-}
+    /* LEFT SECTION (Profile Info and Shelves) */
+    .profile-left-section {
+        flex: 0 0 100%;
+        position: static; 
+        border-right: none;
+        padding: 1em 0;
+        margin-bottom: 1em;
+        box-shadow: none;
+    }
+    
+    .profile-left-section .profile-info {
+        flex-direction: column; /* Layout profile image and text horizontally */
+        align-items: center;
+        gap: 1em;
+        margin-bottom: 1em;
+    }
 
-@media (max-width: 600px) {
-  .profile-left-section {
-    display: none;
-  }
+    .profile-left-section .profile-info .profile-image {
+        width: 70px; /* Smaller image on mobile */
+        height: 70px;
+    }
 
-  .book-item {
-    flex: 0 1 100%;
-  }
+    .profile-left-section .profile-info h3, 
+    .profile-left-section .profile-info h5 {
+        text-align: left;
+    }
 
-  .book-item .book-desc {
-    /* display: none; */
-    /* background-color: red; */
-  }
+    .profile-left-section .book-shelves {
+        /* Switch shelf buttons to a horizontal scrollable list */
+        flex-direction: row;
+        justify-content: center;
+        gap: 0;
+        padding: 1em 0;
+        margin: 0 1em;
+        /* border-bottom: 1px solid rgba(128, 128, 128, 0.1);  */
+        border: 1px solid lime;
+    }
 
-  .profile-end-section {
-    display: none;
-  }
+    .profile-left-section .book-shelves > h5 {
+        display: none; 
+    }
+
+    .profile-right-section {
+        flex: 0 0 100%;
+        padding-top: 0;
+        padding-right: 0;
+        gap: 1em;
+        margin-bottom: 3em; 
+    }
+    
+    .book-item {
+        flex: 0 0 100%;
+        height: auto;
+        min-height: 140px;
+        padding: 0.5em;
+    }
+
+    .book-item .image-container {
+        flex: 0 0 70px; 
+    }
+
+    .book-item .book-desc h4 {
+        font-size: 1em; 
+    }
+
+    .profile-end-section{
+        display: none;
+    }
 }
