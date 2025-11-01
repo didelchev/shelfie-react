@@ -8,9 +8,11 @@ const ProfileBookTemplatev2 = ({ book, onRemove }) => {
         <img src={book.image} alt={book.title} />
       </div>
       <div className="book-desc">
+        <div className="text-content">
         <h4>{book.title}</h4>
-        <h5>{book.author}</h5>
+        <p>{book.author}</p>
         <p>{book.description}</p>
+      </div>
         <button className="remove-btn" onClick={onRemove}>✖</button>
 
       </div>
