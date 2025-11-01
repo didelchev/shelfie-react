@@ -13,7 +13,7 @@ import DefaultNavbar from "../../components/navbar/DefaultNavbar";
 const BookDetailsView = () => {
   const location = useLocation();
 
-  const book = location.state.book;
+  const book = location.state?.book;
 
   const { isAuthenticated, userProfileImage } = useAuth();
 

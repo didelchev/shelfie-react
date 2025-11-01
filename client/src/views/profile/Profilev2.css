@@ -35,7 +35,6 @@
 }
 
 .profile-left-section .book-shelves {
-  /* border: 2px dashed; */
   display: flex;
   flex-direction: column;
   margin-top: 4em;
@@ -74,7 +73,6 @@
 }
 
 .profile-left-section .book-shelves > button.active-shelf {
-  /* color: #708D81; */
   color: white;
   background-color: rgba(112, 141, 129, 0.7);
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,

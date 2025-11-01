@@ -25,9 +25,9 @@ const Profilev2 = () => {
   const [recommendedBooks, setRecommendetBooks] = useState([]);
 
   const [userShelves, setUserShelves ] = useState({
-    read: { books: [], status: 'read'}, 
-    currReading: {books :[], status: 'currReading'},
-    toRead: {books: [], status: 'to-read'}
+    read: { books: []}, 
+    currReading: {books :[]},
+    toRead: {books: [] }
 });
 
   const [isEditing, setIsEditing] = useState(false);
@@ -50,13 +50,17 @@ const Profilev2 = () => {
         fetchBooksForShelf(user.toRead),
       ]);
 
+      const readBooksWithStatus = readBooks.map(book => ({ ...book, status: 'read' }));
+      const currReadingBooksWithStatus = currReadingBooks.map(book => ({ ...book, status: 'currReading' }));
+      const toReadBooksWithStatus = toReadBooks.map(book => ({ ...book, status: 'toRead' }));
+
       setUserShelves({
-        read: { books: readBooks, status: "read" },
-        currReading: { books: currReadingBooks, status: "currReading" },
-        toRead: { books: toReadBooks, status: "to-read" },
+        read: { books: readBooksWithStatus },
+        currReading: { books: currReadingBooksWithStatus},
+        toRead: { books: toReadBooksWithStatus },
       });
     })();
-  }, [recommendedBooks]);
+  }, []);
 
 
 
@@ -90,7 +94,8 @@ const Profilev2 = () => {
     }
   };
 
-  const removeBookHandler = async (bookId, shelfName) => {
+  const removeBookHandler = async ( bookId, shelfName) => {
+    console.log(shelfName)
     try {
       await removeBookFromShelf(bookId, shelfName);
 
@@ -131,13 +136,13 @@ const Profilev2 = () => {
 
   const booksToRender = getBooksToDisplay();
 
-  const renderBookCards = (bookArray) => {
+  const renderBookCards = (bookArray) => {    
     return bookArray?.map((book) => {
       return (
         <ProfileBookTemplatev2
           book={book}
           key={book._id}
-          // onRemove={removeBookHandler(book._id, book.status)}
+          onRemove={() => removeBookHandler(book._id, book.status)}
         />
       );
     });
