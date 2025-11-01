@@ -13,8 +13,10 @@ const ProfileRecBook = ({ book }) => {
       <div className="book-info">
         <h5>{book.title}</h5>
         <h6>{book.author}</h6>
-        <span className="fa fa-star checked"></span>
-        <span>{ratingValue.toFixed(2)}</span>
+        <div className="book-rating">
+          <span className="fa fa-star checked"></span> 
+          <span>{ratingValue.toFixed(2)}</span>
+        </div>
       </div>
     </Link>
   );

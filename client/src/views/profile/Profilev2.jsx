@@ -174,9 +174,18 @@ const Profilev2 = () => {
         <section className="profile-end-section">
           <h4>Reading Stats</h4>
           <div className="profile-stats">
-            <div><strong>{userShelves.read.books?.length}</strong><span>Read</span></div>
-            <div><strong>{userShelves.currReading.books?.length}</strong><span>Read</span></div>
-            <div><strong>{userShelves.toRead.books?.length}</strong><span>Read</span></div>
+            <div className="stat-item">
+              <strong>{userShelves.read.books?.length}</strong>
+              <span>Read</span>
+            </div>
+            <div className="stat-item">
+              <strong>{userShelves.currReading.books?.length}</strong>
+              <span>Currently Reading</span>
+            </div>
+            <div className="stat-item">
+              <strong>{userShelves.toRead.books?.length}</strong>
+              <span>To Read</span>
+            </div>
           </div>
           <div className="recommended-section">
             <h4>Recommended Books</h4>
