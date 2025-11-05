@@ -10,7 +10,7 @@ const ProfileRecBook = ({ book }) => {
       <div className="image-container">
         <img src={book.image} alt={book.title} />
       </div>
-      <div className="book-info">
+      <div className="book-info-rec">
         <h5>{book.title}</h5>
         <h6>{book.author}</h6>
         <div className="book-rating">
