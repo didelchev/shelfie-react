@@ -1,63 +1,65 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faWandMagicSparkles, faBookOpenReader, faStar } from "@fortawesome/free-solid-svg-icons";
-import "./HomeView.css"
+import {
+  faSearch,
+  faWandMagicSparkles,
+  faBookOpenReader,
+  faStar,
+} from "@fortawesome/free-solid-svg-icons";
+import "./HomeView.css";
 import { getAllBooks } from "../../api/books-api";
-import BookTemplate from '../../components/book/BookTemplate'
+import BookTemplate from "../../components/book/BookTemplate";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { ClipLoader } from "react-spinners";
-import screenshot from '../../../public/images/shelfie-catalog-img.png'
 import SpinnerComponent from "../../components/spinner/SpinnerComponent";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 
+import screenshot from "../../../public/images/shelfie-catalog-img.png";
+import mobileScreenshot from "../../../public/images/mobile-screenshot.png";
+
 const HomePage = () => {
+  const [latestBooks, setLatestBooks] = useState([]);
 
-  const [latestBooks, setLatestBooks ] = useState([])
-
-  const  { isAuthenticated } = useAuth();
-  
+  const { isAuthenticated } = useAuth();
 
   const [isLoading, setIsLoading] = useState(false);
 
-  
-
   useEffect(() => {
-
-    setIsLoading(true)
+    setIsLoading(true);
 
     const getBooks = async () => {
       try {
         const books = await getAllBooks();
 
-        setLatestBooks(books.slice(-5))
+        setLatestBooks(books.slice(-5));
 
-        setIsLoading(false)
-
+        setIsLoading(false);
       } catch (error) {
-        
-        console.log(error)
+        console.log(error);
 
-        setIsLoading(false)
+        setIsLoading(false);
       }
-    }
+    };
     getBooks();
-  },[])
-
+  }, []);
 
   return (
     <>
       {isLoading ? (
-        <SpinnerComponent customCss={{ marginTop: "45vh" }}/>
+        <SpinnerComponent customCss={{ marginTop: "45vh" }} />
       ) : (
-
         <>
-        <Navbar />
+          <Navbar />
           <section className="main-content" data-aos="fade-right">
             <div className="welcome-text">
               <h1>Shelfie</h1>
-              <h2>Discover Your Next Great Read,<br/>Organize Your Library </h2>
+              <h2>
+                Discover Your Next Great Read,
+                <br />
+                Organize Your Library{" "}
+              </h2>
               {!isAuthenticated && (
                 <div className="action-buttons">
                   <Link to={"/register"}>Sign Up</Link>
@@ -65,33 +67,55 @@ const HomePage = () => {
                 </div>
               )}
             </div>
-            <div className="welcome-image">
-            </div>
+            <div className="welcome-image"></div>
           </section>
           <section className="app-info">
-            <h3>We'll help you <strong>track your reading</strong> and <strong>choose your next book</strong> based on your favorite topics and genres. </h3>
-          </section>  
+            <h3>
+              We'll help you <strong>track your reading</strong> and{" "}
+              <strong>choose your next book</strong> based on your favorite
+              topics and genres.{" "}
+            </h3>
+          </section>
           <section className="discover-books">
             <div className="discover-description">
-              <h3 >Discover books</h3>
-              <p>Use our powerful search and filtering tools to effortlessly explore thousands of titles.<br></br>
-              <br></br>
-               Filter by <strong>genre, rating, or author</strong> to quickly connect with the stories and knowledge that perfectly match your current mood and literary tastes.</p>
+              <h3>Discover books</h3>
+              <p>
+                Use our powerful search and filtering tools to effortlessly
+                explore thousands of titles.<br></br>
+                <br></br>
+                Filter by <strong>genre, rating, or author</strong> to quickly
+                connect with the stories and knowledge that perfectly match your
+                current mood and literary tastes.
+              </p>
             </div>
             <div className="discover-image">
               <img src={screenshot} alt="" />
             </div>
-            
           </section>
+
+
+          <section className="mobile-books">
+            <div className="mobile-image">
+              <img src={mobileScreenshot} alt="" />
+            </div>
+            <div className="mobile-description">
+              <h3>Mobile friendly</h3>
+              <p>
+                Effortless Mobile Experience Shelfie's <strong>clean</strong> and <strong>responsive</strong> design <br></br>ensures a smooth and enjoyable experience on any mobile device.<br></br><br></br>Your next great read is always just a tap away.
+              </p>
+            </div>
+          </section>
+
+
           <div className="divider">
-              <span>Why Shelfie ?</span>
+            <span>Why Shelfie ?</span>
           </div>
 
           <section
             className="about-app-container"
             data-aos="fade-left"
             data-aos-delay="200"
-          > 
+          >
             <div className="about-image">
               <img
                 src="/images/example5.webp"
@@ -102,11 +126,15 @@ const HomePage = () => {
               <div className="about-text-wrapper">
                 <h1>More Than a Bookshelf</h1>
                 <p>
-                  Shelfie is the ultimate digital home for your reading journey. It's more than a tracker, it's a celebration of every book you've loved and every story you dream of reading.
+                  Shelfie is the ultimate digital home for your reading journey.
+                  It's more than a tracker, it's a celebration of every book
+                  you've loved and every story you dream of reading.
                   <br></br>
                   <br></br>
-                  Whether you're a casual or lifelong book lover, Shelfie keeps you organized and inspired. Add books to personalized shelves, share your thoughts with ratings and comments, and receive recommendations that truly reflect your tastes.
-
+                  Whether you're a casual or lifelong book lover, Shelfie keeps
+                  you organized and inspired. Add books to personalized shelves,
+                  share your thoughts with ratings and comments, and receive
+                  recommendations that truly reflect your tastes.
                 </p>
               </div>
               <div className="action-buttons">
@@ -114,7 +142,7 @@ const HomePage = () => {
               </div>
             </div>
           </section>
-              
+
           <section
             className="testimonials"
             data-aos="fade"
@@ -158,7 +186,7 @@ const HomePage = () => {
                   "Shelfie has brought a quiet joy back into my reading life. I
                   used to feel guilty about unread books or half-finished
                   stories, but this app reframes the experience — making it okay
-                  to pause, revisit, or simply enjoy a book slowly. 
+                  to pause, revisit, or simply enjoy a book slowly.
                 </blockquote>
                 <div className="testimonial-author">
                   <img

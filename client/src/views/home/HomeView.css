@@ -163,7 +163,42 @@
 }
 
 
+/*------------------------------------*\
+  #MOBILE DESIGN
+\*------------------------------------*/
 
+
+.mobile-books{
+  display: flex;
+  margin-bottom: 4em;
+  align-items: center;
+  padding-left: 10em;
+  gap: 7em;
+
+}
+
+.mobile-books .mobile-image{
+    width: 40%;
+}
+
+.mobile-books .mobile-description{
+  font-size: 1.6em;
+  width: 90%;
+  letter-spacing: 0.025em;
+  padding-right: 10em;
+
+
+}
+
+.mobile-books .mobile-description h3{
+  font-weight: 700;
+}
+
+.mobile-books .mobile-image img {
+  border-radius: 0.3em;
+
+
+}
 
 
 
