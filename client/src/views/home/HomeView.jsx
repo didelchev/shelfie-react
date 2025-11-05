@@ -93,7 +93,6 @@ const HomePage = () => {
             </div>
           </section>
 
-
           <section className="mobile-books">
             <div className="mobile-image">
               <img src={mobileScreenshot} alt="" />
@@ -101,11 +100,63 @@ const HomePage = () => {
             <div className="mobile-description">
               <h3>Mobile friendly</h3>
               <p>
-                Effortless Mobile Experience Shelfie's <strong>clean</strong> and <strong>responsive</strong> design <br></br>ensures a smooth and enjoyable experience on any mobile device.<br></br><br></br>Your next great read is always just a tap away.
+                Effortless Mobile Experience Shelfie's <strong>clean</strong>{" "}
+                and <strong>responsive</strong> design <br></br>ensures a smooth
+                and enjoyable experience on any mobile device.<br></br>
+                <br></br>Your next great read is always just a tap away.
               </p>
             </div>
           </section>
 
+          <div className="divider">
+            <span>Features</span>
+          </div>
+          
+          <section
+            class="features-grid"
+            data-aos="fade"
+            data-aos-delay="100"
+            data-aos-duration="1000"
+          >
+            <div className="feature-card">
+              <div className="card-icon-wrapper">
+                <i className="fas fa-search fa-2x"></i>
+              </div>
+              <h3>Powerful Search & Sorting</h3>
+              <p>
+                Quickly navigate your entire library. Use{" "}
+                <strong>intuitive filters</strong> by title, author, or genre,
+                and sort your shelves instantly to find the perfect book for
+                your current mood.
+              </p>
+            </div>
+
+            <div className="feature-card">
+              <div className="card-icon-wrapper">
+                <i className="fa-solid fa-wand-magic-sparkles fa-2x"></i>
+              </div>
+              <h3>Tailored Book Recommendations</h3>
+              <p>
+                Never run out of things to read. Our intelligent engine analyzes
+                your ratings and library to suggest your{" "}
+                <strong>next favorite titles</strong>, helping you discover
+                stories you'll genuinely love.
+              </p>
+            </div>
+
+            <div className="feature-card">
+              <div className="card-icon-wrapper">
+                <i className="fa-solid fa-book-open-reader fa-2x"></i>
+              </div>
+              <h3>Personal Reading Tracker</h3>
+              <p>
+                Seamlessly monitor your reading journey. Create{" "}
+                <strong>custom shelves</strong> (like 'Currently Reading' or
+                'Want to Read'), log your progress, and keep a personal record
+                of every book you complete.
+              </p>
+            </div>
+          </section>
 
           <div className="divider">
             <span>Why Shelfie ?</span>
