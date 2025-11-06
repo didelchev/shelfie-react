@@ -253,7 +253,7 @@ const Profilev2 = () => {
             </div>
           </section>
           <section className="profile-right-section">
-            {renderBookCards(booksToRender)}
+            {booksToRender.length > 0 ? renderBookCards(booksToRender) : (<h3>You don't have added books into your libraray...</h3>)}
           </section>
           <section className="profile-end-section">
        

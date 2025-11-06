@@ -113,6 +113,7 @@
     gap: 10px;
     padding: 1.5em 0;
     margin-top: 1.5em; 
+
 }
 
 .edit-form input {
@@ -176,6 +177,11 @@
   gap: 2em;
   flex-grow: 1;
   padding-top: 3em;
+}
+
+.profile-right-section h3 {
+  text-align: center;
+  margin: 0 auto;
 }
 
 .book-item {
