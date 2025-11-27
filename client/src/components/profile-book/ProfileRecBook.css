@@ -1,11 +1,14 @@
 .rec-book {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 1em;
-  text-align: left;
-  transition: transform var(--transition);
-  text-align: center;
+    display: flex;
+    flex-direction: row; 
+    text-align: left; 
+    gap: 1em;
+    padding: 0.5em;
+    border-radius: 8px;
+    background-color: #fcfcfc;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+    transition: all 0.2s ease-in-out;
+    transform: none; 
 }
 
  .rec-book:hover {
@@ -15,37 +18,54 @@
 
 
  .rec-book img {
-  width: 70%;
-  height: auto;
-  margin: 0 auto;
-  border-top-right-radius: 1em;
-  border-bottom-right-radius: 1em;
-  object-fit: cover;
+    width: 80px; 
+    flex: 0 0 80px;
+    height: auto;
+    aspect-ratio: 3/4;
+    border-radius: 4px; 
+    object-fit: cover;
+    margin: 0;
 }
 
-.book-info{
-    border: none;
+.book-info-rec{
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    gap: 0;
+    justify-content: space-evenly;
     padding: 0;
+    gap: 0.2em;
+    border: none;
 }
 
-.rec-book .book-info h5,
-.rec-book .book-info h6{
-    margin-bottom: 0;
+.profile-end-section .recommended-books .book-info-rec h5{
+    font-size: 1em; 
+    font-weight: 600;
+    color: #444;
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
-.rec-book .book-info h5{
-    font-size: 1.3em;
-}
-
-.rec-book .book-info h6{
-    font-size: 1.1em;
+.profile-end-section .recommended-books .book-info-rec h6{
+    font-size: 0.9em; 
+    color: grey;
     font-style: italic;
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
-.book-info .checked {
-  color: orange;
+.profile-end-section .recommended-books .book-rating {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.3em;
+    align-items: center;
+    color: rgb(87, 87, 87);
+    font-size: 0.9em;
+}
 
+.profile-end-section .recommended-books .book-rating .checked {
+  color: orange;
 }

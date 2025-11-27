@@ -6,15 +6,17 @@ const ProfileRecBook = ({ book }) => {
   const ratingValue = book.ratings.average;
 
   return (
-    <Link to={`/catalog/${book._id}`} className="rec-book">
+    <Link to={`/catalog/${book._id}`} state={{book:book}}className="rec-book">
       <div className="image-container">
         <img src={book.image} alt={book.title} />
       </div>
-      <div className="book-info">
+      <div className="book-info-rec">
         <h5>{book.title}</h5>
         <h6>{book.author}</h6>
-        <span className="fa fa-star checked"></span>
-        <span>{ratingValue.toFixed(2)}</span>
+        <div className="book-rating">
+          <span className="fa fa-star checked"></span> 
+          <span>{ratingValue.toFixed(2)}</span>
+        </div>
       </div>
     </Link>
   );

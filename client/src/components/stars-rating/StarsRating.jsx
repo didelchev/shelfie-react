@@ -56,7 +56,7 @@ const StarsRating = ({ bookRatings, canRate }) => {
                 type="radio" 
                 name="rating"  
                 value={ratingValue} 
-                onClick= {canRate ? () => onClick(rateBookHandler) : undefined}                
+                onClick={canRate ? rateBookHandler : undefined}            
                 
                 />
                 <FontAwesomeIcon 

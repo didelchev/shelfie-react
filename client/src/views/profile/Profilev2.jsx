@@ -14,20 +14,25 @@ import DefaultNavbar from "../../components/navbar/DefaultNavbar";
 import ProfileBookTemplatev2 from "../../components/profile-book/ProfileBookTemplatev2";
 import ProfileRecBook from "../../components/profile-book/ProfileRecBook";
 
+import SpinnerComponent from "../../components/spinner/SpinnerComponent";
+
 const Profilev2 = () => {
   const [userCredentials, setUserCredentials] = useState({});
 
   const [editUser, setEditUser] = useState({
-    username: "",
-    profileImageUrl: "",
+    username: userCredentials.username,
+    profileImageUrl: userCredentials.profileImageUrl,
   });
 
   const [recommendedBooks, setRecommendetBooks] = useState([]);
 
+  const [isLoading, setIsLoading] = useState(true)
+
+
   const [userShelves, setUserShelves ] = useState({
-    read: { books: [], status: 'read'}, 
-    currReading: {books :[], status: 'currReading'},
-    toRead: {books: [], status: 'to-read'}
+    read: { books: []}, 
+    currReading: {books :[]},
+    toRead: {books: [] }
 });
 
   const [isEditing, setIsEditing] = useState(false);
@@ -36,27 +41,38 @@ const Profilev2 = () => {
 
   useEffect(() => {
     (async () => {
-      const user = await getUserCredentials();
-
-      setUserCredentials(user);
-
-      const recBooks = await getRecommendetBooks(user._id);
-
-      setRecommendetBooks(recBooks)
-
-      const [readBooks, currReadingBooks, toReadBooks] = await Promise.all([
-        fetchBooksForShelf(user.read),
-        fetchBooksForShelf(user.currReading),
-        fetchBooksForShelf(user.toRead),
-      ]);
-
-      setUserShelves({
-        read: { books: readBooks, status: "read" },
-        currReading: { books: currReadingBooks, status: "currReading" },
-        toRead: { books: toReadBooks, status: "to-read" },
-      });
+      try {
+        const user = await getUserCredentials();
+  
+        setUserCredentials(user);
+  
+        const recBooks = await getRecommendetBooks(user._id);
+  
+        setRecommendetBooks(recBooks)
+  
+        const [readBooks, currReadingBooks, toReadBooks] = await Promise.all([
+          fetchBooksForShelf(user.read),
+          fetchBooksForShelf(user.currReading),
+          fetchBooksForShelf(user.toRead),
+        ]);
+  
+        const readBooksWithStatus = readBooks.map(book => ({ ...book, status: 'read' }));
+    
+        const currReadingBooksWithStatus = currReadingBooks.map(book => ({ ...book, status: 'currReading' }));
+        const toReadBooksWithStatus = toReadBooks.map(book => ({ ...book, status: 'toRead' }));
+  
+        setUserShelves({
+          read: { books: readBooksWithStatus },
+          currReading: { books: currReadingBooksWithStatus},
+          toRead: { books: toReadBooksWithStatus },
+        });
+      } catch (error) {
+        console.log("Error fetching profile data:", error);
+      } finally {
+        setIsLoading(false); 
+      }
     })();
-  }, [recommendedBooks]);
+  }, []);
 
 
 
@@ -79,18 +95,25 @@ const Profilev2 = () => {
     try {
       const { username, profileImageUrl } = editUser;
 
+
       const newUserData = await editUserCredentials({
         username,
         profileImageUrl,
       });
 
       setUserCredentials(newUserData.user);
+
+      setIsEditing(false)
+
+      toast.success("User has been updated successfully.");
+
     } catch (error) {
-      console.log(error);
+      toast.error("Failed to update user !");
+
     }
   };
 
-  const removeBookHandler = async (bookId, shelfName) => {
+  const removeBookHandler = async ( bookId, shelfName) => {
     try {
       await removeBookFromShelf(bookId, shelfName);
 
@@ -131,13 +154,13 @@ const Profilev2 = () => {
 
   const booksToRender = getBooksToDisplay();
 
-  const renderBookCards = (bookArray) => {
+  const renderBookCards = (bookArray) => {    
     return bookArray?.map((book) => {
       return (
         <ProfileBookTemplatev2
           book={book}
           key={book._id}
-          // onRemove={removeBookHandler(book._id, book.status)}
+          onRemove={() => removeBookHandler(book._id, book.status)}
         />
       );
     });
@@ -146,48 +169,122 @@ const Profilev2 = () => {
   return (
     <>
       <DefaultNavbar />
-      <section className="profile-page-wrapper">
-        <section className="profile-left-section">
-          <div className="profile-info">
-            <img
-              src="/images/profile-picture.webp"
-              alt="avatar"
-              className="profile-image"
-            />
-            <h3>{userCredentials.username}</h3>
-            <h5>{userCredentials.email}</h5>
-            
-          </div>
-          <div className="book-shelves">
-            <h5>My Books</h5>
-            <button onClick={() => filterHandler("all")}>All Books</button>
-            <button onClick={() => filterHandler("read")}>Read</button>
-            <button onClick={() => filterHandler("currReading")}>
-              Currently Reading
-            </button>
-            <button onClick={() => filterHandler("toRead")}>To Read</button>
-          </div>
-        </section>
-        <section className="profile-right-section">
-          {renderBookCards(booksToRender)}
-        </section>
-        <section className="profile-end-section">
-          <h4>Reading Stats</h4>
-          <div className="profile-stats">
-            <div><strong>{userShelves.read.books?.length}</strong><span>Read</span></div>
-            <div><strong>{userShelves.currReading.books?.length}</strong><span>Read</span></div>
-            <div><strong>{userShelves.toRead.books?.length}</strong><span>Read</span></div>
-          </div>
-          <div className="recommended-section">
-            <h4>Recommended Books</h4>
-            <div className="recommended-books">
-                {recommendedBooks.map(book => {
-                  return <ProfileRecBook book={book} key={book._id}/> 
-                })}
+      {isLoading ? (
+        <SpinnerComponent 
+            size={100}
+            customCss={{ 
+                marginTop: "45vh", 
+            }}
+        />
+      ) : (
+        <section className="profile-page-wrapper">
+          <section className="profile-left-section">
+            <div className="profile-info">
+              <img
+                src={userCredentials.profileImageUrl}
+                alt="avatar"
+                className="profile-image"
+        
+              />
+              <h3>{userCredentials.username}</h3>
+              <h5>{userCredentials.email}</h5>
+            <button className="edit-btn" onClick={showEditFormHandler}>Edit Profile</button>
+  
             </div>
-          </div>
+            {isEditing ? (
+              <form className="edit-form" onSubmit={submitHandler}>
+                <input
+         
+                  name="username"
+                  type="text"
+                  value={editUser.username}
+                  placeholder="Enter new username"
+                  onChange={editHandler}
+                />
+             
+              <input
+                  name="profileImageUrl"
+                  type="text"
+                  value={editUser.profileImageUrl}
+                  placeholder="Image URL (optional)"
+                  onChange={editHandler}
+                />
+   
+                <div className="edit-actions">
+                  <button type="submit">Save</button>
+                  <button type="button" onClick={showEditFormHandler}>
+                    Cancel
+                  </button>
+                </div>
+     
+              </form>
+            ) : null}
+            <div className="book-shelves">
+              <h5>My Books</h5>
+              <button
+                onClick={() => filterHandler("all")}
+                className={activeShelf === "all" ?
+                  "active-shelf" : ""}
+              >
+                All Books
+              </button>
+  
+              <button
+                onClick={() => filterHandler("read")}
+                className={activeShelf === "read" ?
+                  "active-shelf" : ""}
+              >
+                Read
+              </button>
+              <button
+                onClick={() => filterHandler("currReading")}
+                className={activeShelf === "currReading" ?
+                  "active-shelf" : ""}
+              >
+                Currently Reading
+              </button>
+              <button
+                onClick={() => filterHandler("toRead")}
+                className={activeShelf === "toRead" ?
+                  "active-shelf" : ""}
+              >
+                To Read
+              </button>
+            </div>
+          </section>
+          <section className="profile-right-section">
+            {booksToRender.length > 0 ? renderBookCards(booksToRender) : (<h3>You don't have added books into your libraray...</h3>)}
+          </section>
+          <section className="profile-end-section">
+       
+            <h4>Reading Stats</h4>
+            <div className="profile-stats">
+              <div className="stat-item">
+                <strong>{userShelves.read.books?.length}</strong>
+                <span>Read</span>
+              </div>
+              <div className="stat-item">
+                <strong>{userShelves.currReading.books?.length}</strong>
+     
+                <span>Currently Reading</span>
+              </div>
+              <div className="stat-item">
+                <strong>{userShelves.toRead.books?.length}</strong>
+                <span>To Read</span>
+              </div>
+            </div>
+            <div className="recommended-section">
+   
+              <h4>Recommended Books</h4>
+              <div className="recommended-books">
+                {recommendedBooks.map((book) => {
+                  return <ProfileRecBook book={book} key={book._id} />;
+                })}
+              </div>
+            </div>
+          </section>
         </section>
-      </section>
+      )}
     </>
   );
 };

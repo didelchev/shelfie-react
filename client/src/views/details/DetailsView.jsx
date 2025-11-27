@@ -9,13 +9,16 @@ import "./DetailsView.css";
 import { getUserBookRating } from "../../api/user-api";
 import CommunityStarsRating from "../../components/stars-rating/CommunityStarsRating";
 import DefaultNavbar from "../../components/navbar/DefaultNavbar";
+import SpinnerComponent from "../../components/spinner/SpinnerComponent";
 
 const BookDetailsView = () => {
   const location = useLocation();
 
-  const book = location.state.book;
+  const book = location.state?.book;
 
   const { isAuthenticated, userProfileImage } = useAuth();
+
+  const [isLoading, setIsLoading] = useState(true)
 
   const { bookId } = useParams();
 
@@ -62,8 +65,13 @@ const BookDetailsView = () => {
         
         setUserReviews(reviews);
 
+        setIsLoading(false)
+
 
       } catch (err) {
+
+        setIsLoading(false)
+
         console.log(err);
       }
     };
@@ -97,7 +105,10 @@ const BookDetailsView = () => {
   <>
     <DefaultNavbar />
 
-    <div className="book-details-grid-container">
+    {isLoading ?  (
+      <SpinnerComponent customCss={{ marginTop: "45vh" }} />)
+      :
+      <div className="book-details-grid-container">
       <div className="book-details-left">
  
         <img src={book.image} alt="book" />
@@ -186,6 +197,9 @@ const BookDetailsView = () => {
         })}
       </div>
     </div>
+      }
+
+    
   </>
     
   );

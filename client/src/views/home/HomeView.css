@@ -88,48 +88,55 @@
   #FEATURES
 \*------------------------------------*/
 
-.features-grid-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-flow: row;
-  padding: 3em 12em;
-  gap: 5em;
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6em; 
+    padding: 4em 10em; 
+    max-width: 1700px; 
+    margin: 2em auto;
 }
 
-.feature-item {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 0.4em;
-  padding: 2em;
-  word-break: break-word;
-  background-color: white;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+.feature-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    text-align: left;
+    padding: 2.5em; 
+    background-color: #ffffff;
+    border-radius: 1em;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    transition: border-color 0.3s ease;
 }
 
-.circle-border {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 70px;
-  aspect-ratio: 1 / 1;
-  background-color: #f2f2f2;
-  border-radius: 50%;
+
+
+.card-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background-color: #708d81;
+    border-radius: 50%;
+    margin-bottom: 1.5em;
 }
 
-.feature-item > h3 {
-  font-weight: 500;
-  text-align: left;
+.feature-card i {
+    color: white; 
 }
 
-.feature-item > p {
-  font-size: 1.1em;
+.feature-card h3 {
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 0.6em;
+    font-size: 1.5em; 
 }
 
-.feature-item i {
-  color: #708d81;
+.feature-card p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #555;
 }
 
 
@@ -163,7 +170,42 @@
 }
 
 
+/*------------------------------------*\
+  #MOBILE DESIGN
+\*------------------------------------*/
 
+
+.mobile-books{
+  display: flex;
+  margin-bottom: 4em;
+  align-items: center;
+  padding-left: 8em;
+  gap: 7em;
+
+}
+
+.mobile-books .mobile-image{
+    width: 40%;
+}
+
+.mobile-books .mobile-description{
+  font-size: 1.6em;
+  width: 90%;
+  letter-spacing: 0.025em;
+  padding-right: 0em;
+
+
+}
+
+.mobile-books .mobile-description h3{
+  font-weight: 700;
+}
+
+.mobile-books .mobile-image img {
+  border-radius: 0.3em;
+
+
+}
 
 
 
@@ -174,7 +216,7 @@
 .about-app-container {
   display: grid;
   grid-template-columns: 1.5fr 2fr;
-  margin-top: 3em;
+  margin-top: 4em;
   padding: 3em 12em;
   gap: 5em;
   background-image: url("/images/blob-haikei(10).svg");
@@ -196,7 +238,7 @@
   font-size: 3em;
 }
 .about-app-container .about-description p {
-  font-size: 1.6em;
+  font-size: 1.4em;
   letter-spacing: 0.025em;
 }
 
@@ -224,10 +266,6 @@
   #TESTIMONIALS
 \*------------------------------------*/
 
- .divider {
-  margin-top: 2em;
-  font-size: 2em;
-}
 .testimonials-grid-container {
   display: grid;
   width: 100%;
@@ -237,7 +275,7 @@
   padding: 3em 12em;
   justify-items: center;
   gap: 3em;
-  margin: 0 auto;
+  margin: 3em auto;
 }
 
 .testimonials-grid-container .testimonial-item {
@@ -440,17 +478,20 @@
 
 @media (max-width: 1250px) {
 
-  .features-grid-container,
+  .features-grid, 
   .about-app-container,
   .testimonials-grid-container,
-  .popular-books-grid,
-  .discover-books {
-    padding: 3em 8em; 
+  .popular-books-grid {
+    padding: 3em 8em;
   }
 
+  .main-content {
+      padding-left: 5em; 
+  }
+  
   .discover-books {
     padding-left: 8em; 
-    gap: 5em; 
+    gap: 5em;
   }
 }
 
@@ -458,7 +499,7 @@
 @media (max-width: 1100px) {
   .main-content {
     grid-template-columns: 1fr 1.5fr; 
-    padding-left: 5em; 
+    padding-left: 5em;
   }
 
   .welcome-text h1 {
@@ -466,7 +507,7 @@
   }
 
   .discover-books {
-    flex-direction: column; 
+    flex-direction: column;
     padding: 4em; 
     gap: 3em;
     text-align: center;
@@ -476,8 +517,28 @@
     width: 100%;
     font-size: 1.4em;
   }
+  
+  .mobile-books {
+    flex-direction: column; 
+    padding: 4em; 
+    gap: 3em;
+    text-align: center;
+    padding-left: 4em;
+  }
 
-  /* About Section */
+  .mobile-books .mobile-description {
+    width: 100%;
+    font-size: 1.4em;
+    padding-right: 0;
+  }
+
+  .mobile-books .mobile-image {
+    width: 60%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+
   .about-app-container {
     grid-template-columns: 1fr;
     padding: 4em;
@@ -489,20 +550,19 @@
   }
 
   .about-app-container .about-image {
-    order: -1; 
+    order: -1;
   }
 
   .about-app-container .about-description .action-buttons {
-    justify-content: center; 
+    justify-content: center;
   }
 
-  /* Testimonials and Features */
   .testimonials-grid-container {
     grid-template-columns: repeat(2, 1fr); 
     padding: 3em 4em;
   }
 
-  .features-grid-container {
+  .features-grid { 
     grid-template-columns: repeat(2, 1fr); 
     padding: 3em 4em;
     gap: 3em;
@@ -528,7 +588,7 @@
   .welcome-text {
     margin-top: 5em;
     margin-left: 2em;
-    padding: 0; 
+    padding: 0;
   }
 
   .welcome-text h1 {
@@ -546,9 +606,12 @@
     margin-top: 1em;
   }
 
+  .mobile-books {
+    padding: 2em; 
+  }
 
-  .features-grid-container {
-    grid-template-columns: 1fr; 
+  .features-grid { 
+    grid-template-columns: 1fr;
     padding: 2em;
     gap: 3em;
   }
@@ -585,6 +648,7 @@
     padding: 2em 1em;
   }
 }
+
 
 @media (max-width: 576px) {
   .app-info {
@@ -631,17 +695,6 @@
     color: #f2f2f2;
   }
 
-  /* .action-buttons > a {
-    font-size: 1em;
-    padding: 0.8em 1.5em;
-    background-color: rgb(37, 37, 37);
-    border-radius: 0.5em;
-  } */
-
-  /* .book-stack {
-    display: none; 
-  } */
-
   .discover-books {
     padding: 1em;
     margin-bottom: 1em;
@@ -671,7 +724,7 @@
   }
 
   .about-description .action-buttons {
-    justify-content: flex-start; 
+    justify-content: flex-start;
   }
   .about-description .action-buttons a {
     font-size: 1em;
@@ -685,7 +738,6 @@
 
   .about-app-container{
     margin-top: 0;
-    
   }
 
   .about-app-container .about-text-wrapper h1 {

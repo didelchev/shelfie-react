@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 
 import ProfileBookTemplate from '../../components/profile-book/ProfileBookTemplate';
 
-import "./ProfileView.css"
 
 const ProfileView = () => {
 

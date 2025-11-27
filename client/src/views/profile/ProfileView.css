@@ -194,7 +194,7 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.remove-btn {
+/* .remove-btn {
   position: absolute;
   top: 6px;
   right: 6px;
@@ -210,7 +210,7 @@
 
 .remove-btn:hover {
   background-color: rgba(180, 0, 0, 1);
-}
+} */
 
 
 
