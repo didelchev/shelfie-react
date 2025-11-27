@@ -1,6 +1,6 @@
 .burger-menu-container {
   position: relative; 
-  z-index: 100; 
+  z-index: 9999; 
 }
 
 
@@ -42,7 +42,6 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  /* border: 2px solid lime; */
 }
 
 
