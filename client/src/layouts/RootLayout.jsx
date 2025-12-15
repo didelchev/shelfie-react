@@ -20,7 +20,6 @@ const RootLayout = () => {
   return (
     <>
       <Outlet />
-
       <ToastContainer position="bottom-left" theme="dark" />
     </>
   );
