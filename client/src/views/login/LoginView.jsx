@@ -50,7 +50,7 @@ const LoginView = () => {
       const user = await loginAsDemoUser();
       setUserData(user);
       toast.success("Logged in as Demo User!");
-      navigate("/");
+      navigate("/catalog");
     } catch (error) {
       setIsDemoLoading(false);
       setError("Demo login failed. Please try again later.");
