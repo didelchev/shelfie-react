@@ -1,109 +1,159 @@
-import React, { useState } from 'react'
-import "./RegisterView.css"
-import { login, register } from '../../api/auth-api'
-import { useAuth } from '../../contexts/AuthContext'
-import { Link, useNavigate } from 'react-router-dom'
-import SpinnerComponent from '../../components/spinner/SpinnerComponent'
-import logo from '../../../public/images/logo.png' 
+import React, { useState } from "react";
+import "./RegisterView.css";
+import { login, register } from "../../api/auth-api";
+import { useAuth } from "../../contexts/AuthContext";
+import { Link, useNavigate } from "react-router-dom";
+import SpinnerComponent from "../../components/spinner/SpinnerComponent";
+import logo from "../../../public/images/logo.png";
 
+const DEMO_EMAIL = "demo@shelfie.com";
+const DEMO_PASSWORD = "demo123456";
 
 const RegisterView = () => {
-
   const [authData, setAuthData] = useState({
-    email: '',
-    username: '',
-    password: '',
-    're-password': ''
-  })
+    email: "",
+    username: "",
+    password: "",
+    "re-password": "",
+  });
 
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isDemoLoading, setIsDemoLoading] = useState(false);
 
-  const [error, setError]  = useState(null);
-
-  const [isLoading, setIsLoading] = useState(false)
-
-  const navigate = useNavigate()
-
- const { setUserData  } = useAuth();
-
+  const navigate = useNavigate();
+  const { setUserData } = useAuth();
 
   const changeHandler = (e) => {
-    setAuthData({...authData, [e.target.name]: e.target.value});
-  }
+    setAuthData({ ...authData, [e.target.name]: e.target.value });
+  };
 
   const registerHandler = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
 
-    e.preventDefault()
-
-    setIsLoading(true)
-      
     const { email, username, password, rePassword } = authData;
 
     try {
-      const newUser  = await register(email, username, password, rePassword)
-
-      //TODO: validate user 
-
-      localStorage.setItem('auth', JSON.stringify(newUser))
-
-      setUserData(newUser)
-
-      navigate('/')
-  
-
-
+      const newUser = await register(email, username, password, rePassword);
+      localStorage.setItem("auth", JSON.stringify(newUser));
+      setUserData(newUser);
+      navigate("/");
     } catch (error) {
-
-      setIsLoading(false)
-
-      const errorMessage = error.message || 'An unknown error occured while trying to register !'
-
-      setError(errorMessage)
+      setIsLoading(false);
+      const errorMessage =
+        error.message || "An unknown error occurred while trying to register!";
+      setError(errorMessage);
     }
+  };
 
-  }
+  const demoLoginHandler = async () => {
+    setIsDemoLoading(true);
+    setError(null);
 
+    try {
+      const user = await login(DEMO_EMAIL, DEMO_PASSWORD);
+      setUserData(user);
+      navigate("/");
+    } catch (error) {
+      setIsDemoLoading(false);
+      setError("Demo login failed. Please try again later.");
+    }
+  };
 
   return (
-    <div className="register-grid-container" data-aos='fade-left'>
+    <div className="register-grid-container" data-aos="fade-left">
       <div className="left-section">
         <form className="register-form" onSubmit={registerHandler}>
-            <h2>Create an account</h2>
-            <label htmlFor="email">Email</label>
-            <input type="text" id="email" name="email" value={authData.email} onChange={changeHandler} />
-            <label htmlFor="username">Username</label>
-            <input type="text" id="username" name="username" value={authData.username} onChange={changeHandler} />
-            <label htmlFor="password">Password</label>
-            <input type="password" id="password" name="password" value={authData.password} onChange={changeHandler}/>
-            <label htmlFor="re-password">Repeat Password</label>
-            <input type="password" id="re-password" name="re-password" value={authData["re-password"]} onChange={changeHandler}/>
-            <button className ='submit' type="submit">
-              {isLoading ? <SpinnerComponent size={25} color='white'/> : (
-                "Sign Up"
-              )}
-            </button>
-            {error && (
-              <div style={{ color: 'red', border: '1px solid red', padding: '10px', marginTop: '10px', textAlign: "center" }}>
-                Login Failed: {error}
-              </div>
+          <h2>Create an account</h2>
+          <label htmlFor="email">Email</label>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            value={authData.email}
+            onChange={changeHandler}
+          />
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            value={authData.username}
+            onChange={changeHandler}
+          />
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={authData.password}
+            onChange={changeHandler}
+          />
+          <label htmlFor="re-password">Repeat Password</label>
+          <input
+            type="password"
+            id="re-password"
+            name="re-password"
+            value={authData["re-password"]}
+            onChange={changeHandler}
+          />
+          <button className="submit" type="submit">
+            {isLoading ? (
+              <SpinnerComponent size={25} color="white" />
+            ) : (
+              "Sign Up"
             )}
-            <p className="registered">
-              Already have an account ? <Link to={'/login'}>Sign In</Link>
-            </p>
+          </button>
+
+          <div className="demo-divider">
+            <span>or</span>
+          </div>
+
+          <button
+            type="button"
+            className="demo-btn"
+            onClick={demoLoginHandler}
+            disabled={isDemoLoading}
+          >
+            {isDemoLoading ? (
+              <SpinnerComponent size={25} color="#708D81" />
+            ) : (
+              <>Try Demo Account</>
+            )}
+          </button>
+
+          {error && (
+            <div
+              style={{
+                color: "red",
+                border: "1px solid red",
+                padding: "10px",
+                marginTop: "10px",
+                textAlign: "center",
+              }}
+            >
+              {error}
+            </div>
+          )}
+          <p className="registered">
+            Already have an account ? <Link to={"/login"}>Sign In</Link>
+          </p>
         </form>
-    </div>
-    <div className="right-section">
-      <div className="content">
-        <Link to={'/'}>
-            <img src={logo} alt="Logo" className="logo" /> 
-        </Link>
-        <h1>Your Next Read Awaits</h1>
-        <p>
+      </div>
+      <div className="right-section">
+        <div className="content">
+          <Link to={"/"}>
+            <img src={logo} alt="Logo" className="logo" />
+          </Link>
+          <h1>Your Next Read Awaits</h1>
+          <p>
             Organize, discover, and fall in love with books—all in one place.
-        </p>
+          </p>
+        </div>
       </div>
     </div>
-</div>
-  )
-}
+  );
+};
 
-export default RegisterView
+export default RegisterView;
