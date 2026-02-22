@@ -10,7 +10,7 @@ import PageNotFound from "../components/404/404Page.jsx";
 import BookDetailsView from "../views/details/DetailsView.jsx";
 import ProtectedRoute from "../components/guard/ProtectedRoute.jsx";
 import CatalogViewSkeleton from "../views/catalog/CatalogViewSkeleton.jsx";
-import Profilev2 from "../views/profile/Profilev2.jsx";
+import ProfileView from "../views/profile/ProfileView.jsx";
 
 const CatalogView = React.lazy(() => import("../views/catalog/CatalogView.jsx"));
 
@@ -33,7 +33,7 @@ export const router = createBrowserRouter([
         path: "/profile",
         element: (
           <ProtectedRoute requiresAuth>
-            <Profilev2/>
+            <ProfileView/>
           </ProtectedRoute>
         ),
       },
