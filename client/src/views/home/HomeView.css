@@ -1,5 +1,10 @@
 /* WELCOME TEXT / IMAGE */
 
+.home-page{
+  width: 100%;
+  overflow-x: hidden;
+}
+
 .main-content {
   display: grid;
   height: 70vh;

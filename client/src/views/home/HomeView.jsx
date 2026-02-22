@@ -44,6 +44,7 @@ const HomePage = () => {
         <SpinnerComponent customCss={{ marginTop: "45vh" }} />
       ) : (
         <>
+        <div className="home-page">
           <Navbar />
 
           <section className="main-content" data-aos="fade-right">
@@ -272,7 +273,11 @@ const HomePage = () => {
           </section>
 
           <Footer />
+
+        </div>
+          
         </>
+        
       )}
     </>
   );
