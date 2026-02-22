@@ -1,4 +1,12 @@
+.register-page{
+  width: 100%;
+  overflow-x: hidden;
+}
+
+
 .register-grid-container{
+  width: 100%;
+  overflow-x: hidden;
     display: grid;
     grid-template-columns: 1fr 1.5fr;
     height: 100vh;

@@ -62,7 +62,8 @@ const RegisterView = () => {
   };
 
   return (
-    <div className="register-grid-container" data-aos="fade-left">
+    <div className="register-page">
+       <div className="register-grid-container" data-aos="fade-left">
       <div className="left-section">
         <form className="register-form" onSubmit={registerHandler}>
           <h2>Create an account</h2>
@@ -153,6 +154,8 @@ const RegisterView = () => {
         </div>
       </div>
     </div>
+    </div>
+   
   );
 };
 
