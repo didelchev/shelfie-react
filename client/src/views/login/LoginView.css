@@ -120,6 +120,53 @@
   color: black;
   }
 
+  .demo-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 0.8em 0;
+  color: grey;
+  font-style: italic;
+  font-size: 0.95em;
+}
+
+.demo-divider::before,
+.demo-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid lightgray;
+}
+
+.demo-divider span {
+  padding: 0 0.7em;
+}
+
+.demo-btn {
+  border: 2px solid #708D81 !important;
+  background-color: transparent !important;
+  color: #708D81 !important;
+  padding: 0.7em 0;
+  font-size: 1.2em;
+  border-radius: 0.5em;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  margin-bottom: 0.5em;
+}
+
+.demo-btn:hover {
+  background-color: #708D81 !important;
+  color: white !important;
+}
+
+.demo-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+
+
+
+
  @media (max-width: 768px) {
   .login-grid-container {
     display: flex;
@@ -174,3 +221,5 @@
     text-align: center;
   }
 }
+
+
