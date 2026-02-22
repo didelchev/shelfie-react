@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import { addBookReview, addBookToShelf, getBookReviews} from "../../api/books-api";
+import { addBookReview, getBookReviews } from "../../api/books-api";
 import ReviewTemplate from "../../components/review/ReviewTemplate";
 import { useAuth } from "../../contexts/AuthContext";
 import SelectShelfComponent from "../../components/shelf/SelectShelfComponent";
@@ -13,196 +13,168 @@ import SpinnerComponent from "../../components/spinner/SpinnerComponent";
 
 const BookDetailsView = () => {
   const location = useLocation();
-
   const book = location.state?.book;
-
   const { isAuthenticated, userProfileImage } = useAuth();
-
-  const [isLoading, setIsLoading] = useState(true)
-
+  const [isLoading, setIsLoading] = useState(true);
   const { bookId } = useParams();
-
-  const [review, setReview] = useState(''); 
-
+  const [review, setReview] = useState("");
   const [userReviews, setUserReviews] = useState([]);
-
   const [bookRatings, setBookRatings] = useState({
     userRating: "",
     averageRating: "",
-    ratingCount: ""
-  })
-
+    ratingCount: "",
+  });
 
   const addReviewHandler = async (e) => {
     e.preventDefault();
-    const userReview = {
-      review,
-      userProfileImage: userProfileImage
-    };
-
     try {
-      const response = await addBookReview(bookId, userReview);
-
-      const newReview = response.review;
-    
-      
-      setUserReviews([...userReviews, newReview]);
-
+      const response = await addBookReview(bookId, {
+        review,
+        userProfileImage,
+      });
+      setUserReviews([...userReviews, response.review]);
       setReview("");
     } catch (err) {
       console.log(err.message);
     }
   };
 
-  const changeHandler = (e) => {
-    setReview(e.target.value);
-  };
-  
   useEffect(() => {
     const getReviews = async () => {
       try {
         const reviews = await getBookReviews(bookId);
-        
         setUserReviews(reviews);
-
-        setIsLoading(false)
-
-
       } catch (err) {
-
-        setIsLoading(false)
-
         console.log(err);
+      } finally {
+        setIsLoading(false);
       }
     };
     getReviews();
-  }, [bookId, userReviews]);
-  
-  
+  }, [bookId]);
 
   useEffect(() => {
     (async () => {
-
       try {
-
-        const userBookRating =  await getUserBookRating(bookId)
-        
-        setBookRatings(userBookRating)
-
-        
+        const userBookRating = await getUserBookRating(bookId);
+        setBookRatings(userBookRating);
       } catch (error) {
-          console.log('Error while fetching book ratings' + error)
-        }
-    })()
-  },[bookId])
+        console.log("Error fetching book ratings: " + error);
+      }
+    })();
+  }, [bookId]);
 
+  const displayAverage = bookRatings.averageRating
+    ? parseFloat(bookRatings.averageRating).toFixed(1)
+    : "—";
 
-  const displayAverage = bookRatings.averageRating ? parseFloat(bookRatings.averageRating).toFixed(2) : 'N/A';
+  const reviewsCountText = bookRatings.ratingCount
+    ? `${bookRatings.ratingCount} ratings`
+    : "No ratings yet";
 
-  const reviewsCountText = bookRatings.ratingCount ? `(${bookRatings.ratingCount} ratings)` : '(0 ratings)';
+  if (isLoading) {
+    return (
+      <>
+        <DefaultNavbar />
+        <SpinnerComponent customCss={{ marginTop: "45vh" }} />
+      </>
+    );
+  }
 
   return (
-  <>
-    <DefaultNavbar />
+    <>
+      <DefaultNavbar />
+      <div className="details-page">
+        <div className="details-top">
+          <div className="details-cover-wrap">
+            <img className="details-cover" src={book.image} alt={book.title} />
+            {isAuthenticated && <SelectShelfComponent bookId={bookId} />}
+          </div>
 
-    {isLoading ?  (
-      <SpinnerComponent customCss={{ marginTop: "45vh" }} />)
-      :
-      <div className="book-details-grid-container">
-      <div className="book-details-left">
- 
-        <img src={book.image} alt="book" />
-        {isAuthenticated ? (
-        <SelectShelfComponent bookId={bookId} />
-        ): null}
-      </div>
-      <div className="book-details-right">
-        <div className="book-description">
-          <h1>{book.title}</h1>
-          <h3>{book.author}</h3>
-          { isAuthenticated ? (
-      
-            <StarsRating bookRatings={bookRatings} canRate={true}/>
-          ) : null}
-          <p>{book.description}</p>
+          <div className="details-info">
+            <h1>{book.title}</h1>
+            <h3>{book.author}</h3>
+
+            {book.genre?.length > 0 && (
+              <div className="genre-tags">
+                {book.genre.map((g, i) => (
+                  <span key={i} className="genre-tag">
+                    {g}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {isAuthenticated && (
+              <div className="your-rating-wrap">
+                <span className="rating-label">Your rating</span>
+                <StarsRating bookRatings={bookRatings} canRate={true} />
+              </div>
+            )}
+
+            <div className="details-facts">
+              <div className="fact-item">
+                <span className="fact-label">Pages</span>
+                <span className="fact-value">{book.pages}</span>
+              </div>
+              <div className="fact-item">
+                <span className="fact-label">Format</span>
+                <span className="fact-value">Hardcover</span>
+              </div>
+              <div className="fact-item">
+                <span className="fact-label">Language</span>
+                <span className="fact-value">English</span>
+              </div>
+              <div className="fact-item">
+                <span className="fact-label">ISBN</span>
+                <span className="fact-value">{book.ISBN}</span>
+              </div>
+            </div>
+
+            <p className="details-description">{book.description}</p>
+          </div>
         </div>
-        <div></div>
-      </div>
-      <div className="book-info">
-        <div className="book-info-left">
-          <p>
-            <span className="label">Pages:</span> {book.pages}
-      
-          </p>
-          <p>
-            <span className="label">Release date:</span> May 24 1943 
-          </p>
-          <p>
-            <span className="label">Genre:</span>{" "}
-            <a href="#">{(book.genre ||
-          []).join(", ")}</a>
-          </p>
-        </div>
-        <div className="book-info-right">
-          <p>
-            <span className="label">Format:</span> Hardcover
-          </p>
-          <p>
-            <span className="label">Language:</span> English
-          </p>
-    
-          <p>
-            <span className="label">ISBN:</span>
-            {book.ISBN}
-          </p>
-        </div>
-      </div>
-      <div className="book-average-ratings">
-        <h2>Community Ratings</h2>
-        <div className="average-stars-container">
-          <h1 className="average-header">{displayAverage}</h1> 
-         
-          <div className="star-wrapper">
+
+        <hr className="details-divider" />
+
+        <div className="details-bottom">
+          <div className="details-reviews">
+            <h3>Reviews</h3>
+
+            {isAuthenticated && (
+              <div className="add-review-form">
+                <input
+                  className="review-input"
+                  type="text"
+                  placeholder="Share your thoughts on this book..."
+                  onChange={(e) => setReview(e.target.value)}
+                  value={review}
+                />
+                <button className="review-btn" onClick={addReviewHandler}>
+                  Post Review
+                </button>
+              </div>
+            )}
+
+            {userReviews.length === 0 ? (
+              <p className="no-reviews-msg">No reviews yet — be the first!</p>
+            ) : (
+              userReviews.map((review, index) => (
+                <ReviewTemplate review={review} key={index} />
+              ))
+            )}
+          </div>
+
+          <div className="community-ratings-sidebar">
+            <h4>Community Rating</h4>
+            <div className="community-score-number">{displayAverage}</div>
             <CommunityStarsRating bookRatings={bookRatings.averageRating} />
-            <p className="reviews-count">{reviewsCountText}</p> 
+            <div className="community-score-count">{reviewsCountText}</div>
           </div>
         </div>
       </div>
-      <div className="book-reviews-bottom">
-        <h3>Reviews</h3>
-
-        {isAuthenticated && (
-          <div className="add-review">
-            <form 
-              onSubmit={addReviewHandler}>
-              <input
-                className="review-input" 
-                type="text"
-                name="text"
-                placeholder="Leave a review..."
-                onChange={changeHandler}
-    
-                value={review}
-              />
-              <button className="review-btn" type="submit">
-                Add Review
-              </button>
-            </form>
-          </div>
-     
-       )}
-
-        {userReviews.map((review, index) => {
-          return <ReviewTemplate review={review} key={index} className="review-template" />; {/* Added class */}
-        })}
-      </div>
-    </div>
-      }
-
-    
-  </>
-    
+    </>
   );
-}
+};
 
 export default BookDetailsView;
