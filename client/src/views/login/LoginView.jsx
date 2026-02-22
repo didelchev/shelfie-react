@@ -61,7 +61,8 @@ const LoginView = () => {
   };
 
   return (
-    <div className="login-grid-container">
+    <div className="login-page">
+      <div className="login-grid-container">
       <div className="left-section-container" data-aos="fade-right">
         <div className="content">
           <Link to={"/"}>
@@ -140,6 +141,9 @@ const LoginView = () => {
         </form>
       </div>
     </div>
+
+    </div>
+    
   );
 };
 
