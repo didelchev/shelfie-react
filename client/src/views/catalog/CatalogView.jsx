@@ -1,33 +1,25 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./CatalogView.css";
 import { getAllBooks } from "../../api/books-api";
 import BookTemplate from "../../components/book/BookTemplate";
 import { useBookCatalog } from "../../hooks/useBookCatalog";
 import BookFilterSidebar from "../../components/categories-filter/BookFilterSidebar";
-import { ClipLoader } from "react-spinners";
 import SpinnerComponent from "../../components/spinner/SpinnerComponent";
-import ToggleFiltersButton from "../../components/categories-filter/ToggleFiltersButton";
 import DefaultNavbar from "../../components/navbar/DefaultNavbar";
 
 const CatalogView = () => {
   const [books, setBooks] = useState([]);
-
   const [isLoading, setIsLoading] = useState(true);
+  const [showFilters, setShowFilters] = useState(false);
 
   useEffect(() => {
     const getBooks = async () => {
       try {
-
         const allBooks = await getAllBooks();
-
         setBooks(allBooks);
-
-        setIsLoading(false)
-
-      } catch (error) {
-
         setIsLoading(false);
-
+      } catch (error) {
+        setIsLoading(false);
         console.log(error);
       }
     };
@@ -49,8 +41,9 @@ const CatalogView = () => {
 
   return (
     <>
-    <DefaultNavbar />
+      <DefaultNavbar />
       <main className="book-catalog" data-aos="fade-down">
+
         <BookFilterSidebar
           query={query}
           sortCriteria={sortCriteria}
@@ -61,20 +54,39 @@ const CatalogView = () => {
           onCategoryChange={categoryHandler}
           onRatingChange={sortByRatingHandler}
           onReset={resetHandler}
+          showFilters={showFilters}
         />
-         
-        {isLoading ? (
-          <SpinnerComponent customCss={{ marginTop: "35vh" }}/>
-        ) : (
-          <div className="book-catalog-grid">
-            {displayBooks.map((book) => {
-              return <BookTemplate 
-                book={book} 
-                key={book._id} 
-                />;
-            })}
+
+        <div className="catalog-main-content">
+          <div className="catalog-top-bar">
+            <button
+              className="toggle-filters-btn"
+              onClick={() => setShowFilters((prev) => !prev)}
+            >
+              {showFilters ? "Hide Filters" : "Show Filters"}
+            </button>
+
+            <div className="catalog-header">
+              <h1>Browse Books</h1>
+              {!isLoading && (
+                <span className="catalog-results-count">
+                  {displayBooks.length} {displayBooks.length === 1 ? "book" : "books"}
+                </span>
+              )}
+            </div>
           </div>
-        )}
+
+          {isLoading ? (
+            <SpinnerComponent customCss={{ marginTop: "30vh" }} />
+          ) : (
+            <div className="book-catalog-grid">
+              {displayBooks.map((book) => (
+                <BookTemplate book={book} key={book._id} />
+              ))}
+            </div>
+          )}
+        </div>
+
       </main>
     </>
   );
