@@ -14,3 +14,10 @@ export const register = (email, username, password ) => {
 
     return authData
 }
+
+
+export const loginAsDemoUser = () => {
+    const authData = api.post(`${API_URL}/login/demouser`)
+
+    return authData
+}

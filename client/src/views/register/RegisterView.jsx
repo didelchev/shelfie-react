@@ -6,8 +6,6 @@ import { Link, useNavigate } from "react-router-dom";
 import SpinnerComponent from "../../components/spinner/SpinnerComponent";
 import logo from "../../../public/images/logo.png";
 
-const DEMO_EMAIL = "demo@shelfie.com";
-const DEMO_PASSWORD = "demo123456";
 
 const RegisterView = () => {
   const [authData, setAuthData] = useState({

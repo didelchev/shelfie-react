@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import "./LoginView.css";
-import { login } from "../../api/auth-api";
+import { login, loginAsDemoUser } from "../../api/auth-api";
 import { useAuth } from "../../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import SpinnerComponent from "../../components/spinner/SpinnerComponent";
 import logo from "../../../public/images/logo.png";
-
-const DEMO_EMAIL = "demo@shelfie.com";
-const DEMO_PASSWORD = "demo123456";
 
 const LoginView = () => {
   const [authData, setAuthData] = useState({
@@ -50,7 +47,7 @@ const LoginView = () => {
     setError(null);
 
     try {
-      const user = await login(DEMO_EMAIL, DEMO_PASSWORD);
+      const user = await loginAsDemoUser();
       setUserData(user);
       toast.success("Logged in as Demo User!");
       navigate("/");
