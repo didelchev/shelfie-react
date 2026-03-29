@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
       },
       { path: "/catalog/:bookId", element: <BookDetailsView /> },
       {
-        path: "profile",
+        path: "/profile",
         element: (
           <ProtectedRoute requiresAuth>
             <ProfileView/>

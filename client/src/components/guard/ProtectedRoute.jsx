@@ -12,7 +12,7 @@ const ProtectedRoute = ({ children, requiresAuth = false }) => {
     }
     
     if(!requiresAuth && isAuthenticated){
-       return <Navigate to={'/'} replace/>
+       return <Navigate to={'/catalog'} replace/>
     }
 
     return children
