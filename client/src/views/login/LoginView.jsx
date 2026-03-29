@@ -33,7 +33,7 @@ const LoginView = () => {
       const user = await login(email, password);
       setUserData(user);
       toast.success("Login successful!");
-      navigate("/");
+      navigate("/catalog");
     } catch (error) {
       setIsLoading(false);
       const errorMessage =
